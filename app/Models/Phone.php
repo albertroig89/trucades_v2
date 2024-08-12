@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Phone extends Model
 {
+    // Se utiliza para habilitar el uso de Eloquent Factory
     use HasFactory;
+
     // Especifica el nombre de la tabla en la base de datos
     protected $table = "phones";
 

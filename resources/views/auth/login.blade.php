@@ -5,6 +5,8 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <img src="{{ asset('images/AR_fnegre.png') }}" alt="Logo">
+
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
