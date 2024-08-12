@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class HistJob extends Model
 {
-    use HasFactory;
+    // Atributos que se pueden llenar de forma masiva
+    protected $fillable = [
+        'username', 'job', 'inittime', 'endtime', 'totalmin', 'clientname',
+    ];
 }

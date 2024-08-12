@@ -4,32 +4,69 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Los atributos que se pueden llenar de forma masiva.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'department_id', 'name', 'email', 'password',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Los atributos que deberían estar ocultos en los arrays.
      *
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
+    ];
+
+    /**
+     * Buscar un usuario por su correo electrónico.
+     *
+     * @param  string  $email
+     * @return \App\Models\User|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::where('email', $email)->first();
+    }
+
+    /**
+     * Relación de pertenencia con el modelo Department.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    /**
+     * Relación uno a muchos con el modelo Job.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function job()
+    {
+        return $this->hasMany(Job::class);
+    }
+
+    /**
+     * Los atributos que deberían ser convertidos a tipos de datos nativos.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_admin' => 'boolean',
     ];
 
     /**
@@ -44,4 +81,80 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    /**
+     * Verifica si el usuario es administrador.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//<?php
+//
+//namespace App\Models;
+//
+//// use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Database\Eloquent\Factories\HasFactory;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Notifications\Notifiable;
+//
+//class User extends Authenticatable
+//{
+//    use HasFactory, Notifiable;
+//
+//    /**
+//     * The attributes that are mass assignable.
+//     *
+//     * @var array<int, string>
+//     */
+//    protected $fillable = [
+//        'name',
+//        'email',
+//        'password',
+//    ];
+//
+//    /**
+//     * The attributes that should be hidden for serialization.
+//     *
+//     * @var array<int, string>
+//     */
+//    protected $hidden = [
+//        'password',
+//        'remember_token',
+//    ];
+//
+//    /**
+//     * Get the attributes that should be cast.
+//     *
+//     * @return array<string, string>
+//     */
+//    protected function casts(): array
+//    {
+//        return [
+//            'email_verified_at' => 'datetime',
+//            'password' => 'hashed',
+//        ];
+//    }
+//}
