@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('calls', function (Blueprint $table) {
-            //
+            $table->unsignedInteger('client_id')->unsigned()->nullable()->after('user_id');
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('calls', function (Blueprint $table) {
-            //
+            $table->dropForeign(['client_id']);
+            $table->dropColumn('client_id');
         });
     }
 };

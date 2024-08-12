@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hist_jobs', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('username');
+            $table->string('job', 1000);
+            $table->dateTime('inittime');
+            $table->dateTime('endtime');
+            $table->integer('totalmin');
+            $table->string('clientname');
             $table->timestamps();
         });
     }

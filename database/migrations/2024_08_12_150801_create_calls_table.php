@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('calls', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('callinf',1000);
             $table->timestamps();
+            $table->string('clientname');
+            $table->string('clientphone')->nullable();
         });
     }
 

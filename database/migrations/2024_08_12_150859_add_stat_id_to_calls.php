@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('calls', function (Blueprint $table) {
-            //
+            $table->unsignedInteger('stat_id')->unsigned()->after('client_id');
+            $table->foreign('stat_id')->references('id')->on('stats');
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('calls', function (Blueprint $table) {
-            //
+            $table->dropForeign(['stat_id']);
+            $table->dropColumn('stat_id');
         });
     }
 };
