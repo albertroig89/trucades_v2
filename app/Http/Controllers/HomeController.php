@@ -74,6 +74,6 @@ class HomeController extends Controller
 
         $usuari = User::find($userId);
 
-        return view('home', compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'usuari', 'allcalls'));
+        return view('dashboard', compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'usuari', 'allcalls'));
     }
 }
