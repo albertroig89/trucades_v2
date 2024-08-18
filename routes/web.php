@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\CallController;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
+
+//----------------------------------------------------------------------------------------------AUTH
 
 Route::get('/', function () {
     return view('auth/login');
@@ -13,41 +16,66 @@ Route::get('/', function () {
 
 //----------------------------------------------------------------------------------------------USERS
 
-Route::get('/users', function () {
-    return view('users.index');
-})->name('users.index');
+Route::get('/users', [UserController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('users.index');
+
+Route::get('/users/new', [UserController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('users.create');
+
+Route::post('/users', [UserController::class, 'store']);
+
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])
+    ->where('user', '\d+')
+    ->middleware(['auth'])
+    ->name('users.edit');
+
+Route::put('/users/{user}', [UserController::class, 'update']);
+
+Route::delete('/users/{user}', [UserController::class, 'destroy'])
+    ->middleware(['auth'])
+    ->name('users.destroy');
 
 //----------------------------------------------------------------------------------------------JOBS
 
-Route::get('/trabajos', [JobController::class, 'index'])
+Route::get('/jobs', [JobController::class, 'index'])
+    ->middleware(['auth'])
     ->name('jobs.index');
 
-Route::get('/trabajos/nuevo', [JobController::class, 'create'])
+Route::get('/jobs/new', [JobController::class, 'create'])
+    ->middleware(['auth'])
     ->name('jobs.create');
 
-Route::post('/trabajos', [JobController::class, 'store']);
+Route::post('/jobs', [JobController::class, 'store']);
 
-Route::post('/trabajos/{job}', [JobController::class, 'jobfromcall']);
+Route::post('/jobs/{job}', [JobController::class, 'jobfromcall']);
 
-Route::get('/trabajos/historico', [JobController::class, 'histjob'])
+Route::get('/jobs/histjobs', [JobController::class, 'histjob'])
+    ->middleware(['auth'])
     ->name('jobs.histjobs');
 
-Route::get('/trabajos/historico2', [JobController::class, 'histjob2'])
+Route::get('/jobs/histjobs2', [JobController::class, 'histjob2'])
+    ->middleware(['auth'])
     ->name('jobs.histjobs2');
 
-Route::get('/trabajos/{job}/editar', [JobController::class, 'edit'])
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
     ->where('job', '\d+')
+    ->middleware(['auth'])
     ->name('jobs.edit');
 
-Route::put('/trabajos/{job}', [JobController::class, 'update']);
+Route::put('/jobs/{job}', [JobController::class, 'update']);
 
-Route::get('/trabajos/contador', [JobController::class, 'count'])
+Route::get('/jobs/counter', [JobController::class, 'count'])
+    ->middleware(['auth'])
     ->name('jobs.count');
 
-Route::delete('/trabajos/{job}', [JobController::class, 'destroy'])
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
+    ->middleware(['auth'])
     ->name('jobs.destroy');
 
-Route::delete('/trabajos/historico/{histjob}', [JobController::class, 'histdestroy'])
+Route::delete('/jobs/histjobs/{histjob}', [JobController::class, 'histdestroy'])
+    ->middleware(['auth'])
     ->name('jobs.histdestroy');
 
 
@@ -57,23 +85,28 @@ Route::delete('/trabajos/historico/{histjob}', [JobController::class, 'histdestr
 //    ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [HomeController::class, 'index'])
-    ->middleware(['auth'])->name('dashboard');
+    ->middleware(['auth'])
+    ->name('dashboard');
 
-Route::get('/llamadas/nuevo', [CallController::class, 'create'])
+Route::get('/calls/new', [CallController::class, 'create'])
+    ->middleware(['auth'])
     ->name('calls.create');
 
-Route::post('/llamadas', [CallController::class, 'store']);
+Route::post('/calls', [CallController::class, 'store']);
 
-Route::get('/llamadas/{call}', [CallController::class, 'jobfromcall'])
+Route::get('/calls/{call}', [CallController::class, 'jobfromcall'])
+    ->middleware(['auth'])
     ->name('calls.jobfromcall');
 
-Route::get('/llamadas/{call}/editar', [CallController::class, 'edit'])
+Route::get('/calls/{call}/edit', [CallController::class, 'edit'])
     ->where('call', '\d+')
+    ->middleware(['auth'])
     ->name('calls.edit');
 
-Route::put('/llamadas/{call}', [CallController::class, 'update']);
+Route::put('/calls/{call}', [CallController::class, 'update']);
 
-Route::delete('/llamadas/{call}', [CallController::class, 'destroy'])
+Route::delete('/calls/{call}', [CallController::class, 'destroy'])
+    ->middleware(['auth'])
     ->name('calls.destroy');
 
 
@@ -81,27 +114,32 @@ Route::delete('/llamadas/{call}', [CallController::class, 'destroy'])
 //----------------------------------------------------------------------------------------------CLIENTS
 
 
-Route::get('/clientes', [ClientController::class, 'index'])
+Route::get('/clients', [ClientController::class, 'index'])
+    ->middleware(['auth'])
     ->name('clients.index');
 
-Route::get('/clientes/nuevo', [ClientController::class, 'create'])
+Route::get('/clients/new', [ClientController::class, 'create'])
+    ->middleware(['auth'])
     ->name('clients.create');
 
-Route::post('/clientes', [ClientController::class, 'store']);
+Route::post('/clients', [ClientController::class, 'store']);
 
-Route::get('/clientes/{client}/editar', [ClientController::class, 'edit'])
+Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])
     ->where('client', '\d+')
+    ->middleware(['auth'])
     ->name('clients.edit');
 
-Route::put('/clientes/{client}', [ClientController::class, 'update']);
+Route::put('/clients/{client}', [ClientController::class, 'update']);
 
-Route::delete('/clientes/{client}', [ClientController::class, 'destroy'])
+Route::delete('/clients/{client}', [ClientController::class, 'destroy'])
+    ->middleware(['auth'])
     ->name('clients.destroy');
 
-Route::get('/clientes/importacion', [ClientController::class, 'showimport'])
+Route::get('/clients/import', [ClientController::class, 'showimport'])
+    ->middleware(['auth'])
     ->name('clients.import');
 
-Route::post('/clientes/importacion', [ClientController::class, 'import']);
+Route::post('/clients/import', [ClientController::class, 'import']);
 
 
 

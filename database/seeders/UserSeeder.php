@@ -35,6 +35,7 @@ class UserSeeder extends Seeder
             'email' => 'albert@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $techId,
+            'avatar' => 'images/albert.jpg',
             'is_admin' => true,
         ]);
 
@@ -43,6 +44,7 @@ class UserSeeder extends Seeder
             'email' => 'sat@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $techId,
+            'avatar' => 'assets/img/team-2.jpg',
         ]);
 
         User::create([
@@ -50,6 +52,7 @@ class UserSeeder extends Seeder
             'email' => 'joel@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $techId,
+            'avatar' => 'assets/img/bruce-mars.jpg',
         ]);
 
         User::create([
@@ -57,6 +60,7 @@ class UserSeeder extends Seeder
             'email' => 'josep@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $techId,
+            'avatar' => 'assets/img/ivana-square.jpg',
         ]);
 
         User::create([
@@ -64,6 +68,7 @@ class UserSeeder extends Seeder
             'email' => 'administracio@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $admId,
+            'avatar' => 'assets/img/team-5.jpg',
         ]);
 
         User::create([
@@ -71,6 +76,7 @@ class UserSeeder extends Seeder
             'email' => 'comercial@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $comId,
+            'avatar' => 'assets/img/team-4.jpg',
         ]);
 
         User::create([
@@ -78,6 +84,7 @@ class UserSeeder extends Seeder
             'email' => 'soft@microdelta.net',
             'password' => bcrypt('MicAmposta43'),
             'department_id' => $progId,
+            'avatar' => 'assets/img/team-1.jpg',
         ]);
     }
 }

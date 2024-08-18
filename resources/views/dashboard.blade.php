@@ -1,7 +1,45 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Llamadas') }}
+            {{ $title }}
+
+            <div class="row text-center py-3 mt-3">
+                <div class="col-4 mx-auto">
+                    <div class="nav-wrapper position-relative end-0">
+                        <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#profile-tabs-simple" role="tab" aria-controls="profile" aria-selected="true">
+                                    Classica
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#dashboard-tabs-simple" role="tab" aria-controls="dashboard" aria-selected="false">
+                                    Mejorada
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <form class="float-right" method="GET" action="{{ url('/') }}">
+                <select class="form-control" onchange="this.form.submit()" name="user_id" id="user_id">
+                    @if ($allcalls == true)
+                        <option class="" value="100">Totes les trucades</option>
+                    @else
+                        <option class="" value="{{ $usuari->id }}">{{ $usuari->name }}</option>
+                        <option class="" value="100">Totes les trucades</option>
+                    @endif
+                    @foreach ($users as $user)
+                        @if (auth()->id() != $user->id)
+                            <option class="" value="{{ $user->id }}">{{ $user->name }}</option>
+                        @elseif ($allcalls == true)
+                            <option class="" value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endif
+                    @endforeach
+
+                </select>
+            </form>
         </h2>
     </x-slot>
 
@@ -16,6 +54,7 @@
                     </div>
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
+                            @if($calls->count())
                             <table class="table align-items-center mb-0">
                                 <thead>
                                 <tr>
@@ -204,6 +243,9 @@
 {{--                                </tr>--}}
                                 </tbody>
                             </table>
+                            @else
+                                <li>No tienes llamadas pendientes</li>
+                            @endif
                         </div>
                     </div>
                 </div>

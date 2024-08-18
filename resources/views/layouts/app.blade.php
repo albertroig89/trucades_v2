@@ -23,6 +23,9 @@
         <!-- Material Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
+        <!-- Bootstrap Icons -->
+{{--        <link rel="stylesheet" href="{{ asset('node_modules/bootstrap-icons/font/bootstrap-icons.css') }}">--}}
+
         <!-- CSS Files -->
         <link id="pagestyle" href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" />
 

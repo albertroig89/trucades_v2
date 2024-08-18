@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $title = 'Trucades';
+        $title = 'Llamadas';
         $users = User::all();
         $phones = Phone::all();
 

@@ -28,6 +28,7 @@ class CreateUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
             'department_id' => 'required|exists:departments,id',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 
@@ -39,17 +40,19 @@ class CreateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nom és obligatori',
-            'name.string' => 'El nom ha de ser una cadena de text',
-            'name.max' => 'El nom no pot superar els 255 caràcters',
-            'email.required' => 'Introdueix un correu electrònic',
-            'email.email' => 'Introdueix un correu electrònic vàlid',
-            'email.unique' => 'El correu electrònic ja existeix',
+            'name.required' => 'EL nombre es obligatorio',
+            'name.string' => 'El nombre tiene que ser una cadena de texto',
+            'name.max' => 'El nombre no puede superar los 255 caracteres',
+            'email.required' => 'Introduce un correo electronico',
+            'email.email' => 'Introduce un correo electronico valido',
+            'email.unique' => 'El correo electronico ya existe',
             'password.required' => 'Especifica una contrasenya',
-            'password.min' => 'La contrasenya ha de tenir almenys 6 caràcters',
-            'password.confirmed' => 'Les contrasenyes no coincideixen',
-            'department_id.required' => 'El departament és obligatori',
-            'department_id.exists' => 'El departament seleccionat no existeix',
+            'password.min' => 'La contrasenya tiene que tener un minimo de 6 caracteres',
+            'password.confirmed' => 'Las contrasenyas no coinciden',
+            'department_id.required' => 'El departamento es obligatorio',
+            'department_id.exists' => 'El departamento seleccionado no existe',
+            'avatar.image' => 'La imagen tiene que ser una imagen',
+            'avatar.mimes' => 'La imagen tiene que ser jpeg, png, jpg, gif o svg',
         ];
     }
 
