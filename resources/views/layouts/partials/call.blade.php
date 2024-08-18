@@ -25,13 +25,13 @@
                     <td>{{ $user->name }}</td>
                 @endif
             @endforeach
-            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><span class="oi oi-plus"></span></a></td>
-            <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><span class="material-symbols-outlined">edit</span></a></td>
+            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>
+            <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">edit</i></a></td>
             <td>
                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><span class="oi oi-trash mt-0"></span></button>
+                    <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><i class="material-icons opacity-6 me-2 text-md">delete</i></button>
                 </form>
             </td>
         </tr>
@@ -62,13 +62,13 @@
                     <td>{{ $user->name }}</td>
                 @endif
             @endforeach
-            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><span class="oi oi-plus"></span></a></td>
-            <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><span class="oi oi-pencil"></span></a></td>
+            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>
+            <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">edit</i></a></td>
             <td>
                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><span class="oi oi-trash mt-0"></span></button>
+                    <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><i class="material-icons opacity-6 me-2 text-md">delete</i></button>
                 </form>
             </td>
         </tr>
@@ -99,13 +99,13 @@
                     <td>{{ $user->name }}</td>
                 @endif
             @endforeach
-            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><span class="oi oi-plus"></span></a></td>
-            <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><span class="oi oi-pencil"></span></a></td>
+            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>
+            <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">edit</i></a></td>
             <td>
                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><span class="oi oi-trash mt-0"></span></button>
+                    <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><i class="material-icons opacity-6 me-2 text-md">delete</i></button>
                 </form>
             </td>
         </tr>
@@ -137,15 +137,15 @@
                 <td>{{ $user->name }}</td>
             @endif
         @endforeach
-        <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><span class="oi oi-plus"></span></a></td>
-        <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><span class="oi oi-pencil"></span></a></td>
+        <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>
+        <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">edit</i></a></td>
 
         <td>
 
             <form action="{{ route('calls.destroy', $call) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><span class="oi oi-trash mt-0"></span></button>
+                <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><i class="material-icons opacity-6 me-2 text-md">delete</i></button>
             </form>
         </td>
     </tr>
@@ -179,12 +179,12 @@
 
         <td>
             <a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}">
-                <i class="bi bi-plus"></i>
+                <i class="material-icons opacity-6 me-2 text-md">add</i>
             </a>
         </td>
         <td>
             <a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}">
-                <i class="bi bi-pencil"></i>
+                <i class="material-icons opacity-6 me-2 text-md">edit</i>
             </a>
         </td>
         <td>
@@ -192,18 +192,9 @@
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button class="btn btn-link" onclick="return confirm('Seguro que quieres borrar la llamada?')" type="submit">
-                    <i class="bi bi-trash"></i>
+                    <i class="material-icons opacity-6 me-2 text-md">delete</i>
                 </button>
             </form>
         </td>
-{{--        <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><span class="bi bi-plus"></span></a></td>--}}
-{{--        <td><a class="btn btn-link" href="{{ route('calls.edit', ['call' => $call]) }}"><span class="bi bi-pencil"></span></a></td>--}}
-{{--        <td>--}}
-{{--            <form action="{{ route('calls.destroy', $call) }}" method="POST">--}}
-{{--                {{ csrf_field() }}--}}
-{{--                {{ method_field('DELETE') }}--}}
-{{--                <button class="btn btn-link" onclick="return confirm('Segur que vols eliminar la trucada?')" type="submit"><span class="bi bi-trash mt-0"></span></button>--}}
-{{--            </form>--}}
-{{--        </td>--}}
     </tr>
 @endif

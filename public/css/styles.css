@@ -1,0 +1,146 @@
+/*estils linies trucades*/
+.normalState {
+    background-color: #daffe3;
+}
+.normalState:hover {
+    background-color: lightgreen;
+}
+.urgentState {
+    background-color: #fab9b9;
+}
+.urgentState:hover {
+    background-color: #f17a77;
+}
+.pendingState {
+    background-color: #aed7ff;
+}
+.pendingState:hover {
+    background-color: deepskyblue;
+}
+.normalStateGlobal {
+    background-color: lightgoldenrodyellow;
+}
+.normalStateGlobal:hover {
+    background-color: khaki;
+}
+.normalStateAdm {
+    background-color: red;
+}
+.normalStateAdm:hover {
+    background-color: #f17a77;
+}
+
+/*Navbar logo style*/
+.navbar-logo{
+    width: 50px;
+    height: auto;
+}
+
+
+/*.table {*/
+/*    font-size: small;*/
+/*}*/
+/*table{*/
+/*    height: 100px;*/
+/*}*/
+/*.nota{*/
+/*    width: 40%;*/
+/*}*/
+/*th{*/
+/*    text-align: center;*/
+/*}*/
+/*td{*/
+/*    text-align: center;*/
+/*}*/
+/*estils iconos*/
+/*.oi-plus{*/
+/*    color: #686868;*/
+/*    font-size: small;*/
+
+/*}*/
+/*.oi-plus:hover{*/
+/*    color: #1c1c1c;*/
+
+/*}*/
+/*.oi-eye{*/
+/*    color: #686868;*/
+/*    font-size: small;*/
+/*}*/
+/*.oi-eye:hover{*/
+/*    color: #1c1c1c;*/
+
+/*}*/
+/*.oi-pencil{*/
+/*    color: #686868;*/
+/*    font-size: small;*/
+/*}*/
+/*.oi-pencil:hover{*/
+/*    color: #1c1c1c;*/
+
+/*}*/
+/*.oi-trash{*/
+/*    color: #686868;*/
+/*    font-size: small;*/
+/*}*/
+/*.oi-trash:hover{*/
+/*    color: #1c1c1c;*/
+
+/*}*/
+/*.btn-link{*/
+/*    padding: 0px;*/
+/*    border:none;*/
+/*}*/
+/*estils datetime picker*/
+/*.container {*/
+/*    margin-top: 5px;*/
+/*    margin-left: 10px;*/
+/*    width: 600px;*/
+/*}*/
+/*estils botons envio*/
+/*.btn-primary{*/
+/*    background-color: #686868;*/
+/*    border-color: #1c1c1c;*/
+/*}*/
+/*.btn-primary:hover{*/
+/*    background-color: #1c1c1c;*/
+/*    border-color: #686868;*/
+/*}*/
+/*!*estils links per a tornar atras com un boto*!*/
+/*.btn-default{*/
+/*    background-color: #686868;*/
+/*    border-color: #1c1c1c;*/
+/*    color: white;*/
+/*}*/
+/*.btn-default:hover{*/
+/*    background-color: #1c1c1c;*/
+/*    border-color: #686868;*/
+/*    color: white;*/
+/*}*/
+/*.btn-default:active{*/
+/*    background-color: #006dcc;*/
+/*    border-color: #003399;*/
+/*}*/
+/*.btn-default:focus{*/
+/*    background-color: #006dcc;*/
+/*    border-color: #006dcc;*/
+/*}*/
+/*!*estils dropdown*!*/
+/*.dropdown-item{*/
+/*    active-color: #686868;;*/
+/*}*/
+/*!*estils logo*!*/
+/*.logo{*/
+/*    width: 15%;*/
+/*}*/
+/*.logolink{*/
+/*    margin-right: -900px;*/
+/*}*/
+/*.loginlink{*/
+/*    margin-right: 0px;*/
+/*}*/
+/*.login{*/
+/*    margin-left:60%;*/
+/*}*/
+/*.card{*/
+/*    !*float:center;*!*/
+/*}*/

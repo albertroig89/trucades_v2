@@ -23,10 +23,8 @@
         <!-- Material Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-        <!-- Bootstrap Icons -->
-{{--        <link rel="stylesheet" href="{{ asset('node_modules/bootstrap-icons/font/bootstrap-icons.css') }}">--}}
-
         <!-- CSS Files -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" /> <!--ESTILS PROPIS-->
         <link id="pagestyle" href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" />
 
         {{--Favicon--}}
