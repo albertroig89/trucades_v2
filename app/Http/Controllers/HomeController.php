@@ -48,13 +48,13 @@ class HomeController extends Controller
         if (!empty($request->get('user_id')) && $request->get('user_id') == "100") {
             $allcalls = true;
             $userid = auth()->id();
-            $usuari = User::find($userid);
+            $user = User::find($userid);
         } elseif (empty($request->get('user_id'))) {
             $userid = auth()->id();
-            $usuari = User::find($userid);
+            $user = User::find($userid);
         } else {
             $userid = $request->get('user_id');
-            $usuari = User::find($userid);
+            $user = User::find($userid);
         }
 
         // Determinar las llamadas basadas en el departamento del usuario y el ID de usuario
@@ -81,7 +81,7 @@ class HomeController extends Controller
                 ->paginate(50);
         }
 
-        return view('dashboard', compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'usuari', 'allcalls'));
+        return view('dashboard', compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'user', 'allcalls'));
     }
 }
 //namespace App\Http\Controllers;
