@@ -12,7 +12,7 @@ class Job extends Model
 
     // Atributos que se pueden llenar de forma masiva
     protected $fillable = [
-        'user_id', 'client_id', 'job', 'inittime', 'endtime', 'totalmin', 'clientname',
+        'user_id', 'client_id', 'job', 'inittime', 'endtime', 'totalmin', 'clientname'
     ];
 
     // Relación de pertenencia con el modelo User

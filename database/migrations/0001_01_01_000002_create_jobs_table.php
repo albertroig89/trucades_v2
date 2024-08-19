@@ -23,7 +23,7 @@ return new class extends Migration
             $table->dateTime('endtime');
             $table->integer('totalmin');
             $table->string('clientname');
-            $table->unsignedInteger('created_at');
+            $table->timestamps();
         });
 
         Schema::create('job_batches', function (Blueprint $table) {

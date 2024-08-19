@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatSeeder::class);
         $this->call(CallSeeder::class);
         $this->call(PhoneSeeder::class);
+        $this->call(JobSeeder::class);
     }
 
     protected function truncateTables(array $tables) {
