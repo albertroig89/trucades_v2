@@ -4745,7 +4745,7 @@ fieldset:disabled .btn {
 .navbar {
   --bs-navbar-padding-x: 1rem;
   --bs-navbar-padding-y: 0.5rem;
-  --bs-navbar-color: #344767;
+  --bs-navbar-color: #58585e !important;
   --bs-navbar-hover-color: rgba(52, 71, 103, 0.7);
   --bs-navbar-disabled-color: rgba(52, 71, 103, 0.3);
   --bs-navbar-active-color: rgba(52, 71, 103, 0.9);
@@ -4763,9 +4763,10 @@ fieldset:disabled .btn {
   --bs-navbar-toggler-border-radius: 0.5rem;
   --bs-navbar-toggler-focus-width: 0.2rem;
   --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
-  position: relative;
-  /*background-color: grey;*/
   display: flex;
+    background-image: linear-gradient(195deg, #4c586b 0%, #344767 100%) !important;
+
+
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;

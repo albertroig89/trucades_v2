@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
-        $title = 'Trucades';
+        $title = 'Llamadas';
         $users = User::all();
         $phones = Phone::all();
         $techId = Department::where('title', 'Tecnic')->value('id');

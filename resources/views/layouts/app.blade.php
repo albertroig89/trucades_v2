@@ -13,9 +13,9 @@
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
-        <!-- Nucleo Icons -->
-        <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
-        <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+{{--        <!-- Nucleo Icons -->--}}
+{{--        <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />--}}
+{{--        <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />--}}
 
         <!-- Font Awesome Icons -->
         <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -24,22 +24,46 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
         <!-- CSS Files -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" /> <!--ESTILS PROPIS-->
         <link id="pagestyle" href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" /> <!--ESTILS PROPIS-->
 
         {{--Favicon--}}
         <link rel="icon" href="{{ asset('images/AR_fnegre.png') }}" type="image/png">
 
+        {{--    Este script comprueba si el navegador utiliza o no el modo oscuro para adaptar el tema de la app--}}
+{{--        <script defer>--}}
+{{--            document.addEventListener('DOMContentLoaded', () => {--}}
+{{--                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {--}}
+{{--                    document.body.classList.add('dark-version');--}}
+{{--                }--}}
+{{--            });--}}
+{{--        </script>--}}
 
+        <script>
+            // Función para detectar el tema y aplicar la clase dark
+            function applyTheme() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+
+            // Aplicar el tema al cargar la página
+            applyTheme();
+
+            // Escuchar cambios en las preferencias del sistema y ajustar el tema
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+        </script>
 
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="custom body font-sans antialiased">
+        <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="custom-header">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -47,9 +71,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
                 {{ $slot }}
-            </main>
         </div>
 
 
@@ -60,4 +82,5 @@
 
 
     </body>
+    @include('layouts.footer')
 </html>
