@@ -58,29 +58,29 @@
 
     </head>
     <body class="custom body font-sans antialiased">
-        <div class="min-h-screen">
-            @include('layouts.navigation')
+        <div class="page-container">
+            <div class="content-wrap">
+                @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="custom-header">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+                <!-- Page Heading -->
+                @isset($header)
+                    <header class="custom-header">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endisset
 
-            <!-- Page Content -->
-                {{ $slot }}
+                <!-- Page Content -->
+                    {{ $slot }}
+            </div>
+            @include('layouts.footer')
         </div>
-
 
         <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
         <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
 
-
     </body>
-    @include('layouts.footer')
 </html>

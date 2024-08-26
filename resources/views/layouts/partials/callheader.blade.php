@@ -22,10 +22,10 @@
                 </select>
             </form>
         </div>
-        <div class="row text-center py-3 mt-3">
+        <div class="row text-center changeview">
             <div class="col-4 mx-auto">
                 <div class="nav-wrapper position-relative end-0">
-                    <ul class="nav nav-pills nav-fill" role="tablist">
+                    <ul class="nav nav-custom nav-pills nav-fill" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#profile-tabs-simple" role="tab" aria-controls="profile" aria-selected="true">
                                 Escritorio

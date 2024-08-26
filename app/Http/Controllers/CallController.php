@@ -56,7 +56,7 @@ class CallController extends Controller
     public function store(CreateCallRequest $request)
     {
         $request->createCall();
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     // Método para actualizar una llamada existente
@@ -80,14 +80,14 @@ class CallController extends Controller
 
         $call->update($data);
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     // Método para eliminar una llamada existente
     public function destroy(Call $call)
     {
         $call->delete();
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 }
 

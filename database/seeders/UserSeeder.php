@@ -25,15 +25,15 @@ class UserSeeder extends Seeder
         // Crear usuarios
         User::create([
             'name' => 'Global',
-            'email' => 'global@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'global@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $globId,
         ]);
 
         User::create([
             'name' => 'Albert Roig',
-            'email' => 'albert@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'albert@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $techId,
             'avatar' => 'images/albert.jpg',
             'is_admin' => true,
@@ -41,48 +41,48 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Jordi Espinoso',
-            'email' => 'sat@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'sat@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $techId,
             'avatar' => 'assets/img/team-2.jpg',
         ]);
 
         User::create([
             'name' => 'Joel Galindo',
-            'email' => 'joel@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'joel@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $techId,
             'avatar' => 'assets/img/bruce-mars.jpg',
         ]);
 
         User::create([
             'name' => 'Josep Costelles',
-            'email' => 'josep@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'josep@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $techId,
             'avatar' => 'assets/img/ivana-square.jpg',
         ]);
 
         User::create([
             'name' => 'Cristina Dretera',
-            'email' => 'administracio@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'administracio@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $admId,
             'avatar' => 'assets/img/team-5.jpg',
         ]);
 
         User::create([
             'name' => 'Manel Pel',
-            'email' => 'comercial@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'comercial@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $comId,
             'avatar' => 'assets/img/team-4.jpg',
         ]);
 
         User::create([
             'name' => 'Juan Galindo',
-            'email' => 'soft@microdelta.net',
-            'password' => bcrypt('MicAmposta43'),
+            'email' => 'soft@gmail.com',
+            'password' => bcrypt('123456'),
             'department_id' => $progId,
             'avatar' => 'assets/img/team-1.jpg',
         ]);

@@ -1,5 +1,7 @@
 <!-- Navbar -->
-<div class="container position-sticky z-index-sticky top-0"><div class="row"><div class="col-12">
+<div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+        <div class="col-12">
             <nav class="navbar custom-navbar navbar-expand-lg border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid">
                     <a  title="Diseñado por Albert Roig" data-placement="bottom" href="{{ route('dashboard') }}">
@@ -15,7 +17,7 @@
                     <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0" id="navigation">
                         <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
                             <li class="nav-item dropdown dropdown-hover mx-2">
-                                <x-dropdown-link class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">work</i>
                                     Trabajos
                                     <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
@@ -71,7 +73,7 @@
                             </li>
 
                             <li class="nav-item dropdown dropdown-hover mx-2">
-                                <x-dropdown-link class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">person</i>
                                     Usuarios
                                     <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
@@ -103,7 +105,7 @@
                             </li>
 
                             <li class="nav-item dropdown dropdown-hover mx-2">
-                                <x-dropdown-link class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">contacts</i>
                                     Clientes
                                     <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
@@ -148,7 +150,6 @@
                                 <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
                                     @if(Auth::user()->avatar)
                                     <img src="{{ Auth::user()->avatar }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
-
                                     @else
                                     <img src="{{ asset('images/AR_fblanc.png') }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                     @endif
@@ -160,7 +161,6 @@
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-
                                             <x-dropdown-link :href="route('logout')"
                                                              onclick="event.preventDefault();
                                                                             this.closest('form').submit();" class="dropdown-item border-radius-md">
@@ -174,12 +174,11 @@
                                             {{ __('Perfil') }}
                                         </x-dropdown-link>
 
-                                        <form method="POST" action="{{ route('logout') }}" class="dropdown-item border-radius-md">
+                                        <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-
                                             <x-dropdown-link :href="route('logout')"
                                                              onclick="event.preventDefault();
-                                                                            this.closest('form').submit();">
+                                                                            this.closest('form').submit();" class="dropdown-item border-radius-md">
                                                 {{ __('Salir') }}
                                             </x-dropdown-link>
                                         </form>
@@ -192,4 +191,6 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-        </div></div></div>
+        </div>
+    </div>
+</div>
