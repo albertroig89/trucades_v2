@@ -17,37 +17,37 @@ class PhoneSeeder extends Seeder
         // Crear instancias específicas de Phone
         Phone::create([
             'client_id' => 1,
-            'phone' => '977480006',
+            'phone' => '977562234',
         ]);
 
         Phone::create([
             'client_id' => 1,
-            'phone' => '977489518',
+            'phone' => '977564798',
         ]);
 
         Phone::create([
             'client_id' => 1,
-            'phone' => '977489981',
+            'phone' => '977569874',
         ]);
 
         Phone::create([
             'client_id' => 2,
-            'phone' => '977730043',
+            'phone' => '977785564',
         ]);
 
         Phone::create([
             'client_id' => 2,
-            'phone' => '977705506',
+            'phone' => '977788565',
         ]);
 
         Phone::create([
             'client_id' => 3,
-            'phone' => '977702262',
+            'phone' => '977795864',
         ]);
 
         Phone::create([
             'client_id' => 4,
-            'phone' => '977706942',
+            'phone' => '977854664',
         ]);
 
         // Crear instancias de Phone usando el Factory

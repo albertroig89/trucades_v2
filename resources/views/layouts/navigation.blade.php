@@ -22,48 +22,48 @@
                                     Trabajos
                                     <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
-                                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
+                                <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">add</i>
                                             Nuevo trabajo
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">work_history</i>
                                             Ver historico de trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility_off</i>
                                             Ver historico oculto
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">timer</i>
                                             Contador de trabajos
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">add</i>
                                             Nuevo trabajo
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">work_history</i>
                                             Ver historico de trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility_off</i>
                                             Ver historico oculto
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">timer</i>
                                             Contador de trabajos
                                         </x-dropdown-link>
@@ -78,24 +78,24 @@
                                     Usuarios
                                     <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
-                                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
+                                <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">person_add</i>
                                             Nuevo usuario
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('users.index')" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('users.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             {{ __('Ver usuarios') }}
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">person_add</i>
                                             Nuevo usuario
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('users.index')" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('users.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             {{ __('Ver usuarios') }}
                                         </x-dropdown-link>
@@ -110,32 +110,32 @@
                                     Clientes
                                     <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
-                                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
+                                <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">person_add</i>
                                             Nuevo cliente
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver clientes
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">publish</i>
                                             Importar clientes
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">add</i>
                                             Nuevo cliente
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver clientes
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">publish</i>
                                             Importar clientes
                                         </x-dropdown-link>
@@ -154,23 +154,23 @@
                                     <img src="{{ asset('images/AR_fblanc.png') }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                     @endif
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuUser">
+                                <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuUser">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link :href="route('profile.edit')" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('profile.edit')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             {{ __('Perfil') }}
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
                                             <x-dropdown-link :href="route('logout')"
                                                              onclick="event.preventDefault();
-                                                                            this.closest('form').submit();" class="dropdown-item border-radius-md">
+                                                                            this.closest('form').submit();" class="custom-dropdown-item dropdown-item border-radius-md">
                                                 {{ __('Salir') }}
                                             </x-dropdown-link>
                                         </form>
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link :href="route('profile.edit')" class="dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('profile.edit')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             {{ __('Perfil') }}
                                         </x-dropdown-link>
 
@@ -178,7 +178,7 @@
                                             @csrf
                                             <x-dropdown-link :href="route('logout')"
                                                              onclick="event.preventDefault();
-                                                                            this.closest('form').submit();" class="dropdown-item border-radius-md">
+                                                                            this.closest('form').submit();" class="custom-dropdown-item dropdown-item border-radius-md">
                                                 {{ __('Salir') }}
                                             </x-dropdown-link>
                                         </form>

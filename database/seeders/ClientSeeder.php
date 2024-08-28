@@ -21,12 +21,12 @@ class ClientSeeder extends Seeder
         ]);
 
         Client::create([
-            'name' => "Materials de construcció Pepe",
+            'name' => "Materiales de construcción Pepe",
             'email' => "info@mcpepe.es",
         ]);
 
         Client::create([
-            'name' => "Carburants BP",
+            'name' => "Carburantes BP",
             'email' => "info@carburantsbp.com",
         ]);
 
