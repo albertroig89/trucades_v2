@@ -15,14 +15,14 @@ class CallController extends Controller
     // Método para mostrar una llamada específica
     public function show(Call $call)
     {
-        $title = 'Trucada';
+        $title = 'Llamada';
         return view('calls.show', compact('title', 'call'));
     }
 
     // Método para mostrar el formulario de creación de llamada
     public function create()
     {
-        $title = 'Nova trucada';
+        $title = 'Nueva llamada';
         $clients = Client::all();
         $users = User::all();
         $stats = Stat::all();
@@ -71,11 +71,11 @@ class CallController extends Controller
             'clientname' => 'required',
             'clientphone' => 'nullable',
         ], [
-            'user_id.required' => 'Selecciona un empleat',
-            'clientname.required' => 'Selecciona un client o escriu-ne un',
-            'user_id2.required' => 'Selecciona un empleat',
-            'stat_id.required' => 'Selecciona un estat',
-            'callinf.required' => 'Omple l\'informació de la trucada'
+            'user_id.required' => 'Selecciona un empleado',
+            'clientname.required' => 'Selecciona un cliente o escribe uno',
+            'user_id2.required' => 'Selecciona un empleado',
+            'stat_id.required' => 'Selecciona un estado',
+            'callinf.required' => 'Rellena la información de la llamada'
         ]);
 
         $call->update($data);

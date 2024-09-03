@@ -49,8 +49,8 @@
                     </div>
                 </div>
             </td>
-            <td style="width: 625px">
-                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 100, '...') }}</p>
+            <td style="width: 450px">
+                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}</p>
             </td>
             @php
                 $user = $users->firstWhere('id', $call->user_id2);
@@ -71,13 +71,13 @@
 {{--            <a href="{{ route('calls.jobfromcall', ['call' => $call]) }}" type="button" class="float-end btn btn-ncall w-auto">Crear</a>--}}
 {{--            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>--}}
             <td>
-                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-tcall w-auto">Editar</a>
+                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
             </td>
             <td>
                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-tcall w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                    <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                 </form>
             </td>
         </tr>
@@ -131,8 +131,8 @@
                     </div>
                 </div>
             </td>
-            <td style="width: 625px">
-                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 100, '...') }}</p>
+            <td style="width: 450px">
+                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}</p>
             </td>
             @php
                 $user = $users->firstWhere('id', $call->user_id2);
@@ -150,13 +150,13 @@
             @endif
             <td><h6 class="mb-0 text-sm">0</h6></td>
             <td>
-                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-tcall w-auto">Editar</a>
+                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
             </td>
             <td>
                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-tcall w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                    <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                 </form>
             </td>
         </tr>
@@ -210,8 +210,8 @@
                     </div>
                 </div>
             </td>
-            <td style="width: 625px">
-                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 100, '...') }}</p>
+            <td style="width: 450px">
+                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}</p>
             </td>
             @php
                 $user = $users->firstWhere('id', $call->user_id2);
@@ -229,13 +229,13 @@
             @endif
             <td><h6 class="mb-0 text-sm">0</h6></td>
             <td>
-                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-tcall w-auto">Editar</a>
+                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
             </td>
             <td>
                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-tcall w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                    <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                 </form>
             </td>
         </tr>
@@ -290,8 +290,8 @@
                 </div>
             </div>
         </td>
-        <td style="width: 625px">
-            <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 100, '...') }}</p>
+        <td style="width: 450px">
+            <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}</p>
         </td>
         @php
             $user = $users->firstWhere('id', $call->user_id2);
@@ -309,13 +309,13 @@
         @endif
         <td><h6 class="mb-0 text-sm ">0</h6></td>
         <td>
-            <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-tcall w-auto">Editar</a>
+            <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
         </td>
         <td>
             <form action="{{ route('calls.destroy', $call) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <button class="btn btn-tcall w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
             </form>
         </td>
     </tr>
@@ -369,8 +369,8 @@
                 </div>
             </div>
         </td>
-        <td style="width: 625px">
-            <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 100, '...') }}</p>
+        <td style="width: 450px">
+            <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}</p>
         </td>
         @php
             $user = $users->firstWhere('id', $call->user_id2);
@@ -388,13 +388,13 @@
         @endif
         <td><h6 class="mb-0 text-sm">0</h6></td>
         <td>
-            <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-tcall w-auto">Editar</a>
+            <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
         </td>
         <td>
             <form action="{{ route('calls.destroy', $call) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <button class="btn btn-tcall w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
             </form>
         </td>
     </tr>

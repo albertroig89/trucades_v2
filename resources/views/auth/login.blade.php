@@ -5,7 +5,8 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <img src="{{ asset('images/AR_fnegre.png') }}" alt="Logo">
+        <img id="logo" src="{{ asset('images/AR_fblanc.png') }}" alt="Logo" class="logo">
+
 
         <!-- Email Address -->
         <div>

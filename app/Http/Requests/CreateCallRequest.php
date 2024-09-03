@@ -42,16 +42,16 @@ class CreateCallRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required' => 'Selecciona un empleat',
-            'user_id.exists' => 'El empleat seleccionado no existeix',
-            'client_id.exists' => 'El client seleccionado no existeix',
-            'user_id2.required' => 'Selecciona un segon empleat',
-            'user_id2.exists' => 'El segon empleat seleccionado no existeix',
-            'stat_id.required' => 'Selecciona un estat',
-            'stat_id.exists' => 'L\'estat seleccionado no existeix',
-            'callinf.required' => 'Omple l\'informació de la trucada',
-            'clientname.string' => 'El nom del client ha de ser una cadena de text',
-            'clientphone.string' => 'El telèfon del client ha de ser una cadena de text',
+            'user_id.required' => 'Selecciona un empleado',
+            'user_id.exists' => 'El empleado seleccionado no existe',
+            'client_id.exists' => 'El cliente seleccionado no existe',
+            'user_id2.required' => 'Selecciona un segundo empleado',
+            'user_id2.exists' => 'El segundo empleado seleccionado no existe',
+            'stat_id.required' => 'Selecciona un estado',
+            'stat_id.exists' => 'El estado seleccionado no existe',
+            'callinf.required' => 'Rellena la información de la llamada',
+            'clientname.string' => 'El nombre del cliente tiene que ser una cadena de texto',
+            'clientphone.string' => 'El telèfono del cliente tiene que ser una cadena de texto',
         ];
     }
 
@@ -72,7 +72,7 @@ class CreateCallRequest extends FormRequest
                 'user_id2' => $data['user_id2'],
                 'stat_id' => $data['stat_id'],
                 'callinf' => $data['callinf'],
-                'clientname' => $data['clientname'] ?? null,
+                'clientname' => $data['clientname'] ?? '',
                 'clientphone' => $data['clientphone'] ?? null,
             ]);
         });

@@ -46,6 +46,19 @@ body{
     color: white !important;
 }
 
+
+/*Light table custom style*/
+.custom-table-row{
+    cursor: pointer !important;
+
+}
+
+.custom-table-row:hover{
+    cursor: pointer !important;
+    background-color:  #ced4da !important;
+}
+
+/*Dark table custom style*/
 .dark .custom-dropdown-item:hover{
     background-color:  #344767 !important;
     color: white !important;
@@ -59,16 +72,6 @@ body{
     cursor: pointer !important;
     background-color:  #23272e !important;
 }
-
-/*.table td {*/
-/*    white-space: normal; !* Permite saltos de línea dentro de la celda *!*/
-/*    overflow-wrap: break-word; !* Rompe la palabra si es demasiado larga *!*/
-/*    word-wrap: break-word; !* Soporte para navegadores más antiguos *!*/
-/*    word-break: break-word; !* Rompe las palabras largas *!*/
-/*    max-width: 600px;*/
-/*    !*max-width: 200px; !* Opcional: establece un ancho máximo si es necesario *!*!*/
-/*}*/
-
 
 /*h2 custom style*/
 .custom-header h2{
@@ -98,40 +101,79 @@ body{
     background-color: #7b809a !important;
 }
 .dark .nav-custom{
-    background-color: blue !important;
+    background-color: #344767 !important;
 }
+
 .dark .nav-custom.active{
     background-color: #344767 !important;
 }
-/*margin adjust for the view selector*/
-.changeview{
+
+
+
+.nav.nav-pills .nav-link {
+    z-index: 3;
+    color: #344767;
+    border-radius: 0.5rem;
+    background-color: inherit;
+}
+
+.nav.nav-pills .nav-link.active {
+    animation: 0.2s ease;
+}
+
+.nav.nav-pills .nav-link:hover:not(.active) {
+    color: #344767;
+}
+
+
+.dark .nav.nav-pills .nav-link {
+    z-index: 3;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: inherit;
+}
+
+.dark .nav.nav-pills .nav-link.active {
+    animation: 0.2s ease;
+}
+
+.dark .nav.nav-pills .nav-link:hover:not(.active) {
+    color: #344767;
+}
+
+/*margin adjust for view selector*/
+.viewselector{
     margin: -2.5rem 0 -1.8rem 0;
 }
 
+/*margin adjust for formheader*/
+.form-card-position{
+    margin: -6rem 0 0 0;
+}
 
-
+.form-card-position2{
+    align-content: center;
+}
 
 /*Card custom style*/
-.callcard {
-    background-color: #4c586b;
-    color: white !important;
+.customcard {
+    background-color: #adb5bd;
 }
 
 /*Card dark custom style*/
-.dark .callcard {
+.dark .customcard {
     background-color: #282c34;
-    color: white !important;
 }
 
 /*Header card custom style*/
-.custom-card {
-    background-image: linear-gradient(195deg, #344767 0%, #4c586b 100%) !important;
+.custom-header-card {
+    background-image: linear-gradient(195deg, #4c586b 0%, #344767 100%) !important;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(52, 71, 103, 1) !important;
 }
 
 /*Header card dark custom style*/
-.dark .custom-card {
-    background-image: linear-gradient(195deg, #4c586b 0%, #344767 100%) !important;
+.dark .custom-header-card {
+    background-image: linear-gradient(195deg, #344767 0%, #4c586b 100%) !important;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(52, 71, 103, 1) !important;
 }
 
@@ -203,7 +245,7 @@ body{
 }
 
 /*Buttons table calls styles dark theme*/
-.dark .btn-tcall {
+.dark .btn-default {
     --bs-btn-color: #000;
     --bs-btn-bg: #f0f2f5;
     --bs-btn-border-color: #f0f2f5;
@@ -221,7 +263,7 @@ body{
 }
 
 /*Buttons table calls styles light theme*/
-.btn-tcall {
+.btn-default {
     --bs-btn-color: #fff;
     --bs-btn-bg: #344767;
     --bs-btn-border-color: #344767;
@@ -302,26 +344,26 @@ body{
 }
 
 /*The rest of light button styles for tcall*/
-.dark .btn-tcall,
+.dark .btn-default,
 .btn.bg-gradient-light {
     box-shadow: 0 3px 3px 0 rgba(240, 242, 245, 0.15), 0 3px 1px -2px rgba(240, 242, 245, 0.2), 0 1px 5px 0 rgba(240, 242, 245, 0.15);
 }
 
-.dark .btn-tcall:hover,
+.dark .btn-default:hover,
 .btn.bg-gradient-light:hover {
     background-color: #f0f2f5;
     border-color: #f0f2f5;
     box-shadow: 0 14px 26px -12px rgba(240, 242, 245, 0.4), 0 4px 23px 0 rgba(240, 242, 245, 0.15), 0 8px 10px -5px rgba(240, 242, 245, 0.2);
 }
 
-.dark .btn-tcall .btn.bg-outline-light,
+.dark .btn-default .btn.bg-outline-light,
 .btn.bg-gradient-light .btn.bg-outline-light {
     border: 1px solid #f0f2f5;
 }
 
-.dark .btn-tcall:not(:disabled):not(.disabled).active,
-.dark .btn-tcall:not(:disabled):not(.disabled):active,
-.show>.btn-tcall.dropdown-toggle,
+.dark .btn-default:not(:disabled):not(.disabled).active,
+.dark .btn-default:not(:disabled):not(.disabled):active,
+.show>.btn-default.dropdown-toggle,
 .dark .btn.bg-gradient-light:not(:disabled):not(.disabled).active,
 .dark .btn.bg-gradient-light:not(:disabled):not(.disabled):active,
 .show>.btn.bg-gradient-light.dropdown-toggle {
@@ -330,25 +372,25 @@ body{
 }
 
 /*The rest of dark button styles for tcall*/
-.btn-tcall,
+.btn-default,
 .btn.bg-gradient-dark {
     box-shadow: 0 3px 3px 0 rgba(52, 71, 103, 0.15), 0 3px 1px -2px rgba(52, 71, 103, 0.2), 0 1px 5px 0 rgba(52, 71, 103, 0.15);
 }
 
-.btn-tcall:hover,
+.btn-default:hover,
 .btn.bg-gradient-dark:hover {
     background-color: #344767;
     border-color: #344767;
     box-shadow: 0 14px 26px -12px rgba(52, 71, 103, 0.4), 0 4px 23px 0 rgba(52, 71, 103, 0.15), 0 8px 10px -5px rgba(52, 71, 103, 0.2);
 }
 
-.btn-tcall .btn.bg-outline-dark,
+.btn-default .btn.bg-outline-dark,
 .btn.bg-gradient-dark .btn.bg-outline-dark {
     border: 1px solid #344767;
 }
 
-.btn-tcall:not(:disabled):not(.disabled).active,
-.btn-tcall:not(:disabled):not(.disabled):active,
+.btn-default:not(:disabled):not(.disabled).active,
+.btn-default:not(:disabled):not(.disabled):active,
 .show>.btn-dark.dropdown-toggle,
 .btn.bg-gradient-dark:not(:disabled):not(.disabled).active,
 .btn.bg-gradient-dark:not(:disabled):not(.disabled):active,
@@ -357,8 +399,8 @@ body{
     background-color: #344767;
 }
 
-.btn-tcall.focus,
-.btn-tcall:focus,
+.btn-default.focus,
+.btn-default:focus,
 .btn.bg-gradient-dark.focus,
 .btn.bg-gradient-dark:focus {
     color: #fff;

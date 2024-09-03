@@ -14,8 +14,31 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const logo = document.querySelector('img.logo'); // Cambiamos a querySelector
+                const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+                function updateLogo() {
+                    if (prefersDarkScheme.matches) {
+                        // Dark theme
+                        logo.src = "{{ asset('images/AR_fnegre.png') }}";
+                    } else {
+                        // Light theme
+                        logo.src = "{{ asset('images/AR_fblanc.png') }}";
+                    }
+                }
+                // Initial check
+                updateLogo();
+                // Listen for changes in the color scheme
+                prefersDarkScheme.addEventListener('change', updateLogo);
+            });
+
+        </script>
+
         {{--Favicon--}}
-        <link rel="icon" href="{{ asset('images/AR_fnegre.png') }}" type="image/png">
+        <link id="logo" rel="icon" href="{{ asset('images/AR_fblanc.png') }}" type="image/png" class="logo">
+
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">

@@ -15,7 +15,7 @@
                       </span>
                     </button>
                     <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0" id="navigation">
-                        <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
+                        <ul class="d-flex justify-content-center align-items-center navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">work</i>
@@ -103,7 +103,6 @@
 
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">contacts</i>

@@ -22,7 +22,7 @@
                 </select>
             </form>
         </div>
-        <div class="row text-center changeview">
+        <div class="row text-center viewselector">
             <div class="col-4 mx-auto">
                 <div class="nav-wrapper position-relative end-0">
                     <ul class="nav nav-custom nav-pills nav-fill" role="tablist">

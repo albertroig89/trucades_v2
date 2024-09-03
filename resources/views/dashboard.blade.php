@@ -6,15 +6,15 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                    <div class="callcard card my-4">
-                        <div class="callcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="custom-card border-radius-lg pt-4 pb-3">
+                    <div class="customcard card my-4">
+                        <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="custom-header-card border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">Llamadas pendientes</h6>
-                                <a href="" type="button" class="float-end btn btn-ncall w-auto">Nueva llamada</a>
+                                <a href="{{ route('calls.create') }}" type="button" class="float-end btn btn-ncall w-auto">Nueva llamada</a>
                             </div>
                         </div>
-                        <div class="callcard card-body px-0 pb-2">
-                            <div class="callcard table-responsive p-0">
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
                                 @if($calls->count())
                                 <table class="table custom-table align-items-center mb-0">
                                     <thead>
