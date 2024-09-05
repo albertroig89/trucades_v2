@@ -13,31 +13,24 @@
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
-{{--        <!-- Nucleo Icons -->--}}
-{{--        <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />--}}
-{{--        <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />--}}
-
         <!-- Font Awesome Icons -->
         <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+        <!-- Scripts al final del body -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/datetimepicker@2.5.4/jquery.datetimepicker.full.min.js"></script>
 
         <!-- Material Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
         <!-- CSS Files -->
-        <link id="pagestyle" href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" /> <!--ESTILS PROPIS-->
+        <link id="pagestyle" href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" /> <!--Theme styles-->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> <!-- Select2 Styles-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" /> <!--Custom styles-->
 
         {{--Favicon--}}
         <link rel="icon" href="{{ asset('images/AR_fnegre.png') }}" type="image/png">
-
-        {{--    Este script comprueba si el navegador utiliza o no el modo oscuro para adaptar el tema de la app--}}
-{{--        <script defer>--}}
-{{--            document.addEventListener('DOMContentLoaded', () => {--}}
-{{--                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {--}}
-{{--                    document.body.classList.add('dark-version');--}}
-{{--                }--}}
-{{--            });--}}
-{{--        </script>--}}
 
         <script>
             // Función para detectar el tema y aplicar la clase dark
@@ -70,9 +63,23 @@
                         </div>
                     </header>
                 @endisset
+                @isset($tablesheader)
+                    <header class="custom-header">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $tablesheader }}
+                        </div>
+                    </header>
+                @endisset
+                @isset($callsheader)
+                    <header class="custom-header">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $callsheader }}
+                        </div>
+                    </header>
+                @endisset
 
                 <!-- Page Content -->
-                    {{ $slot }}
+                {{ $slot }}
             </div>
             @include('layouts.footer')
         </div>
@@ -81,6 +88,51 @@
         <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
-
     </body>
+
+    <script>
+        $(function(){
+            $('.select2').select2({
+                placeholder: "Selecciona un cliente",
+            }).on('change', function(e) {
+                var data = $(".select2 option:selected").text();
+                $("#clientname").val(data);
+                $("#clientphone").prop("disabled", true);
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#add_phone").click(function(){
+                var contador = $("input[type='text']").length;
+
+                $(this).before('<div><label for="phones'+ contador +'">Telèfon:</label><input type="text" class="form-control" aria-describedby="clientHelp" placeholder="977 70 70 70" id="phones'+ contador +'" name="phones[]"/><br><button type="button" class="btn btn-default delete_phone float-right">Borrar telèfon</button></div>');
+            });
+            $(document).on('click', '.delete_phone', function(){
+                $(this).parent().remove();
+            });
+        });
+    </script>
+    <script>
+        $.datetimepicker.setLocale('es');
+
+        $('#inittime').datetimepicker({
+            format:'d-m-y H:i',
+            mask:'39-19-99 29:59'
+        });
+
+        $('#endtime').datetimepicker({
+            format:'d-m-y H:i',
+            mask:'39-19-99 29:59'
+        });
+
+        $('#inittime2').datetimepicker({
+            format:'d-m-y H:i',
+        });
+
+        $('#endtime2').datetimepicker({
+            format:'d-m-y H:i',
+        });
+    </script>
 </html>

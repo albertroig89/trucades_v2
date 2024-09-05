@@ -1,7 +1,7 @@
 <x-app-layout>
     <main>
 
-        @include('layouts.partials.callheader')
+        @include('layouts.partials.callsheader')
 
         <div class="container-fluid py-4">
             <div class="row">
@@ -44,6 +44,6 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
     </main>
 </x-app-layout>

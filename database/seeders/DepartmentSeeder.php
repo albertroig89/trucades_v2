@@ -16,11 +16,11 @@ class DepartmentSeeder extends Seeder
     {
         // Insertar departamentos específicos
         Department::create([
-            'title' => 'Tecnic',
+            'title' => 'Tecnico',
         ]);
 
         Department::create([
-            'title' => 'Administracio',
+            'title' => 'Administración',
         ]);
 
         Department::create([

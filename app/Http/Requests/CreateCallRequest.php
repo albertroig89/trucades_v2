@@ -26,10 +26,10 @@ class CreateCallRequest extends FormRequest
         return [
             'user_id' => 'required|exists:users,id',
             'client_id' => 'nullable|exists:clients,id',
-            'user_id2' => 'required|exists:users,id',
+            'user_id2' => '',
             'stat_id' => 'required|exists:stats,id',
             'callinf' => 'required|string',
-            'clientname' => 'nullable|string',
+            'clientname' => 'required|string',
             'clientphone' => 'nullable|string',
         ];
     }
@@ -42,13 +42,8 @@ class CreateCallRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required' => 'Selecciona un empleado',
-            'user_id.exists' => 'El empleado seleccionado no existe',
-            'client_id.exists' => 'El cliente seleccionado no existe',
-            'user_id2.required' => 'Selecciona un segundo empleado',
-            'user_id2.exists' => 'El segundo empleado seleccionado no existe',
-            'stat_id.required' => 'Selecciona un estado',
-            'stat_id.exists' => 'El estado seleccionado no existe',
+            'clientname.required' => 'Selecciona un cliente o escribe uno',
+            'user_id.required' => 'Tienes que seleccionar un empleado',
             'callinf.required' => 'Rellena la información de la llamada',
             'clientname.string' => 'El nombre del cliente tiene que ser una cadena de texto',
             'clientphone.string' => 'El telèfono del cliente tiene que ser una cadena de texto',
@@ -69,10 +64,10 @@ class CreateCallRequest extends FormRequest
             Call::create([
                 'user_id' => $data['user_id'],
                 'client_id' => $data['client_id'] ?? null,
-                'user_id2' => $data['user_id2'],
+                'user_id2' => auth()->id(),
                 'stat_id' => $data['stat_id'],
                 'callinf' => $data['callinf'],
-                'clientname' => $data['clientname'] ?? '',
+                'clientname' => $data['clientname'] ?? null,
                 'clientphone' => $data['clientphone'] ?? null,
             ]);
         });

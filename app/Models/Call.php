@@ -8,7 +8,7 @@ class Call extends Model
 {
     // Atributos que se pueden llenar de forma masiva
     protected $fillable = [
-        'user_id', 'client_id', 'stat_id', 'user_id2', 'callinf', 'clientphone',
+        'user_id', 'client_id', 'stat_id', 'user_id2', 'callinf', 'clientname', 'clientphone',
     ];
 
     // Relación con el modelo User

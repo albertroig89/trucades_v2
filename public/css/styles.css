@@ -47,14 +47,12 @@ body{
 }
 
 
-/*Light table custom style*/
+/*Light table row custom style*/
 .custom-table-row{
     cursor: pointer !important;
 
 }
-
 .custom-table-row:hover{
-    cursor: pointer !important;
     background-color:  #ced4da !important;
 }
 
@@ -64,14 +62,11 @@ body{
     color: white !important;
 }
 
-.dark .custom-table-row{
-    cursor: pointer !important;
-}
-
+/*Dark table row custom style*/
 .dark .custom-table-row:hover{
-    cursor: pointer !important;
     background-color:  #23272e !important;
 }
+
 
 /*h2 custom style*/
 .custom-header h2{
@@ -92,6 +87,7 @@ body{
 .dark .custom-table h6{
     color: white !important;
 }
+
 
 /*Colors of view selector*/
 .nav-custom{
@@ -125,7 +121,6 @@ body{
     color: #344767;
 }
 
-
 .dark .nav.nav-pills .nav-link {
     z-index: 3;
     color: white;
@@ -146,13 +141,9 @@ body{
     margin: -2.5rem 0 -1.8rem 0;
 }
 
-/*margin adjust for formheader*/
+/*margin adjust for form card*/
 .form-card-position{
     margin: -6rem 0 0 0;
-}
-
-.form-card-position2{
-    align-content: center;
 }
 
 /*Card custom style*/
@@ -176,9 +167,6 @@ body{
     background-image: linear-gradient(195deg, #344767 0%, #4c586b 100%) !important;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(52, 71, 103, 1) !important;
 }
-
-
-
 
 /*Footer custom style*/
 .custom-footer {
@@ -419,7 +407,103 @@ body{
 }
 
 
+.custom-input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
 
+.custom-input-group>.form-control,
+.custom-input-group>.form-select,
+.custom-input-group>.form-floating {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
+
+.custom-input-group>.form-control:focus,
+.custom-input-group>.form-select:focus,
+.custom-input-group>.form-floating:focus-within {
+    z-index: 5;
+}
+
+.custom-input-group .btn {
+    position: relative;
+    z-index: 2;
+}
+
+.custom-input-group .btn:focus {
+    z-index: 5;
+}
+
+.custom-input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #344767;
+    text-align: center;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 1px solid #d2d6da;
+    border-radius: 0.375rem;
+}
+
+.custom-input-group-lg>.form-control,
+.custom-input-group-lg>.form-select,
+.custom-input-group-lg>.input-group-text,
+.custom-input-group-lg>.btn {
+    padding: 0.75rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+}
+
+.custom-input-group-sm>.form-control,
+.custom-input-group-sm>.form-select,
+.custom-input-group-sm>.input-group-text,
+.custom-input-group-sm>.btn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 0.125rem;
+}
+
+.custom-input-group-lg>.form-select,
+.custom-input-group-sm>.form-select {
+    padding-right: 1rem;
+}
+
+.custom-input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+.custom-input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n + 3),
+.custom-input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
+.custom-input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-input-group.has-validation> :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+.custom-input-group.has-validation>.dropdown-toggle:nth-last-child(n + 4),
+.custom-input-group.has-validation>.form-floating:nth-last-child(n + 3)>.form-control,
+.custom-input-group.has-validation>.form-floating:nth-last-child(n + 3)>.form-select {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.custom-input-group>.form-floating:not(:first-child)>.form-control,
+.custom-input-group>.form-floating:not(:first-child)>.form-select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
 
 
