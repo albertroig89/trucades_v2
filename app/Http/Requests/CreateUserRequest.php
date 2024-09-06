@@ -26,7 +26,7 @@ class CreateUserRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'department_id' => 'required|exists:departments,id',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
@@ -48,11 +48,12 @@ class CreateUserRequest extends FormRequest
             'email.unique' => 'El correo electronico ya existe',
             'password.required' => 'Especifica una contrasenya',
             'password.min' => 'La contrasenya tiene que tener un minimo de 6 caracteres',
-            'password.confirmed' => 'Las contrasenyas no coinciden',
+//            'password.confirmed' => 'Las contrasenyas no coinciden',
             'department_id.required' => 'El departamento es obligatorio',
             'department_id.exists' => 'El departamento seleccionado no existe',
             'avatar.image' => 'La imagen tiene que ser una imagen',
             'avatar.mimes' => 'La imagen tiene que ser jpeg, png, jpg, gif o svg',
+            'avatar.max' => 'La imagen no puede ser mayor de 2MB',
         ];
     }
 
@@ -71,13 +72,9 @@ class CreateUserRequest extends FormRequest
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'department_id' => $data['department_id'],
+                'avatar' => $data['avatar'] ?? null,
             ]);
 
-            // Si tienes un perfil asociado al usuario, descomenta y ajusta esto según sea necesario
-            // $user->profile()->create([
-            //     'bio' => $data['bio'] ?? null,
-            //     'twitter' => $data['twitter'] ?? null,
-            // ]);
         });
     }
 

@@ -80,7 +80,7 @@
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('users.create')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">person_add</i>
                                             Nuevo usuario
                                         </x-dropdown-link>
@@ -91,7 +91,7 @@
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('users.create')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">person_add</i>
                                             Nuevo usuario
                                         </x-dropdown-link>

@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $title = 'Nou usuari';
+        $title = 'Nuevo usuario';
         $departments = Department::all();
 
         return view('users.create', compact('title', 'departments'));
@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $title = 'Edicion de usuarios';
+        $title = 'Editar usuario';
         $departments = Department::all();
 
         return view('users.edit', compact('title', 'departments', 'user'));

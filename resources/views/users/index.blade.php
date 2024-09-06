@@ -10,7 +10,7 @@
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">Llamadas pendientes</h6>
-                                <a href="{{ route('calls.create') }}" type="button" class="float-end btn btn-ncall w-auto">Nueva llamada</a>
+                                <a href="{{ route('users.create') }}" type="button" class="float-end btn btn-ncall w-auto">Nuevo usuario</a>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -20,7 +20,7 @@
                                         <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuario</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id de usuario</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Departamento</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editar usuario</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Eliminar usuario</th>
