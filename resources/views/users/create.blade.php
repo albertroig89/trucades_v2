@@ -18,11 +18,11 @@
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                                         <form role="form" action="{{ url('/users') }}" id="call-form" method="post" autocomplete="off">
                                             {!! csrf_field() !!}
-
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    <label class="form-label" for="name">Nombre de usuario</label>
+
                                                     <!-- Input text for user name -->
+                                                    <label class="form-label" for="name">Nombre de usuario</label>
                                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
                                                     <!-- Error message for email select -->
                                                     @error('name')
@@ -34,7 +34,7 @@
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="email">E-mail</label>
                                                     <!-- Input email for email -->
-                                                    <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
+                                                    <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
                                                     <!-- Error message for email select -->
                                                     @error('email')
                                                         <div class="invalid-feedback">
@@ -43,22 +43,25 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    <label for="avatar">Departamento</label>
+                                                    <label for="department-id">Departamento</label>
                                                     <!-- Select for department_id -->
                                                     <select class="form-control @error('department_id') is-invalid @enderror" name="department_id" id="department_id">
                                                         <option value="">Selecciona un departamento</option>
                                                         @foreach ($departments as $department)
-                                                            <option class="form-control" value="{{ ($department->id) }}">{{ $department->title }}</option>
+                                                            <option class="form-control" value="{{ $department->id }}"
+                                                                {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                                                {{ $department->title }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                     <!-- Error message for department_id select -->
                                                     @error('department_id')
-                                                        <div class="invalid-feedback">
-                                                            <small>{{ $errors->first('department_id') }}</small>
-                                                        </div>
+                                                    <div class="invalid-feedback">
+                                                        <small>{{ $errors->first('department_id') }}</small>
+                                                    </div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static d-flex justify-content-between align-items-center">
+                                                <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="avatar">Avatar</label>
                                                     <!-- Input file for avatar -->
                                                     <input name="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" value="{{ old('avatar') }}">
@@ -69,18 +72,22 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-
-                                                <div class="form-group input-group mb-4 input-group-static">
+                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
                                                     <label class="form-label" for="password">Contraseña</label>
-                                                    <!-- Input password for password -->
-                                                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}">
+                                                    <!-- Input password -->
+                                                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}" style="padding-right: 40px;">
+                                                    <!-- Visibility icon for password input -->
+                                                    <span class="material-icons" id="toggleIcon" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                                        visibility
+                                                    </span>
                                                     <!-- Error message for password input -->
                                                     @error('password')
-                                                        <div class="invalid-feedback">
-                                                            <small>{{ $errors->first('password') }}</small>
-                                                        </div>
+                                                    <div class="invalid-feedback">
+                                                        <small>{{ $errors->first('password') }}</small>
+                                                    </div>
                                                     @enderror
                                                 </div>
+                                                <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
                                                         <button type="submit" class="btn btn-default">Crear</button>

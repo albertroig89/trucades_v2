@@ -505,7 +505,48 @@ body{
     border-bottom-left-radius: 0;
 }
 
+/*Styles for border on invalid forms*/
+.form-control.is-invalid {
+    border-bottom: 2px solid #fd5c70 !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
 
+/*Styles for border on invalid forms*/
+.form-control.is-invalid:focus {
+    outline: none;
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #fd5c70 !important; /* Solo mantener el borde inferior */
+}
+
+/*Styles for labels filled on focus in forms*/
+.input-group.input-group-dynamic.is-focused label,
+.input-group.input-group-static.is-focused label {
+    color: #ffffff;
+}
+
+/*Styles for border color on focus in forms*/
+.input-group.input-group-dynamic .form-control,
+.input-group.input-group-dynamic .form-control:focus,
+.input-group.input-group-static .form-control,
+.input-group.input-group-static .form-control:focus {
+    background-image: linear-gradient(0deg, #ffffff 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
+}
+
+
+/* Cambiar el color del label cuando el select tiene el foco */
+#department_id:focus + label {
+    color: white;
+}
+
+/* Cambiar el color del label cuando hay un valor seleccionado */
+#department_id:not([value=""]):not(:focus) + label {
+    color: white;
+}
 
 /*.table {*/
 /*    font-size: small;*/

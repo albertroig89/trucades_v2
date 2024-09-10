@@ -140,17 +140,50 @@
         });
     </script>
 
-{{--    Script for avatar upload--}}
-{{--    <script>--}}
-{{--        function updateFileName() {--}}
-{{--            const input = document.getElementById('avatar');--}}
-{{--            const fileChosen = document.getElementById('file-chosen');--}}
+{{--Script for password toggle icon--}}
+    <script>
+        document.getElementById('toggleIcon').addEventListener('click', function (e) {
+            const passwordField = document.getElementById('password');
+            const icon = document.getElementById('toggleIcon');
 
-{{--            if (input.files.length > 0) {--}}
-{{--                fileChosen.textContent = input.files[0].name;--}}
-{{--            } else {--}}
-{{--                fileChosen.textContent = 'Ningún archivo seleccionado';--}}
-{{--            }--}}
-{{--        }--}}
-{{--    </script>--}}
-{{--</html>--}}
+            // Alternar el tipo de input entre password y text
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.textContent = 'visibility_off'; // Cambiar icono a "visibility_off"
+            } else {
+                passwordField.type = 'password';
+                icon.textContent = 'visibility'; // Cambiar icono a "visibility"
+            }
+        });
+    </script>
+{{--Script for labels filled on focus--}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.form-control').forEach(function(input) {
+                if (input.value !== '') {
+                    input.closest('.input-group').classList.add('is-filled');
+                }
+            });
+        });
+    </script>
+
+{{--    Script for the label of select2 with focus, in user form for department--}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const select = document.getElementById('department_id');
+            const label = document.querySelector('label[for="department-id"]');
+
+            // Función para cambiar el color del label cuando el select tiene el foco
+            select.addEventListener('focus', function() {
+                label.style.color = 'white';  // Cambiar a blanco al obtener el foco
+            });
+
+            // Función para restaurar el color del label cuando el select pierde el foco
+            select.addEventListener('blur', function() {
+                label.style.color = '';  // Restaurar el color original cuando el select pierde el foco
+            });
+        });
+    </script>
+
+
+</html>

@@ -48,17 +48,6 @@
                                                         <input name="clientphone" type="text" class="form-control" id="clientphone" value="{{ old('clientphone') }}">
                                                     @endif
                                                 </div>
-{{--                                                <div class="form-group input-group mb-4 input-group-static">--}}
-{{--                                                    <label for="user_id2">Atendido por:</label>--}}
-{{--                                                    <select class="form-control" name="user_id2" id="user_id2">--}}
-{{--                                                        <option value="{{ auth()->id() }}">{{ auth()->user()->name }}</option>--}}
-{{--                                                        @foreach ($users as $user)--}}
-{{--                                                            @if (auth()->id() != $user->id))--}}
-{{--                                                            <option class="form-control" value="{{ ($user->id) }}">{{ $user->name }}</option>--}}
-{{--                                                            @endif--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </select>--}}
-{{--                                                </div>--}}
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="callinf">Información de la llamada</label>
                                                     @if ($errors->has('callinf'))
