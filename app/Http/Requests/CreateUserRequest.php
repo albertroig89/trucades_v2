@@ -40,7 +40,7 @@ class CreateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'EL nombre es obligatorio',
+            'name.required' => 'El nombre es obligatorio',
             'name.string' => 'El nombre tiene que ser una cadena de texto',
             'name.max' => 'El nombre no puede superar los 255 caracteres',
             'email.required' => 'Introduce un correo electronico',
@@ -51,7 +51,7 @@ class CreateUserRequest extends FormRequest
 //            'password.confirmed' => 'Las contrasenyas no coinciden',
             'department_id.required' => 'El departamento es obligatorio',
             'department_id.exists' => 'El departamento seleccionado no existe',
-            'avatar.image' => 'La imagen tiene que ser una imagen',
+            'avatar.image' => 'El avatar tiene que ser una imagen',
             'avatar.mimes' => 'La imagen tiene que ser jpeg, png, jpg, gif o svg',
             'avatar.max' => 'La imagen no puede ser mayor de 2MB',
         ];

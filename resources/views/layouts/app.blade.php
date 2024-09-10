@@ -90,6 +90,7 @@
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
     </body>
 
+{{--    Script for client selector select2--}}
     <script>
         $(function(){
             $('.select2').select2({
@@ -102,6 +103,7 @@
         });
     </script>
 
+{{--    Script for add more phones in the same client--}}
     <script>
         $(document).ready(function() {
             $("#add_phone").click(function(){
@@ -114,6 +116,8 @@
             });
         });
     </script>
+
+{{--    Script for datetimepicker--}}
     <script>
         $.datetimepicker.setLocale('es');
 
@@ -135,4 +139,18 @@
             format:'d-m-y H:i',
         });
     </script>
-</html>
+
+{{--    Script for avatar upload--}}
+{{--    <script>--}}
+{{--        function updateFileName() {--}}
+{{--            const input = document.getElementById('avatar');--}}
+{{--            const fileChosen = document.getElementById('file-chosen');--}}
+
+{{--            if (input.files.length > 0) {--}}
+{{--                fileChosen.textContent = input.files[0].name;--}}
+{{--            } else {--}}
+{{--                fileChosen.textContent = 'Ningún archivo seleccionado';--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--</html>--}}

@@ -21,45 +21,65 @@
 
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    @if ($errors->has('name'))
-                                                        <input name="name" type="text" placeholder="{{ $errors->first('name') }}" class="form-control is-invalid alert alert-danger" id="name" value="{{ old('name') }}">
-                                                    @else
-                                                        <label class="form-label" for="name">Nombre de usuario</label>
-                                                        <input name="name" type="text" class="form-control" id="name" value="{{ old('name') }}">
-                                                    @endif
+                                                    <label class="form-label" for="name">Nombre de usuario</label>
+                                                    <!-- Input text for user name -->
+                                                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
+                                                    <!-- Error message for email select -->
+                                                    @error('name')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('name') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    @if ($errors->has('email'))
-                                                        <input name="email" type="text" placeholder="{{ $errors->first('email') }}" class="form-control is-invalid alert alert-danger" id="email" value="{{ old('email') }}">
-                                                    @else
-                                                        <label class="form-label" for="email">E-mail</label>
-                                                        <input name="email" type="text" class="form-control" id="email" value="{{ old('email') }}">
-                                                    @endif
+                                                    <label class="form-label" for="email">E-mail</label>
+                                                    <!-- Input email for email -->
+                                                    <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
+                                                    <!-- Error message for email select -->
+                                                    @error('email')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('email') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    @if ($errors->has('department_id'))
-                                                        <select class="form-control is-invalid alert alert-danger" name="department_id" id="department_id">
-                                                            <option value="">{{ $errors->first('department_id') }}</option>
-                                                            @foreach ($departments as $department)
-                                                                <option class="form-control" value="{{ ($department->id) }}">{{ $department->title }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    @else
-                                                        <select class="form-control" name="department_id" id="department_id">
-                                                            <option value="">Selecciona un departamento</option>
-                                                            @foreach ($departments as $department)
-                                                                <option class="form-control" value="{{ ($department->id) }}">{{ $department->title }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    @endif
+                                                    <label for="avatar">Departamento</label>
+                                                    <!-- Select for department_id -->
+                                                    <select class="form-control @error('department_id') is-invalid @enderror" name="department_id" id="department_id">
+                                                        <option value="">Selecciona un departamento</option>
+                                                        @foreach ($departments as $department)
+                                                            <option class="form-control" value="{{ ($department->id) }}">{{ $department->title }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <!-- Error message for department_id select -->
+                                                    @error('department_id')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('department_id') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
+                                                <div class="form-group input-group mb-4 input-group-static d-flex justify-content-between align-items-center">
+                                                    <label for="avatar">Avatar</label>
+                                                    <!-- Input file for avatar -->
+                                                    <input name="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" value="{{ old('avatar') }}">
+                                                    <!-- Error message for avatar input -->
+                                                    @error('avatar')
+                                                    <div class="invalid-feedback">
+                                                        <small>{{ $errors->first('avatar') }}</small>
+                                                    </div>
+                                                    @enderror
+                                                </div>
+
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    @if ($errors->has('password'))
-                                                        <input name="password" type="text" placeholder="{{ $errors->first('password') }}" class="form-control is-invalid alert alert-danger" id="password" value="{{ old('password') }}">
-                                                    @else
-                                                        <label class="form-label" for="password">Contraseña</label>
-                                                        <input name="password" type="text" class="form-control" id="password" value="{{ old('password') }}">
-                                                    @endif
+                                                    <label class="form-label" for="password">Contraseña</label>
+                                                    <!-- Input password for password -->
+                                                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}">
+                                                    <!-- Error message for password input -->
+                                                    @error('password')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('password') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
@@ -71,15 +91,6 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
