@@ -29,12 +29,12 @@
                         @csrf
                         <ul class="nav nav-custom nav-pills nav-fill" role="tablist">
                             <li class="nav-item">
-                                <button type="submit" name="desktop" value="true" class="nav-link mb-0 px-0 py-1 {{ auth()->user()->desktop ? 'active' : '' }}">
+                                <button type="submit" name="desktop" value="1" class="nav-link mb-0 px-0 py-1 {{ auth()->user()->desktop ? 'active' : '' }}">
                                     Escritorio
                                 </button>
                             </li>
                             <li class="nav-item">
-                                <button type="submit" name="desktop" value="false" class="nav-link mb-0 px-0 py-1 {{ !auth()->user()->desktop ? 'active' : '' }}">
+                                <button type="submit" name="desktop" value="0" class="nav-link mb-0 px-0 py-1 {{ !auth()->user()->desktop ? 'active' : '' }}">
                                     Móvil
                                 </button>
                             </li>
@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
 </x-slot>

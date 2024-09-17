@@ -217,24 +217,14 @@
         });
     </script>
 
-    <script>
-        function changeViewPreference(isDesktop) {
-            const form = document.getElementById('view-preference-form');
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'desktop';
-            input.value = isDesktop ? 'true' : 'false';
-
-            // Eliminar el input existente antes de agregar uno nuevo
-            const existingInput = form.querySelector('input[name="desktop"]');
-            if (existingInput) {
-                form.removeChild(existingInput);
-            }
-
-            form.appendChild(input);
-            form.submit();
-        }
-    </script>
+{{--    <script>--}}
+{{--        function changeViewPreference(value) {--}}
+{{--            // Cambiar el valor del campo oculto--}}
+{{--            document.getElementById('desktop-input').value = value;--}}
+{{--            // Enviar el formulario--}}
+{{--            document.getElementById('view-preference-form').submit();--}}
+{{--        }--}}
+{{--    </script>--}}
 
 
 

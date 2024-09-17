@@ -97,28 +97,6 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function changeViewPreference(Request $request)
-    {
-        // Validar que el valor de desktop sea un booleano
-        $request->validate([
-            'desktop' => 'required|boolean',
-        ]);
-
-        // Obtener el usuario autenticado
-        $user = auth()->user();
-
-        // Actualizar la preferencia de la vista
-        $user->desktop = $request->input('desktop');
-        $user->save();
-
-        // Redirigir a la vista correspondiente
-        if ($user->desktop) {
-            return redirect()->route('dashboard');
-        } else {
-            return redirect()->route('dashboardm');
-        }
-    }
-
 
     /**
      * Elimina un usuario de la base de datos.

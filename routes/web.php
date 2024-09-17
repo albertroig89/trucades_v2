@@ -88,7 +88,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
 
-Route::post('/change-view-preference', [UserController::class, 'changeViewPreference'])->name('changeViewPreference');
+route::post('/change-view-preference', [HomeController::class, 'changeViewPreference'])->name('changeViewPreference');
 
 Route::get('/calls/new', [CallController::class, 'create'])
     ->middleware(['auth'])
