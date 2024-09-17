@@ -81,7 +81,7 @@
                 </form>
             </td>
         </tr>
-    @elseif ($call->user->department->title === "Administracio")
+    @elseif ($call->user->department->title === "Administración")
         {{--Line of table for administrative calls--}}
         <tr onclick="window.location='{{ route('calls.jobfromcall', ['call' => $call]) }}';" class="custom-table-row">
             <th>

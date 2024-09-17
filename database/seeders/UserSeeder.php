@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         // Obtener IDs de los departamentos
-        $techId = Department::where('title', 'Tecnic')->value('id');
+        $techId = Department::where('title', 'Tecnico')->value('id');
         $progId = Department::where('title', 'Programador')->value('id');
-        $admId = Department::where('title', 'Administracio')->value('id');
+        $admId = Department::where('title', 'Administración')->value('id');
         $comId = Department::where('title', 'Comercial')->value('id');
         $globId = Department::where('title', 'Global')->value('id');
 

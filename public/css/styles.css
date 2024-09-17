@@ -548,6 +548,128 @@ body{
     color: white;
 }
 
+#toggleIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10; /* Asegúrate de que el ícono esté por encima del input */
+    color: #495057; /* Asegúrate de que el color sea gris */
+}
+
+/*Dark style for Select2*/
+
+/* Ajuste del contenedor de select2 */
+.dark .select2-container--default .select2-selection--single {
+    background-color: #2A2D34 !important; /* Fondo oscuro */
+    color: white !important; /* Texto blanco */
+    border: 1px solid #61677C !important; /* Borde gris oscuro */
+    height: 40px !important; /* Ajusta la altura si es necesario */
+    border-radius: 0.375rem; /*Bordes redondeados */
+}
+
+/* Placeholder personalizado */
+.dark .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #B0B0B0 !important; /* Placeholder gris */
+}
+
+/* Cambiar el color del borde al enfocar */
+.dark .select2-container--default .select2-selection--single:focus {
+    border-color: white !important; /* Color del borde enfocado */
+}
+
+/* Cambiar el color de fondo de la lista desplegable */
+.dark .select2-dropdown {
+    background-color: #1a2035 !important; /* Fondo oscuro */
+    color: #7b809a !important; /* Texto blanco */
+}
+
+/* Estilo de opción seleccionada */
+.dark .select2-results__option--highlighted[aria-selected] {
+    background-color: #344767 !important; /* Fondo verde claro */
+    color: #000000 !important; /* Texto negro */
+}
+
+/* Padding en las opciones */
+.dark .select2-results__option {
+    padding: 6px !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+/* Cambiar el color de fondo de las opciones al pasar el mouse */
+.dark .select2-results__option--selectable:hover {
+    background-color: #007BFF !important; /* Cambia el color de fondo al pasar el mouse */
+    color: white !important;
+}
+
+/* Cambiar el color de fondo de las opciones seleccionadas */
+.dark .select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #344767 !important;
+    color: black !important; /* Texto negro */
+}
+
+/* Cambiar el color del texto del elemento que estaba previamente seleccionado */
+.dark .select2-results__option[aria-selected="true"].select2-results__option--highlighted {
+    color: white !important; /* Texto blanco para el seleccionado */
+}
+
+/*Dark style for normal selects*/
+
+/* Placeholder personalizado */
+.dark select option[value=""] {
+    color: #B0B0B0 !important; /* Placeholder gris */
+}
+
+/* Cambiar el color del borde al enfocar */
+.dark select:focus {
+    border-color: white !important; /* Color del borde enfocado */
+}
+
+/* Cambiar el color de fondo de la lista desplegable */
+.dark select option {
+    background-color: #1a2035 !important; /* Fondo oscuro */
+    color: #7b809a !important; /* Texto negro */
+}
+
+/* Estilo de opción seleccionada */
+.dark select option:checked {
+    background-color: white !important; /* Fondo oscuro */
+    color: black !important; /* Texto blanco */
+}
+
+/* Cambiar el color de fondo de las opciones al pasar el mouse */
+.dark select option:hover {
+    background-color: #344767 !important; /* Cambia el color de fondo al pasar el mouse */
+    color: white !important;
+}
+
+
+.callcard {
+    background-color: #42464f !important;
+    color: white !important;
+}
+
+.callheadercard{
+    background-color: #1a2035 !important;
+    color: white !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*.table {*/
 /*    font-size: small;*/
 /*}*/

@@ -30,7 +30,7 @@ class CreateCallRequest extends FormRequest
             'stat_id' => 'required|exists:stats,id',
             'callinf' => 'required|string',
             'clientname' => 'required|string',
-            'clientphone' => 'nullable|string',
+            'clientphone' => 'required_if:client_id,null|nullable|string',
         ];
     }
 
@@ -46,7 +46,8 @@ class CreateCallRequest extends FormRequest
             'user_id.required' => 'Tienes que seleccionar un empleado',
             'callinf.required' => 'Rellena la información de la llamada',
             'clientname.string' => 'El nombre del cliente tiene que ser una cadena de texto',
-            'clientphone.string' => 'El telèfono del cliente tiene que ser una cadena de texto',
+            'clientphone.required_if' => 'El teléfono del cliente es obligatorio si no lo seleccionas',
+            'clientphone.string' => 'El teléfono del cliente tiene que ser una cadena de texto',
         ];
     }
 
@@ -67,7 +68,7 @@ class CreateCallRequest extends FormRequest
                 'user_id2' => auth()->id(),
                 'stat_id' => $data['stat_id'],
                 'callinf' => $data['callinf'],
-                'clientname' => $data['clientname'] ?? null,
+                'clientname' => $data['clientname'],
                 'clientphone' => $data['clientphone'] ?? null,
             ]);
         });

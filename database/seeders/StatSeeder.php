@@ -16,7 +16,7 @@ class StatSeeder extends Seeder
     {
         // Crear instancias específicas de Stat
         Stat::create([
-            'title' => 'Urgent',
+            'title' => 'Urgente',
         ]);
 
         Stat::create([
@@ -24,7 +24,7 @@ class StatSeeder extends Seeder
         ]);
 
         Stat::create([
-            'title' => 'Pendent',
+            'title' => 'Pendiente',
         ]);
     }
 }

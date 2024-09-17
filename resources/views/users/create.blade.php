@@ -24,7 +24,7 @@
                                                     <!-- Input text for user name -->
                                                     <label class="form-label" for="name">Nombre de usuario</label>
                                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
-                                                    <!-- Error message for email select -->
+                                                    <!-- Error message for name input-->
                                                     @error('name')
                                                         <div class="invalid-feedback">
                                                             <small>{{ $errors->first('name') }}</small>
@@ -43,7 +43,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    <label for="department-id">Departamento</label>
+                                                    <label for="department_id">Departamento</label>
                                                     <!-- Select for department_id -->
                                                     <select class="form-control @error('department_id') is-invalid @enderror" name="department_id" id="department_id">
                                                         <option value="">Selecciona un departamento</option>
@@ -77,7 +77,7 @@
                                                     <!-- Input password -->
                                                     <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}" style="padding-right: 40px;">
                                                     <!-- Visibility icon for password input -->
-                                                    <span class="material-icons" id="toggleIcon" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                                    <span class="material-icons" id="toggleIcon">
                                                         visibility
                                                     </span>
                                                     <!-- Error message for password input -->

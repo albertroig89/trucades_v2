@@ -18,9 +18,39 @@
                         <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons opacity-6 me-2 text-md">call</i>
+                                    Llamadas
+                                    <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
+                                </x-dropdown-link>
+                                <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
+                                    <div class="d-none d-lg-block">
+                                        <x-dropdown-link :href="route('calls.create')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                            <i class="material-icons opacity-6 me-2 text-md">add_ic_call</i>
+                                            Nueva llamada
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                            <i class="material-icons opacity-6 me-2 text-md">visibility</i>
+                                            Ver llamadas
+                                        </x-dropdown-link>
+                                    </div>
+
+                                    <div class="d-lg-none">
+                                        <x-dropdown-link :href="route('calls.create')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                            <i class="material-icons opacity-6 me-2 text-md">add_ic_call</i>
+                                            Nueva llamada
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('dashboard')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                            <i class="material-icons opacity-6 me-2 text-md">visibility</i>
+                                            Ver llamadas
+                                        </x-dropdown-link>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">work</i>
                                     Trabajos
-                                    <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
+                                    <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
@@ -76,7 +106,7 @@
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">person</i>
                                     Usuarios
-                                    <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
+                                    <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
@@ -107,7 +137,7 @@
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons opacity-6 me-2 text-md">contacts</i>
                                     Clientes
-                                    <img src="{{ asset('assets/img/down-arrow-dark.svg') }}" alt="down-arrow" class="arrow ms-auto">
+                                    <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">

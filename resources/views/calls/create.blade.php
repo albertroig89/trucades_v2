@@ -18,61 +18,66 @@
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                                         <form role="form" action="{{ url('/calls') }}" id="call-form" method="post" autocomplete="off">
                                             {!! csrf_field() !!}
-
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    <label for="selector-clients">Cliente:</label>
-                                                    <select class='form-control select2' name='client_id' id='client_id'>
+                                                    <label for="client_id">Cliente:</label>
+                                                    <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
                                                         <option></option>
                                                         @foreach ($clients as $client)
-                                                            <option value="{{ ($client->id) }}">{{ $client->name }}</option>
+                                                            <option value="{{ ($client->id) }}" {{ old('client_id') == $client->id ? 'selected' : '' }}>
+                                                                {{ $client->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
-                                                    @if ($errors->has('client_id'))
-                                                        <div class="invalid-feedback">{{ $errors->first('client_id') }}</div>
-                                                    @endif
+                                                    @error('client_id')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('client_id') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
-                                                    @if ($errors->has('clientname'))
-                                                        <input name="clientname" type="text" placeholder="{{ $errors->first('clientname') }}" class="form-control is-invalid alert alert-danger" id="clientname" value="{{ old('clientname') }}">
-                                                    @else
-                                                        <label class="form-label" for="clientname">Cliente personalizado</label>
-                                                        <input name="clientname" type="text" class="form-control" id="clientname" value="{{ old('clientname') }}">
-                                                    @endif
+                                                    <label class="form-label" for="clientname">Cliente personalizado</label>
+                                                    <input name="clientname" type="text" class="form-control @error('clientname') is-invalid @enderror" id="clientname" value="{{ old('clientname') }}">
+                                                    @error('clientname')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('clientname') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="clientphone">Teléfono</label>
-                                                    @if ($errors->has('clientphone'))
-                                                        <input name="clientphone" type="text" placeholder="{{ $errors->first('clientphone') }}" class="form-control is-invalid" id="clientphone" value="{{ old('clientphone') }}">
-                                                    @else
-                                                        <input name="clientphone" type="text" class="form-control" id="clientphone" value="{{ old('clientphone') }}">
-                                                    @endif
+                                                    <input name="clientphone" type="text" class="form-control @error('clientphone') is-invalid @enderror" id="clientphone" value="{{ old('clientphone') }}">
+                                                    @error('clientphone')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('clientphone') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="callinf">Información de la llamada</label>
-                                                    @if ($errors->has('callinf'))
-                                                        <textarea name="callinf" type="text" placeholder="{{ $errors->first('callinf') }}" class="form-control is-invalid alert alert-danger" id="callinf" rows="2">{{ old('callinf') }}</textarea>
-                                                    @else
-                                                        <textarea name="callinf" type="text" class="form-control" id="callinf">{{ old('callinf') }}</textarea>
-                                                    @endif
+                                                    <textarea name="callinf" type="text" class="form-control @error('callinf') is-invalid @enderror" id="callinf">{{ old('callinf') }}</textarea>
+                                                    @error('callinf')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('callinf') }}</small>
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
-{{--                                                    <label for="user_id">Empleado:</label>--}}
-                                                    @if ($errors->has('user_id'))
-                                                        <select class="form-control is-invalid alert alert-danger" name="user_id" id="user_id">
-                                                            <option value="">{{ $errors->first('user_id') }}</option>
-                                                            @foreach ($users as $user)
-                                                                <option class="form-control" value="{{ ($user->id) }}">{{ $user->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    @else
-                                                        <select class="form-control" name="user_id" id="user_id">
-                                                            <option value="">Selecciona un empleado</option>
-                                                            @foreach ($users as $user)
-                                                                <option class="form-control" value="{{ ($user->id) }}">{{ $user->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    @endif
+                                                    <label for="user_id">Empleado</label>
+                                                    <select class="form-control @error('user_id') is-invalid @enderror" name="user_id" id="user_id">
+                                                        <option value="">Selecciona un empleado</option>
+                                                        @foreach ($users as $user)
+                                                            <option class="form-control" value="{{ ($user->id) }}"
+                                                                {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                                                {{ $user->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('user_id')
+                                                    <div class="invalid-feedback">
+                                                        <small>{{ $errors->first('user_id') }}</small>
+                                                    </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="stat_id">Estado de la llamada:</label>
@@ -80,7 +85,10 @@
                                                         <option value="2">Normal</option>
                                                         @foreach ($stats as $stat)
                                                             @if ($stat->id != $nStat)
-                                                                <option value="{{ ($stat->id) }}">{{ $stat->title }}</option>
+                                                                <option value="{{ ($stat->id) }}"
+                                                                    {{ old('stat_id') == $stat->id ? 'selected' : '' }}>
+                                                                    {{ $stat->title }}
+                                                                </option>
                                                             @endif
                                                         @endforeach
                                                     </select>
@@ -95,15 +103,6 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
                                     </div>
                                 </div>
                             </div>

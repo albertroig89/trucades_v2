@@ -33,12 +33,12 @@ class HomeController extends Controller
         $title = 'Llamadas';
         $users = User::all();
         $phones = Phone::all();
-        $techId = Department::where('title', 'Tecnic')->value('id');
-        $admId = Department::where('title', 'Administracio')->value('id');
+        $techId = Department::where('title', 'Tecnico')->value('id');
+        $admId = Department::where('title', 'Administración')->value('id');
         $globId = Department::where('title', 'Global')->value('id');
         $nStat = Stat::where('title', 'Normal')->value('id');
-        $uStat = Stat::where('title', 'Urgent')->value('id');
-        $pStat = Stat::where('title', 'Pendent')->value('id');
+        $uStat = Stat::where('title', 'Urgente')->value('id');
+        $pStat = Stat::where('title', 'Pendiente')->value('id');
 
         $globalId = User::where('name', 'Global')->value('id');
 
@@ -81,7 +81,27 @@ class HomeController extends Controller
                 ->paginate(50);
         }
 
-        return view('dashboard', compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'user', 'allcalls'));
+        // Verificar la preferencia del usuario (escritorio o móvil)
+        $view = auth()->user()->desktop ? 'dashboard' : 'mobile-dashboard';
+
+        // Retorna la vista correspondiente
+        return view($view, compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'user', 'allcalls'));
     }
+
+
+    public function changeViewPreference(Request $request)
+    {
+        // Validar que el valor de desktop sea true o false
+        $validated = filter_var($request->input('desktop'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+        // Actualizar la preferencia del usuario autenticado
+        $user = auth()->user();
+        $user->desktop = $validated;  // Actualizamos con true o false
+        $user->save();
+
+        // Redirigir al dashboard adecuado según la preferencia
+        return redirect()->route('dashboard');
+    }
+
 }
 
