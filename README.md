@@ -52,9 +52,9 @@ Make sure to set up the database credentials:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nombre_base_de_datos
-DB_USERNAME=usuario
-DB_PASSWORD=contraseña
+DB_DATABASE=database_name
+DB_USERNAME=user
+DB_PASSWORD=password
 ```
 
 ## Generate the application key:
