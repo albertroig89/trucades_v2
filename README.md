@@ -1,4 +1,4 @@
-<p align="center"><a href="[YOUR_LOGO_URL]" target="_blank"><img src="[YOUR_LOGO_URL]" width="400" alt="[Project Name]"></a></p>
+<p align="center"><a href="[YOUR_LOGO_URL]" target="_blank"><img src="[YOUR_LOGO_URL]" width="400" alt="[Calls]"></a></p>
 
 <p align="center">
 <a href="[BUILD_STATUS_LINK]"><img src="[BUILD_BADGE_URL]" alt="Build Status"></a>
@@ -97,6 +97,6 @@ npm run build
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [example@mail.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 
