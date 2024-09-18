@@ -6,18 +6,18 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                    <div class="customcard card my-4">
-                        <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="customcardm card my-4">
+                        <div class="customcardm card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">Llamadas pendientes</h6>
                                 <a href="{{ route('calls.create') }}" type="button" class="float-end btn btn-ncall w-auto">Nueva llamada</a>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
-                            <div class="row d-flex flex-wrap justify-content-start">
+                            <div class="row d-flex flex-wrap justify-content-start p-4 pt-0">
                                 @forelse($calls as $call)
                                     <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
-                                        <div class="callcard h-100 border-radius-lg shadow-sm">
+                                        <div class="callcard h-100 border-radius-xl shadow-sm" onclick="window.location='{{ route('calls.jobfromcall', ['call' => $call]) }}';">
                                             <div class="card-header callheadercard d-flex align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center">
                                                     @if($call->user->avatar)
@@ -50,8 +50,8 @@
                                                         @endif
                                                     @endif
                                                 </p>
-                                                <p class="text-xs font-weight-bold">
-                                                    {{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}
+                                                <p class="text-sm font-weight-bold text-secondary">
+                                                    {{ \Illuminate\Support\Str::limit($call->callinf, 250, '...') }}
                                                 </p>
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">

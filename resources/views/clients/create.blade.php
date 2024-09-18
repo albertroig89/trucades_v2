@@ -16,13 +16,13 @@
                             <div class="container py-4">
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-                                        <form role="form" action="{{ url('/users') }}" id="call-form" method="post" autocomplete="off">
+                                        <form role="form" action="{{ url('/clients') }}" id="call-form" method="post" autocomplete="off">
                                             {!! csrf_field() !!}
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
 
                                                     <!-- Input text for user name -->
-                                                    <label class="form-label" for="name">Nombre de usuario</label>
+                                                    <label class="form-label" for="name">Nombre del cliente</label>
                                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
                                                     <!-- Error message for name input-->
                                                     @error('name')
@@ -42,50 +42,46 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static">
-                                                    <label for="department_id">Departamento</label>
-                                                    <!-- Select for department_id -->
-                                                    <select class="form-control @error('department_id') is-invalid @enderror" name="department_id" id="department_id">
-                                                        <option value="">Selecciona un departamento</option>
-                                                        @foreach ($departments as $department)
-                                                            <option class="form-control" value="{{ $department->id }}"
-                                                                {{ old('department_id') == $department->id ? 'selected' : '' }}>
-                                                                {{ $department->title }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <!-- Error message for department_id select -->
-                                                    @error('department_id')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('department_id') }}</small>
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group input-group mb-4 input-group-static">
-                                                    <label for="avatar">Avatar</label>
-                                                    <!-- Input file for avatar -->
-                                                    <input name="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" value="{{ old('avatar') }}">
-                                                    <!-- Error message for avatar input -->
-                                                    @error('avatar')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('avatar') }}</small>
-                                                    </div>
-                                                    @enderror
-                                                </div>
                                                 <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
-                                                    <label class="form-label" for="password">Contraseña</label>
-                                                    <!-- Input password -->
-                                                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}" style="padding-right: 40px;">
-                                                    <!-- Visibility icon for password input -->
-                                                    <span class="material-icons" id="toggleIcon">
-                                                        visibility
-                                                    </span>
-                                                    <!-- Error message for password input -->
-                                                    @error('password')
+
+
+                                                    <label class="form-label" for="phone">Teléfono:</label>
+                                                    <!-- Input email for phone -->
+                                                    <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone') }}">
+                                                    <div class="button">
+                                                        <button type="button" id="add_phone" class="btn btn-default mt-4">Afegir telèfon</button>
+                                                    </div>
+
+                                                    <!-- Error message for phone select -->
+                                                    @error('phone')
                                                     <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('password') }}</small>
+                                                        <small>{{ $errors->first('phone') }}</small>
                                                     </div>
                                                     @enderror
+
+
+{{--                                                    <label for="phone1">Telèfon:</label>--}}
+{{--                                                    @if ($errors->has('phone'))--}}
+{{--                                                        <input type="text" name="phone" class="form-control is-invalid" id="phone" aria-describedby="clientHelp" placeholder="example@example.com" value="{{ old('phone') }}">--}}
+{{--                                                        <div class="button">--}}
+{{--                                                            <button type="button" id="add_phone" class="btn btn-default">Afegir telèfon</button>--}}
+{{--                                                        </div>--}}
+{{--                                                    @elseif ($errors->any())--}}
+{{--                                                        <input type="text" name="phone" class="form-control is-valid" id="phone" aria-describedby="clientHelp" placeholder="example@example.com" value="{{ old('phone') }}">--}}
+{{--                                                        <div class="button">--}}
+{{--                                                            <button type="button" id="add_phone" class="btn btn-default">Afegir telèfon</button>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="valid-feedback">--}}
+{{--                                                            Correcte!--}}
+{{--                                                        </div>--}}
+{{--                                                    @else--}}
+{{--                                                        <div><input type="text" name="phone" class="form-control" id="phone" aria-describedby="clientHelp" placeholder="977 70 70 70" value="{{ old('phone') }}">--}}
+{{--                                                            <small id="phoneHelp" class="form-text text-muted">Escriu el telefon del client.</small></div>--}}
+{{--                                                        <div class="button">--}}
+{{--                                                            <button type="button" id="add_phone" class="btn btn-default">Afegir telèfon</button>--}}
+{{--                                                        </div>--}}
+{{--                                                    @endif--}}
+
                                                 </div>
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >

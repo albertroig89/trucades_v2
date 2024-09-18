@@ -45,11 +45,12 @@ class CallController extends Controller
     // Método para mostrar el formulario de edición de llamada
     public function edit(Call $call)
     {
+        $title = 'Editar llamada';
         $clients = Client::all();
         $users = User::all();
         $stats = Stat::all();
 
-        return view('calls.edit', compact('call', 'clients', 'users', 'stats'));
+        return view('calls.edit', compact('title', 'call', 'clients', 'users', 'stats'));
     }
 
     // Método para almacenar una nueva llamada

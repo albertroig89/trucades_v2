@@ -11,7 +11,7 @@ body{
 
 /*Navbar custom logo style*/
 .navbar-logo{
-    width: 50px;
+    width: 160px;
     height: auto;
 }
 
@@ -207,6 +207,17 @@ body{
 .dark .customcard {
     background-color: #282c34;
 }
+
+/*Card mobile custom style*/
+.customcardm {
+    background-color: #adb5bd;
+}
+
+/*Card mobile dark custom style*/
+.dark .customcardm {
+    background-color: #31353f;
+}
+
 
 /*Header card custom style*/
 .custom-header-card {
@@ -698,15 +709,43 @@ body{
 }
 
 
+/*Custom styles for call cards*/
 .callcard {
     background-color: #42464f !important;
+    cursor: pointer !important;
+}
+
+.callcard:hover {
+    background-color: #23272e !important;
+}
+
+.callcard h6{
     color: white !important;
 }
 
 .callheadercard{
     background-color: #1a2035 !important;
+}
+
+
+
+/*Dark custom styles for call cards*/
+.dark .callcard {
+    background-color: #282c34 !important;
+}
+
+.dark .callcard:hover {
+    background-color: #23272e !important;
+}
+
+.dark .callcard h6{
     color: white !important;
 }
+
+.dark .callheadercard{
+    background-color: #1a2035 !important;
+}
+
 
 
 

@@ -5,7 +5,7 @@
             <nav class="navbar custom-navbar navbar-expand-lg border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid">
                     <a  title="Desarollado por Albert Roig" data-placement="bottom" href="{{ route('dashboard') }}">
-                        <img src="{{ asset('images/AR_fblanc.png') }}" alt="Logo" class="navbar-logo">
+                        <img src="{{ asset('images/ARl_fnegre.png') }}" alt="Logo" class="navbar-logo">
                     </a>
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon mt-2">

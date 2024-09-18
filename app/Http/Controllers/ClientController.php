@@ -19,24 +19,25 @@ class ClientController extends Controller
     {
         $clients = Client::name($request->get('name'))->orderBy('name')->paginate(50);
         $phones = Phone::all();
-        $title = 'Clients';
+        $title = 'Clientes';
         return view('clients.index', compact('title', 'clients', 'phones'));
     }
 
     public function create()
     {
-        $title = 'Nou client';
+        $title = 'Nuevo cliente';
         $clients = Client::all();
         return view('clients.create', compact('title', 'clients'));
     }
 
     public function edit(Client $client)
     {
+        $title = 'Editar Cliente';
         $clients = Client::all();
         $users = User::all();
         $phones = Phone::all();
 
-        return view('clients.edit', compact('client', 'clients', 'users', 'phones'));
+        return view('clients.edit', compact('title', 'client', 'clients', 'users', 'phones'));
     }
 
     public function store(CreateClientRequest $request)
