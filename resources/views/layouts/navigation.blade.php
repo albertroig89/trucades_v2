@@ -4,7 +4,7 @@
         <div class="col-12">
             <nav class="navbar custom-navbar navbar-expand-lg border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid">
-                    <a  title="Diseñado por Albert Roig" data-placement="bottom" href="{{ route('dashboard') }}">
+                    <a  title="Desarollado por Albert Roig" data-placement="bottom" href="{{ route('dashboard') }}">
                         <img src="{{ asset('images/AR_fblanc.png') }}" alt="Logo" class="navbar-logo">
                     </a>
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,46 +54,46 @@
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.create')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">add</i>
                                             Nuevo trabajo
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.histjobs')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">work_history</i>
                                             Ver historico de trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility_off</i>
                                             Ver historico oculto
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">timer</i>
                                             Contador de trabajos
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.create')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">add</i>
                                             Nuevo trabajo
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.histjobs')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">work_history</i>
                                             Ver historico de trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility_off</i>
                                             Ver historico oculto
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">timer</i>
                                             Contador de trabajos
                                         </x-dropdown-link>
@@ -141,30 +141,30 @@
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('clients.create')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">person_add</i>
                                             Nuevo cliente
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('clients.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver clientes
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('clients.import')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">publish</i>
                                             Importar clientes
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('clients.create')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">add</i>
                                             Nuevo cliente
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('clients.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">visibility</i>
                                             Ver clientes
                                         </x-dropdown-link>
-                                        <x-dropdown-link href="javascript:;" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('clients.import')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons opacity-6 me-2 text-md">publish</i>
                                             Importar clientes
                                         </x-dropdown-link>

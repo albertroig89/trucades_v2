@@ -99,48 +99,48 @@ class ClientController extends Controller
 }
 
 // Import class for handling the Excel import
-class ClientsImport implements ToCollection, WithHeadingRow
-{
-    use Importable;
-
-    public function collection(Collection $rows)
-    {
-        foreach ($rows as $row) {
-            // Skip if name is empty
-            if (empty($row['name'])) {
-                continue;
-            }
-
-            // Skip known duplicates
-            $excludedClients = [
-                "IES MONTSIA",
-                "FERRE ANDREU, MERCEDES",
-                "AJUNTAMENT DELTEBRE",
-                "PROJECTE PRINCIPAL, S.L.",
-                "VICENTE TALARN, VICTOR",
-                "ALIAU PONS, GABRIEL",
-                "BAYERRI BONANCIA, ALVARO",
-                "MARTINEZ FORNER, VICENT",
-                "MARCO PONS, OSCAR",
-                "AJUNTAMENT D'AMPOSTA",
-                "SOLER SUBIRATS, LAUREANO"
-            ];
-
-            if (in_array($row['name'], $excludedClients)) {
-                continue;
-            }
-
-            $client = Client::updateOrCreate(
-                ['name' => $row['name']], // Match on name
-                ['email' => $row['email']]
-            );
-
-            // Handle phones
-            $client->phone()->create(['phone' => $row['phone1']]);
-            if (!empty($row['phone2'])) {
-                $client->phone()->create(['phone' => $row['phone2']]);
-            }
-        }
-    }
-}
+//class ClientsImport implements ToCollection, WithHeadingRow
+//{
+//    use Importable;
+//
+//    public function collection(Collection $rows)
+//    {
+//        foreach ($rows as $row) {
+//            // Skip if name is empty
+//            if (empty($row['name'])) {
+//                continue;
+//            }
+//
+//            // Skip known duplicates
+//            $excludedClients = [
+//                "IES MONTSIA",
+//                "FERRE ANDREU, MERCEDES",
+//                "AJUNTAMENT DELTEBRE",
+//                "PROJECTE PRINCIPAL, S.L.",
+//                "VICENTE TALARN, VICTOR",
+//                "ALIAU PONS, GABRIEL",
+//                "BAYERRI BONANCIA, ALVARO",
+//                "MARTINEZ FORNER, VICENT",
+//                "MARCO PONS, OSCAR",
+//                "AJUNTAMENT D'AMPOSTA",
+//                "SOLER SUBIRATS, LAUREANO"
+//            ];
+//
+//            if (in_array($row['name'], $excludedClients)) {
+//                continue;
+//            }
+//
+//            $client = Client::updateOrCreate(
+//                ['name' => $row['name']], // Match on name
+//                ['email' => $row['email']]
+//            );
+//
+//            // Handle phones
+//            $client->phone()->create(['phone' => $row['phone1']]);
+//            if (!empty($row['phone2'])) {
+//                $client->phone()->create(['phone' => $row['phone2']]);
+//            }
+//        }
+//    }
+//}
 
