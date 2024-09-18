@@ -1,7 +1,7 @@
 <x-app-layout>
     <main>
 
-        @include('layouts.partials.callsheader')
+        @include('calls.partials.callsheader')
 
         <div class="container-fluid py-4">
             <div class="row">
@@ -32,7 +32,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($calls as $call)
-                                        @include('layouts.partials.call')
+                                        @include('calls.partials.call')
                                     @endforeach
                                     </tbody>
                                 </table>

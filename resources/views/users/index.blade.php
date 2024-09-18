@@ -9,7 +9,7 @@
                     <div class="customcard card my-4">
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Llamadas pendientes</h6>
+                                <h6 class="text-white text-capitalize ps-3">Usuarios registrados</h6>
                                 <a href="{{ route('users.create') }}" type="button" class="float-end btn btn-ncall w-auto">Nuevo usuario</a>
                             </div>
                         </div>
