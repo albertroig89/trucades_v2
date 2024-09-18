@@ -27,7 +27,7 @@
                 <div class="nav-wrapper position-relative end-0">
                     <form id="view-preference-form" action="{{ route('changeViewPreference') }}" method="POST">
                         @csrf
-                        <ul class="nav nav-custom nav-pills nav-fill" role="tablist">
+                        <ul class="nav nav-custom nav-pills nav-fill position-relative" role="tablist" style="overflow: hidden;">
                             <li class="nav-item">
                                 <button type="submit" name="desktop" value="1" class="nav-link mb-0 px-0 py-1 {{ auth()->user()->desktop ? 'active' : '' }}">
                                     Escritorio
@@ -39,10 +39,12 @@
                                 </button>
                             </li>
                         </ul>
+                        <div class="moving-tab-bg"></div>
                     </form>
                 </div>
             </div>
         </div>
+
 
 
     </div>

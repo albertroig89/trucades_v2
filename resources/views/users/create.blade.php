@@ -16,7 +16,7 @@
                             <div class="container py-4">
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-                                        <form role="form" action="{{ url('/users') }}" id="call-form" method="post" autocomplete="off">
+                                        <form role="form" action="{{ url('/users') }}" id="call-form" method="post" autocomplete="off" enctype="multipart/form-data">
                                             {!! csrf_field() !!}
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -82,7 +83,6 @@ class User extends Authenticatable
         ];
     }
 
-
     /**
      * Verifica si el usuario es administrador.
      *
@@ -92,7 +92,35 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
+    /**
+     * Eliminar el avatar del usuario cuando el usuario es eliminado
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            // Verificar si el usuario tiene un avatar
+            if ($user->avatar) {
+                // Eliminar el prefijo 'storage/' de la ruta del avatar
+                $avatarPath = str_replace('storage/', '', $user->avatar);
+
+                // Verificar si el archivo del avatar existe en el sistema de archivos
+                if (Storage::disk('public')->exists($avatarPath)) {
+                    \Log::info('Eliminando avatar del usuario: ' . $user->avatar);
+                    // Eliminar el archivo del avatar
+                    Storage::disk('public')->delete($avatarPath);
+                } else {
+                    \Log::info('Archivo no encontrado para el avatar: ' . $user->avatar);
+                }
+            }
+        });
+    }
+
+
 }
+
 
 
 

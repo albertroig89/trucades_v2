@@ -91,8 +91,6 @@ class HomeController extends Controller
 
     public function changeViewPreference(Request $request)
     {
-        \Log::info('Valor recibido para desktop: ' . $request->input('desktop'));
-
         // Validar que el valor de desktop sea un booleano
         $request->validate([
             'desktop' => 'required|boolean',
@@ -101,13 +99,9 @@ class HomeController extends Controller
         // Obtener el usuario autenticado
         $user = auth()->user();
 
-        \Log::info('Valor de desktop antes de guardar: ' . $user->desktop);
-
         // Actualizar la preferencia de la vista
         $user->desktop = $request->input('desktop');
         $user->save();
-
-        \Log::info('Valor de desktop después de guardar: ' . $user->desktop);
 
         // Redirigir a la ruta 'dashboard' para que determine la vista adecuada
         return redirect()->route('dashboard');

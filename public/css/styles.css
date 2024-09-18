@@ -93,16 +93,67 @@ body{
 .nav-custom{
     background-color: red !important;
 }
-.nav-custom.active{
+.nav-custom:active{
     background-color: #7b809a !important;
 }
 .dark .nav-custom{
     background-color: #344767 !important;
 }
 
-.dark .nav-custom.active{
+.dark .nav-custom:active{
     background-color: #344767 !important;
 }
+
+
+
+
+
+
+
+
+/* Estilos del contenedor y los botones */
+.nav.nav-custom.nav-pills .nav-link {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+.nav.nav-custom.nav-pills .nav-link.active {
+    color: white;
+}
+
+.moving-tab-bg {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+/* Estilo para cuando está activada la vista escritorio */
+.nav.nav-custom.nav-pills .nav-link.active[value="1"] ~ .moving-tab-bg {
+    left: 0;
+}
+
+/* Estilo para cuando está activada la vista móvil */
+.nav.nav-custom.nav-pills .nav-link.active[value="0"] ~ .moving-tab-bg {
+    left: 50%;
+}
+
+
+
+
+
+
+
 
 
 
@@ -116,6 +167,7 @@ body{
 .nav.nav-pills .nav-link.active {
     animation: 0.2s ease;
 }
+
 
 .nav.nav-pills .nav-link:hover:not(.active) {
     color: #344767;
@@ -539,16 +591,16 @@ body{
 
 
 /* Cambiar el color del label cuando el select tiene el foco */
-#department_id:focus + label {
+.dark #department_id:focus + label {
     color: white;
 }
 
 /* Cambiar el color del label cuando hay un valor seleccionado */
-#department_id:not([value=""]):not(:focus) + label {
+.dark #department_id:not([value=""]):not(:focus) + label {
     color: white;
 }
 
-#toggleIcon {
+.dark #toggleIcon {
     position: absolute;
     right: 10px;
     top: 50%;

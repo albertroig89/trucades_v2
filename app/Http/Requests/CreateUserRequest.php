@@ -67,12 +67,20 @@ class CreateUserRequest extends FormRequest
         DB::transaction(function () {
             $data = $this->validated();
 
+            // Manejar la subida del archivo avatar
+            if (isset($data['avatar'])) {
+                // Mover el archivo a una carpeta permanente, por ejemplo 'avatars'
+                $avatarPath = 'storage/' . $data['avatar']->store('avatars', 'public');
+            } else {
+                $avatarPath = null; // Si no hay avatar, establecer null
+            }
+
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'department_id' => $data['department_id'],
-                'avatar' => $data['avatar'] ?? null,
+                'avatar' => $avatarPath, // Guardar la ruta final del avatar
             ]);
 
         });
