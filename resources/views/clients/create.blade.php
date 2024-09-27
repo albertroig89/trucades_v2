@@ -17,7 +17,7 @@
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                                         <form role="form" action="{{ url('/clients') }}" id="call-form" method="post" autocomplete="off">
-                                            {!! csrf_field() !!}
+                                            @csrf
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
 
@@ -58,30 +58,6 @@
                                                         <small>{{ $errors->first('phone') }}</small>
                                                     </div>
                                                     @enderror
-
-
-{{--                                                    <label for="phone1">Telèfon:</label>--}}
-{{--                                                    @if ($errors->has('phone'))--}}
-{{--                                                        <input type="text" name="phone" class="form-control is-invalid" id="phone" aria-describedby="clientHelp" placeholder="example@example.com" value="{{ old('phone') }}">--}}
-{{--                                                        <div class="button">--}}
-{{--                                                            <button type="button" id="add_phone" class="btn btn-default">Afegir telèfon</button>--}}
-{{--                                                        </div>--}}
-{{--                                                    @elseif ($errors->any())--}}
-{{--                                                        <input type="text" name="phone" class="form-control is-valid" id="phone" aria-describedby="clientHelp" placeholder="example@example.com" value="{{ old('phone') }}">--}}
-{{--                                                        <div class="button">--}}
-{{--                                                            <button type="button" id="add_phone" class="btn btn-default">Afegir telèfon</button>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="valid-feedback">--}}
-{{--                                                            Correcte!--}}
-{{--                                                        </div>--}}
-{{--                                                    @else--}}
-{{--                                                        <div><input type="text" name="phone" class="form-control" id="phone" aria-describedby="clientHelp" placeholder="977 70 70 70" value="{{ old('phone') }}">--}}
-{{--                                                            <small id="phoneHelp" class="form-text text-muted">Escriu el telefon del client.</small></div>--}}
-{{--                                                        <div class="button">--}}
-{{--                                                            <button type="button" id="add_phone" class="btn btn-default">Afegir telèfon</button>--}}
-{{--                                                        </div>--}}
-{{--                                                    @endif--}}
-
                                                 </div>
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >

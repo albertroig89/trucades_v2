@@ -17,8 +17,8 @@
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                                         <form role="form" action="{{ url("/users/{$user->id}") }}" id="call-form" method="post" autocomplete="off" enctype="multipart/form-data">
-                                            {{ method_field('PUT') }}
-                                            {!! csrf_field() !!}
+                                            @method('PUT')
+                                            @csrf
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
 

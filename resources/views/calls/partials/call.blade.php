@@ -50,7 +50,7 @@
                 </div>
             </td>
             <td style="width: 450px">
-                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 70, '...') }}</p>
+                <p class="text-sm font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($call->callinf, 250, '...') }}</p>
             </td>
             @php
                 $user = $users->firstWhere('id', $call->user_id2);
@@ -66,10 +66,7 @@
                     </div>
                 </td>
             @endif
-{{--            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>--}}
             <td><h6 class="mb-0 text-sm">0</h6></td>
-{{--            <a href="{{ route('calls.jobfromcall', ['call' => $call]) }}" type="button" class="float-end btn btn-ncall w-auto">Crear</a>--}}
-{{--            <td><a class="btn btn-link" href="{{ route('calls.jobfromcall', ['call' => $call]) }}"><i class="material-icons opacity-6 me-2 text-md">add</i></a></td>--}}
             <td>
                 <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
             </td>

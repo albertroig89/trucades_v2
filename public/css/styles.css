@@ -15,11 +15,47 @@ body{
     height: auto;
 }
 
+
+/*Custom navbar style for desktop*/
+@media (min-width: 992px) {
+
+    .navbar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .navbar ul {
+        align-items: center;
+    }
+
+    .navbar a{
+        line-height: 1;
+    }
+
+     /*Posición del logo a la izquierda, fuera del flexbox*/
+    .navbar-logo {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+     /*Posición del avatar a la derecha, fuera del flexbox */
+    .navbar-avatar {
+        position: absolute;
+        right: -5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+
 /*Navbar custom style*/
 .custom-navbar {
     background-image: linear-gradient(195deg, #344767 0%, #4c586b 100%) !important;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(52, 71, 103, 1) !important;
     color: black !important;
+    font-weight: bold;
 }
 
 /*Navbar dark custom style*/
@@ -31,6 +67,7 @@ body{
 
 .custom-nav-link{
     color: white !important;
+
 }
 
 .dark .custom-nav-link{
@@ -42,7 +79,7 @@ body{
 }
 
 .dark .custom-nav-dropdown{
-    background-color: #1a2035 !important;
+    background-color: #282c34 !important;
     color: white !important;
 }
 
@@ -215,7 +252,7 @@ body{
 
 /*Card mobile dark custom style*/
 .dark .customcardm {
-    background-color: #31353f;
+    background-color: #353844;
 }
 
 
@@ -236,9 +273,9 @@ body{
     text-align: center;
 }
 
-/*Footer custom dark style*/
-.dark .custom-footer {
-    text-align: center;
+.custom-footer .footer-logo {
+    width: 250px;
+    height: auto;
 }
 
 /*Button styles*/
