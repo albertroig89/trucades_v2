@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable; // Asegúrate de incluir HasFactory
 
     /**
      * Los atributos que se pueden llenar de forma masiva.
@@ -94,7 +93,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Eliminar el avatar del usuario cuando el usuario es eliminado
+     * Eliminar el avatar del usuario cuando el usuario es eliminado.
      */
     protected static function boot()
     {
@@ -117,9 +116,8 @@ class User extends Authenticatable
             }
         });
     }
-
-
 }
+
 
 
 
