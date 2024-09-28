@@ -93,6 +93,28 @@
     </body>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const logo = document.querySelector('img.logo'); // Cambiamos a querySelector
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+            function updateLogo() {
+                if (prefersDarkScheme.matches) {
+                    // Dark theme
+                    logo.src = "{{ asset('images/ARl_fnegre.png') }}";
+                } else {
+                    // Light theme
+                    logo.src = "{{ asset('images/ARl_fblanc.png') }}";
+                }
+            }
+            // Initial check
+            updateLogo();
+            // Listen for changes in the color scheme
+            prefersDarkScheme.addEventListener('change', updateLogo);
+        });
+
+    </script>
+
 
     {{-- Script for add more phones in the same client --}}
     <script>

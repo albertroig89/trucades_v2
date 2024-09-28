@@ -30,7 +30,7 @@
                                                         <p class="text-xs text-secondary">{{ $call->user->email }}</p>
                                                     </div>
                                                 </div>
-                                                <span class="badge badge-sm bg-{{ $call->stat->id == $uStat ? 'danger' : ($call->stat->id == $nStat ? 'success' : 'warning') }}">
+                                                <span class="badge badge-sm bg-{{ $call->stat->id == $uStat ? 'danger' : ($call->stat->id == $nStat ? 'success' : 'info') }}">
                                                     {{ $call->stat->title }}
                                                 </span>
                                             </div>
@@ -57,8 +57,8 @@
                                             <div class="card-footer d-flex justify-content-between">
                                                 <a href="{{ route('calls.edit', ['call' => $call]) }}" class="btn btn-sm btn-default">Editar</a>
                                                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
+                                                    @csrf
+                                                    @method('DELETE')
                                                     <button class="btn btn-sm btn-default" onclick="return confirm('¿Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                                                 </form>
                                             </div>

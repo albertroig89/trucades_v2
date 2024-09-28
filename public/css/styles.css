@@ -786,8 +786,12 @@ body{
 
 
 
-
-
+/*Adjust badges for diferent calls states regardless of their content*/
+.badge {
+    width: 85px; /* Ajusta el tamaño según tus necesidades */
+    display: inline-block;
+    text-align: center; /* Asegura que el texto esté centrado */
+}
 
 
 
