@@ -94,7 +94,9 @@ Route::get('/calls/new', [CallController::class, 'create'])
     ->middleware(['auth'])
     ->name('calls.create');
 
-Route::post('/calls', [CallController::class, 'store']);
+Route::post('/calls', [CallController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('calls.store');
 
 Route::get('/calls/{call}', [CallController::class, 'jobfromcall'])
     ->middleware(['auth'])
