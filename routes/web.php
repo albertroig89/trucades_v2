@@ -24,14 +24,18 @@ Route::get('/users/new', [UserController::class, 'create'])
     ->middleware(['auth'])
     ->name('users.create');
 
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])
+    ->middleware('auth')
+    ->name('users.store');
 
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])
     ->where('user', '\d+')
     ->middleware(['auth'])
     ->name('users.edit');
 
-Route::put('/users/{user}', [UserController::class, 'update']);
+Route::put('/users/{user}', [UserController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('users.update');
 
 Route::delete('/users/{user}', [UserController::class, 'destroy'])
     ->middleware(['auth'])
@@ -47,7 +51,9 @@ Route::get('/jobs/new', [JobController::class, 'create'])
     ->middleware(['auth'])
     ->name('jobs.create');
 
-Route::post('/jobs', [JobController::class, 'store']);
+Route::post('/jobs', [JobController::class, 'store'])
+    ->middleware('auth')
+    ->name('jobs.store');
 
 Route::post('/jobs/{job}', [JobController::class, 'jobfromcall']);
 
@@ -64,7 +70,9 @@ Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
     ->middleware(['auth'])
     ->name('jobs.edit');
 
-Route::put('/jobs/{job}', [JobController::class, 'update']);
+Route::put('/jobs/{job}', [JobController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('jobs.update');
 
 Route::get('/jobs/counter', [JobController::class, 'count'])
     ->middleware(['auth'])
@@ -107,7 +115,9 @@ Route::get('/calls/{call}/edit', [CallController::class, 'edit'])
     ->middleware(['auth'])
     ->name('calls.edit');
 
-Route::put('/calls/{call}', [CallController::class, 'update']);
+Route::put('/calls/{call}', [CallController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('calls.update');
 
 Route::delete('/calls/{call}', [CallController::class, 'destroy'])
     ->middleware(['auth'])
@@ -126,14 +136,18 @@ Route::get('/clients/new', [ClientController::class, 'create'])
     ->middleware(['auth'])
     ->name('clients.create');
 
-Route::post('/clients', [ClientController::class, 'store']);
+Route::post('/clients', [ClientController::class, 'store'])
+    ->middleware('auth')
+    ->name('clients.store');
 
 Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])
     ->where('client', '\d+')
     ->middleware(['auth'])
     ->name('clients.edit');
 
-Route::put('/clients/{client}', [ClientController::class, 'update']);
+Route::put('/clients/{client}', [ClientController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('clients.update');
 
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])
     ->middleware(['auth'])

@@ -40,12 +40,12 @@ class CreateClientRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Introdueix un nom per al client',
-            'email.email' => 'Introdueix un correu electrònic vàlid',
-            'email.unique' => 'El correu introduït ja existeix',
-            'phone.required' => 'Introdueix un telèfon',
-            'phones.array' => 'Els telèfons addicionals han de ser una matriu',
-            'phones.*.string' => 'Els telèfons addicionals han de ser cadenes de text',
+            'name.required' => 'Introduce un nombre para el cliente',
+            'email.email' => 'Introduce un correo electrónico válido',
+            'email.unique' => 'El correo electrónico ya existe',
+            'phone.required' => 'Introduce un telèfono',
+            'phones.array' => 'Los teléfonos adicionales deben ser una matriz válida',
+            'phones.*.string' => 'Los telefonos addicionales tienen que ser cadenas de texto',
         ];
     }
 

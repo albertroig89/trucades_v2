@@ -12,12 +12,6 @@ use Illuminate\Http\Request;
 
 class CallController extends Controller
 {
-    // Método para mostrar una llamada específica
-    public function show(Call $call)
-    {
-        $title = 'Llamada';
-        return view('calls.show', compact('title', 'call'));
-    }
 
     // Método para mostrar el formulario de creación de llamada
     public function create()
