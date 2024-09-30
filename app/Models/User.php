@@ -55,7 +55,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function job()
+    public function jobs()
     {
         return $this->hasMany(Job::class);
     }

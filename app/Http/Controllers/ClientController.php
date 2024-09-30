@@ -33,11 +33,9 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         $title = 'Editar Cliente';
-        $clients = Client::all();
-        $users = User::all();
-        $phones = Phone::all();
+        $phones = $client->phones;
 
-        return view('clients.edit', compact('title', 'client', 'clients', 'users', 'phones'));
+        return view('clients.edit', compact('title', 'client', 'phones'));
     }
 
     public function store(CreateClientRequest $request)

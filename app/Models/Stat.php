@@ -15,7 +15,7 @@ class Stat extends Model
     ];
 
     // Relación de uno a muchos con el modelo Call
-    public function stat()
+    public function stats()
     {
         return $this->hasMany(Call::class);
     }

@@ -16,20 +16,31 @@
                             <div class="container py-4">
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-                                        <form role="form" action="{{ url('/calls') }}" id="call-form" method="post" autocomplete="off">
+                                        <form role="form" action="{{ route('calls.update', $call->id) }}" id="call-form" method="post" autocomplete="off">
                                             @method('PUT')
                                             @csrf
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="client_id">Cliente:</label>
-                                                    <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
+                                                    @if(empty($call->client))
+                                                        <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
+                                                            <option></option>
+                                                            @foreach ($clients as $client)
+                                                                <option value="{{ ($client->id) }}">
+                                                                    {{ $client->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    @else
+                                                        <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
                                                         <option></option>
                                                         @foreach ($clients as $client)
-                                                            <option value="{{ ($client->id) }}" {{ old('client_id') == $client->id ? 'selected' : '' }}>
+                                                            <option value="{{ ($client->id) }}" {{ old('client_id', $call->client->id) == $client->id ? 'selected' : '' }}>
                                                                 {{ $client->name }}
                                                             </option>
                                                         @endforeach
-                                                    </select>
+                                                        </select>
+                                                    @endif
                                                     @error('client_id')
                                                     <div class="invalid-feedback">
                                                         <small>{{ $errors->first('client_id') }}</small>
@@ -38,7 +49,7 @@
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="clientname">Cliente personalizado</label>
-                                                    <input name="clientname" type="text" class="form-control @error('clientname') is-invalid @enderror" id="clientname" value="{{ old('clientname') }}">
+                                                    <input name="clientname" type="text" class="form-control @error('clientname') is-invalid @enderror" id="clientname" value="{{ old('clientname', $call->clientname) }}">
                                                     @error('clientname')
                                                     <div class="invalid-feedback">
                                                         <small>{{ $errors->first('clientname') }}</small>
@@ -47,7 +58,7 @@
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="clientphone">Teléfono</label>
-                                                    <input name="clientphone" type="text" class="form-control @error('clientphone') is-invalid @enderror" id="clientphone" value="{{ old('clientphone') }}">
+                                                    <input name="clientphone" type="text" class="form-control @error('clientphone') is-invalid @enderror" id="clientphone" value="{{ old('clientphone', $call->clientphone) }}" {{ !empty($call->client) ? 'disabled' : '' }}>
                                                     @error('clientphone')
                                                     <div class="invalid-feedback">
                                                         <small>{{ $errors->first('clientphone') }}</small>
@@ -56,7 +67,7 @@
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="callinf">Información de la llamada</label>
-                                                    <textarea name="callinf" type="text" class="form-control @error('callinf') is-invalid @enderror" id="callinf">{{ old('callinf') }}</textarea>
+                                                    <textarea name="callinf" type="text" class="form-control @error('callinf') is-invalid @enderror" id="callinf">{{ old('callinf', $call->callinf) }}</textarea>
                                                     @error('callinf')
                                                     <div class="invalid-feedback">
                                                         <small>{{ $errors->first('callinf') }}</small>
@@ -69,7 +80,7 @@
                                                         <option value="">Selecciona un empleado</option>
                                                         @foreach ($users as $user)
                                                             <option class="form-control" value="{{ ($user->id) }}"
-                                                                {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                                                {{ old('user_id', $call->user_id) == $user->id ? 'selected' : '' }}>
                                                                 {{ $user->name }}
                                                             </option>
                                                         @endforeach
@@ -83,20 +94,17 @@
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="stat_id">Estado de la llamada:</label>
                                                     <select class='form-control' name='stat_id' id='stat_id'>
-                                                        <option value="2">Normal</option>
                                                         @foreach ($stats as $stat)
-                                                            @if ($stat->id != $nStat)
-                                                                <option value="{{ ($stat->id) }}"
-                                                                    {{ old('stat_id') == $stat->id ? 'selected' : '' }}>
-                                                                    {{ $stat->title }}
-                                                                </option>
-                                                            @endif
+                                                            <option value="{{ ($stat->id) }}"
+                                                                {{ old('stat_id', $call->stat_id) == $stat->id ? 'selected' : '' }}>
+                                                                {{ $stat->title }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
-                                                        <button type="submit" class="btn btn-default">Crear</button>
+                                                        <button type="submit" class="btn btn-default">Editar</button>
                                                     </div>
                                                     <div>
                                                         <a href="{{ route('dashboard') }}" type="button" class="btn btn-default">Volver</a>

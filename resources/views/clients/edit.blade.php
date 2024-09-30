@@ -17,14 +17,16 @@
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                                         <form role="form" action="{{ url('/clients') }}" id="call-form" method="post" autocomplete="off">
+
                                             @method('PUT')
                                             @csrf
+
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
 
                                                     <!-- Input text for user name -->
                                                     <label class="form-label" for="name">Nombre del cliente</label>
-                                                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
+                                                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $client->name) }}">
                                                     <!-- Error message for name input-->
                                                     @error('name')
                                                     <div class="invalid-feedback">
@@ -35,7 +37,7 @@
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="email">E-mail</label>
                                                     <!-- Input email for email -->
-                                                    <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
+                                                    <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email', $client->email) }}">
                                                     <!-- Error message for email select -->
                                                     @error('email')
                                                     <div class="invalid-feedback">
@@ -47,8 +49,17 @@
 
 
                                                     <label class="form-label" for="phone">Teléfono:</label>
-                                                    <!-- Input email for phone -->
-                                                    <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone') }}">
+                                                    @foreach ($phones as $phone)
+                                                        {{ $loop->iteration }}
+                                                        @if($loop === 1)
+                                                            <!-- Input text for phone -->
+                                                            <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone', $client->phone) }}">
+                                                        @else
+                                                            <label class="form-label " for="phones'+ contador +'">Teléfono:</label>
+                                                            <input id="phones'+ contador +'" name="phones[]" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $client->phone) }}">
+                                                            <button type="button" class="btn btn-default delete_phone float-right">Borrar teléfono</button>
+                                                        @endif
+                                                    @endforeach
                                                     <div class="button">
                                                         <button type="button" id="add_phone" class="btn btn-default mt-4">Afegir telèfon</button>
                                                     </div>
@@ -63,10 +74,10 @@
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
-                                                        <button type="submit" class="btn btn-default">Crear</button>
+                                                        <button type="submit" class="btn btn-default">Editar</button>
                                                     </div>
                                                     <div>
-                                                        <a href="{{ route('dashboard') }}" type="button" class="btn btn-default">Volver</a>
+                                                        <a href="{{ route('clients.index') }}" type="button" class="btn btn-default">Volver</a>
                                                     </div>
                                                 </div>
                                             </div>

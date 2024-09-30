@@ -60,7 +60,6 @@ class CallController extends Controller
         $data = $request->validate([
             'user_id' => 'required',
             'client_id' => 'nullable',
-            'user_id2' => 'required',
             'stat_id' => 'required',
             'callinf' => 'required',
             'clientname' => 'required',
@@ -68,12 +67,19 @@ class CallController extends Controller
         ], [
             'user_id.required' => 'Selecciona un empleado',
             'clientname.required' => 'Selecciona un cliente o escribe uno',
-            'user_id2.required' => 'Selecciona un empleado',
             'stat_id.required' => 'Selecciona un estado',
             'callinf.required' => 'Rellena la información de la llamada'
         ]);
 
-        $call->update($data);
+        $call->update([
+            'user_id' => $data['user_id'],
+            'client_id' => $data['client_id'] ?? null,
+            'user_id2' => auth()->id(),  // Asignamos el ID del usuario autenticado
+            'stat_id' => $data['stat_id'],
+            'callinf' => $data['callinf'],
+            'clientname' => $data['clientname'],
+            'clientphone' => $data['clientphone'] ?? null,
+        ]);
 
         return redirect()->route('dashboard');
     }

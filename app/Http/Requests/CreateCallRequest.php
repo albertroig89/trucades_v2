@@ -65,7 +65,7 @@ class CreateCallRequest extends FormRequest
             Call::create([
                 'user_id' => $data['user_id'],
                 'client_id' => $data['client_id'] ?? null,
-                'user_id2' => auth()->id(),
+                'user_id2' => auth()->id(), // Asignamos el ID del usuario autenticado
                 'stat_id' => $data['stat_id'],
                 'callinf' => $data['callinf'],
                 'clientname' => $data['clientname'],

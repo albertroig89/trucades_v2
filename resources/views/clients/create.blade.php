@@ -65,7 +65,7 @@
                                                         <button type="submit" class="btn btn-default">Crear</button>
                                                     </div>
                                                     <div>
-                                                        <a href="{{ route('dashboard') }}" type="button" class="btn btn-default">Volver</a>
+                                                        <a href="{{ route('clients.index') }}" type="button" class="btn btn-default">Volver</a>
                                                     </div>
                                                 </div>
                                             </div>

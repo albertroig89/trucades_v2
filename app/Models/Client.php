@@ -19,19 +19,19 @@ class Client extends Model
     ];
 
     // Relación uno a muchos con el modelo Call
-    public function client()
+    public function calls()
     {
         return $this->hasMany(Call::class);
     }
 
     // Relación uno a muchos con el modelo Phone
-    public function phone()
+    public function phones()
     {
         return $this->hasMany(Phone::class);
     }
 
     // Relación uno a muchos con el modelo Job
-    public function job()
+    public function jobs()
     {
         return $this->hasMany(Job::class);
     }
