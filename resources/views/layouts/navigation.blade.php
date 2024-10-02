@@ -185,7 +185,7 @@
                             <li class="nav-item dropdown dropdown-hover navbar-avatar mx-2">
                                 <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
                                     @if(Auth::user()->avatar)
-                                        <img src="{{ auth()->user()->avatar }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
+                                        <img src="{{ asset(auth()->user()->avatar) }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                     @else
                                         <img src="{{ asset('images/AR_fblanc.png') }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                     @endif

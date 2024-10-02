@@ -97,6 +97,6 @@ npm run build
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [example@mail.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Albert Roig via [albertr.projects@gmail.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 

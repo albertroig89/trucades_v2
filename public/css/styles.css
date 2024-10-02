@@ -273,6 +273,7 @@ body{
     text-align: center;
 }
 
+
 .custom-footer .footer-logo {
     width: 250px;
     height: auto;
@@ -623,17 +624,34 @@ body{
     border-bottom: 2px solid #fd5c70 !important; /* Solo mantener el borde inferior */
 }
 
-/*Styles for labels filled on focus in forms*/
+/*Styles for labels filled on focus in forms light theme*/
 .input-group.input-group-dynamic.is-focused label,
 .input-group.input-group-static.is-focused label {
+    color: black;
+}
+
+
+/*Styles for labels filled on focus in forms dark theme*/
+.dark .input-group.input-group-dynamic.is-focused label,
+.dark .input-group.input-group-static.is-focused label {
     color: #ffffff;
 }
 
-/*Styles for border color on focus in forms*/
+
+/*Styles for border color on focus in forms light theme*/
 .input-group.input-group-dynamic .form-control,
 .input-group.input-group-dynamic .form-control:focus,
 .input-group.input-group-static .form-control,
 .input-group.input-group-static .form-control:focus {
+    background-image: linear-gradient(0deg, black 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
+}
+
+
+/*Styles for border color on focus in forms dark theme*/
+.dark .input-group.input-group-dynamic .form-control,
+.dark .input-group.input-group-dynamic .form-control:focus,
+.dark .input-group.input-group-static .form-control,
+.dark .input-group.input-group-static .form-control:focus {
     background-image: linear-gradient(0deg, #ffffff 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
 }
 
@@ -658,15 +676,21 @@ body{
     color: #495057; /* Asegúrate de que el color sea gris */
 }
 
-/*Dark style for Select2*/
 
 /* Ajuste del contenedor de select2 */
-.dark .select2-container--default .select2-selection--single {
-    background-color: #2A2D34 !important; /* Fondo oscuro */
+.select2-container--default .select2-selection--single {
+    background-color: #adb5bd !important; /* Fondo claro */
     color: white !important; /* Texto blanco */
     border: 1px solid #61677C !important; /* Borde gris oscuro */
     height: 40px !important; /* Ajusta la altura si es necesario */
     border-radius: 0.375rem; /*Bordes redondeados */
+}
+
+
+/*Dark style for Select2*/
+.dark .select2-container--default .select2-selection--single {
+    background-color: #2A2D34 !important; /* Fondo oscuro */
+    border: 1px solid #61677C !important; /* Borde gris oscuro */
 }
 
 /* Placeholder personalizado */
@@ -686,9 +710,8 @@ body{
 }
 
 /* Estilo de opción seleccionada */
-.dark .select2-results__option--highlighted[aria-selected] {
+.select2-results__option--highlighted[aria-selected] {
     background-color: #344767 !important; /* Fondo verde claro */
-    color: #000000 !important; /* Texto negro */
 }
 
 /* Padding en las opciones */
