@@ -22,9 +22,35 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
-            'password' => 'nullable|min:6|confirmed',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $this->route('user')->id, // Permitir el mismo email del usuario editado
+            'password' => 'nullable|string|min:6', // Password es opcional
+            'department_id' => 'required|exists:departments,id',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+    }
+
+    /**
+     * Get the custom validation messages.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es obligatorio',
+            'name.string' => 'El nombre tiene que ser una cadena de texto',
+            'name.max' => 'El nombre no puede superar los 255 caracteres',
+            'email.required' => 'Introduce un correo electrónico',
+            'email.email' => 'Introduce un correo electrónico válido',
+            'email.unique' => 'El correo electrónico ya existe',
+            'password.min' => 'La contraseña tiene que tener un mínimo de 6 caracteres',
+            'department_id.required' => 'El departamento es obligatorio',
+            'department_id.exists' => 'El departamento seleccionado no existe',
+            'avatar.image' => 'El avatar tiene que ser una imagen',
+            'avatar.mimes' => 'La imagen tiene que ser jpeg, png, jpg, gif o svg',
+            'avatar.max' => 'La imagen no puede ser mayor de 2MB',
         ];
     }
 }
+

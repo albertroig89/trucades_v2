@@ -89,7 +89,7 @@
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
-                                                        <button type="submit" class="btn btn-default">Crear</button>
+                                                        <button type="submit" class="btn btn-default">Editar</button>
                                                     </div>
                                                     <div>
                                                         <a href="{{ route('users.index') }}" type="button" class="btn btn-default">Volver</a>

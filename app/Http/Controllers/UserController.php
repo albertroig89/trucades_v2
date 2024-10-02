@@ -86,6 +86,18 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
+        // Verificar si se subió un nuevo avatar
+        if ($request->hasFile('avatar')) {
+            // Eliminar el avatar antiguo si existe
+            if ($user->avatar && \Storage::disk('public')->exists(str_replace('storage/', '', $user->avatar))) {
+                \Storage::disk('public')->delete(str_replace('storage/', '', $user->avatar));
+            }
+
+            // Subir el nuevo avatar y almacenar la ruta
+            $avatarPath = 'storage/' . $request->file('avatar')->store('avatars', 'public');
+            $data['avatar'] = $avatarPath;
+        }
+
         if (isset($data['password']) && !empty($data['password'])) {
             $data['password'] = bcrypt($data['password']);
         } else {
@@ -96,6 +108,7 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+
 
 
     /**

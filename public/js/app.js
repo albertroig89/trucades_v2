@@ -1,27 +1,3 @@
-// Función para detectar el tema y aplicar la clase dark
-function applyTheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-}
-// Aplicar el tema al cargar la página
-applyTheme();
-// Escuchar cambios en las preferencias del sistema y ajustar el tema
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const logo = document.querySelector('.footer-logo');
     const favicon = document.querySelector('link[rel="icon"]');

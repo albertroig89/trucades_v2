@@ -29,6 +29,21 @@
         {{--Favicon--}}
         <link rel="icon" href="{{ asset('images/AR_fnegre.png') }}" type="image/png">
 
+        <script>
+            // Función para detectar el tema y aplicar la clase dark
+            function applyTheme() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+            // Aplicar el tema al cargar la página
+            applyTheme();
+            // Escuchar cambios en las preferencias del sistema y ajustar el tema
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+        </script>
+
     </head>
     <body class="custom body font-sans antialiased">
         <div class="page-container">
