@@ -29,7 +29,7 @@ class JobController extends Controller
     {
         $jobs = Job::orderBy('created_at', 'DESC')->paginate(50);
         $users = User::all();
-        $title = 'Feines';
+        $title = 'Trabajos';
 
         return view('jobs.index', compact('title', 'jobs', 'users'));
     }
@@ -42,7 +42,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        $title = 'Feina';
+        $title = 'Trabajo';
         return view('jobs.show', compact('title', 'job'));
     }
 
@@ -53,7 +53,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        $title = 'Nova feina';
+        $title = 'Nuevo trabajo';
         $clients = Client::all();
         $users = User::all();
 
@@ -123,11 +123,11 @@ class JobController extends Controller
             'endtime' => 'required|date_format:d-m-Y H:i',
             'clientname' => 'required',
         ], [
-            'user_id.required' => 'Selecciona un empleat',
-            'clientname.required' => 'Selecciona un client o escriu-ne un',
-            'job.required' => 'Introdueix la feina que has fet',
-            'inittime.required' => 'Introdueix comensament de feina',
-            'endtime.required' => 'Introdueix final de feina',
+            'user_id.required' => 'Selecciona un empleado',
+            'clientname.required' => 'Selecciona un cliente o escribe uno',
+            'job.required' => 'Introduce el trabajo realizado',
+            'inittime.required' => 'Introduce el inicio del trabajo',
+            'endtime.required' => 'Introduce el final del trabajo',
         ]);
 
         $inittime = Carbon::createFromFormat('d-m-Y H:i', $data['inittime']);
@@ -163,7 +163,7 @@ class JobController extends Controller
     public function histjob2()
     {
         $histjobs = HistJob2::orderBy('created_at', 'DESC')->paginate(50);
-        $title = "Historic de feines ocult";
+        $title = "Historico de trabajos oculto";
 
         return view('jobs.histjobs2', compact('title', 'histjobs'));
     }

@@ -55,11 +55,11 @@
                                                 </p>
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
-                                                <a href="{{ route('calls.edit', ['call' => $call]) }}" class="btn btn-sm btn-default">Editar</a>
+                                                <a href="{{ route('calls.edit', ['call' => $call]) }}" class="btn btn-default btn-sm w-auto">Editar</a>
                                                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-sm btn-default" onclick="return confirm('¿Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                                                    <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                                                 </form>
                                             </div>
                                         </div>

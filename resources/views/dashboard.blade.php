@@ -102,13 +102,13 @@
                                             @endif
                                             <td><h6 class="mb-0 text-sm">0</h6></td>
                                             <td>
-                                                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default w-auto">Editar</a>
+                                                <a href="{{ route('calls.edit', ['call' => $call]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>
                                             </td>
                                             <td>
                                                 <form action="{{ route('calls.destroy', $call) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                                                    <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

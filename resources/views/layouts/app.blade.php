@@ -29,20 +29,12 @@
         {{--Favicon--}}
         <link rel="icon" href="{{ asset('images/AR_fnegre.png') }}" type="image/png">
 
+        {{--Script para determinar rutas absolutas para las imagenes que se cargan desde app.js--}}
         <script>
-            // Función para detectar el tema y aplicar la clase dark
-            function applyTheme() {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.classList.add('dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                }
-            }
-            // Aplicar el tema al cargar la página
-            applyTheme();
-            // Escuchar cambios en las preferencias del sistema y ajustar el tema
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+            const baseUrl = "{{ asset('') }}";  // Definir baseUrl para app.js
         </script>
+        {{--Scripts propios para el funcionamiento de la pagina--}}
+        <script src="{{ asset('js/app.js') }}"></script>
 
     </head>
     <body class="custom body font-sans antialiased">
@@ -90,13 +82,6 @@
         <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
-
-        {{--Script para determinar rutas absolutas para las imagenes que se cargan desde app.js--}}
-        <script>
-            const baseUrl = "{{ asset('') }}";  // Definir baseUrl para app.js
-        </script>
-        {{--Scripts propios para el funcionamiento de la pagina--}}
-        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 
 </html>

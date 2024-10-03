@@ -53,13 +53,13 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('users.edit', ['user' => $user]) }}" type="button" class="btn btn-default w-auto">Editar</a>
+                                                    <a href="{{ route('users.edit', ['user' => $user]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('users.destroy', $user) }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button class="btn btn-default w-auto" onclick="return confirm('Seguro que quieres eliminar el usuario?')" type="submit">Eliminar</button>
+                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar el usuario?')" type="submit">Eliminar</button>
                                                     </form>
                                                 </td>
                                             </tr>
