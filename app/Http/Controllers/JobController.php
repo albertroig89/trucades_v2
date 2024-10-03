@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateJobRequest;
 use App\Models\Call;
 use App\Models\Client;
 use App\Models\HistJob;

@@ -44,7 +44,7 @@ class CreateCallRequest extends FormRequest
         return [
             'clientname.required' => 'Selecciona un cliente o escribe uno',
             'user_id.required' => 'Tienes que seleccionar un empleado',
-            'callinf.required' => 'Rellena la información de la llamada',
+            'callinf.required' => 'Introduce la descripción de la llamada',
             'clientname.string' => 'El nombre del cliente tiene que ser una cadena de texto',
             'clientphone.required_without' => 'El teléfono del cliente es obligatorio si no lo seleccionas',
             'clientphone.string' => 'El teléfono del cliente tiene que ser una cadena de texto',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use App\Http\Requests\CreateClientRequest;
 use App\Models\Phone;
