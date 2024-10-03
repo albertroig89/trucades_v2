@@ -113,22 +113,9 @@ class JobController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Job $job, Request $request)
+    public function update(Job $job, UpdateJobRequest $request)
     {
-        $data = $request->validate([
-            'user_id' => 'required',
-            'client_id' => '',
-            'job' => 'required',
-            'inittime' => 'required|date_format:d-m-Y H:i',
-            'endtime' => 'required|date_format:d-m-Y H:i',
-            'clientname' => 'required',
-        ], [
-            'user_id.required' => 'Selecciona un empleado',
-            'clientname.required' => 'Selecciona un cliente o escribe uno',
-            'job.required' => 'Introduce el trabajo realizado',
-            'inittime.required' => 'Introduce el inicio del trabajo',
-            'endtime.required' => 'Introduce el final del trabajo',
-        ]);
+        $data = $request->validated();
 
         $inittime = Carbon::createFromFormat('d-m-Y H:i', $data['inittime']);
         $endtime = Carbon::createFromFormat('d-m-Y H:i', $data['endtime']);

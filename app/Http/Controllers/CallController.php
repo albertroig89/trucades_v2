@@ -54,23 +54,14 @@ class CallController extends Controller
         return redirect()->route('dashboard');
     }
 
-    // Método para actualizar una llamada existente
-    public function update(Request $request, Call $call)
-    {
-        $data = $request->validate([
-            'user_id' => 'required',
-            'client_id' => 'nullable',
-            'stat_id' => 'required',
-            'callinf' => 'required',
-            'clientname' => 'required',
-            'clientphone' => 'nullable',
-        ], [
-            'user_id.required' => 'Selecciona un empleado',
-            'clientname.required' => 'Selecciona un cliente o escribe uno',
-            'stat_id.required' => 'Selecciona un estado',
-            'callinf.required' => 'Rellena la información de la llamada'
-        ]);
 
+    // Método para actualizar una llamada existente
+    public function update(UpdateCallRequest $request, Call $call)
+    {
+        // Obtenemos los datos validados del request
+        $data = $request->validated();
+
+        // Actualizamos el modelo
         $call->update([
             'user_id' => $data['user_id'],
             'client_id' => $data['client_id'] ?? null,

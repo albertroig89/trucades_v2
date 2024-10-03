@@ -44,33 +44,36 @@ class ClientController extends Controller
         return redirect()->route('clients.index');
     }
 
-    public function update(Request $request, Client $client)
+    public function update(UpdateClientRequest $request, Client $client)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-            'phones' => 'array|nullable'
-        ], [
-            'name.required' => 'Introdueix un nom per al client',
-            'phone.required' => 'Introdueix un telèfon'
+        // Obtenemos los datos validados del request
+        $data = $request->validated();
+
+        // Actualizamos los datos principales del cliente
+        $client->update([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
         ]);
 
-        $client->update($data);
+        // Gestionar los registros de teléfonos adicionales
+        $phones = $data['phones'] ?? [];  // Si no hay teléfonos adicionales, usa un array vacío
 
-        // Manage phone records
-        $phones = $request->input('phones', []);
-        $client->phone()->delete(); // Remove all old phone records
+        // Eliminamos los registros antiguos de teléfonos y agregamos los nuevos
+        $client->phone()->delete(); // Eliminar los teléfonos antiguos
         foreach ($phones as $phone) {
-            $client->phone()->create(['phone' => $phone]);
+            if (!empty($phone)) {
+                $client->phone()->create(['phone' => $phone]);
+            }
         }
 
-        // Update the main phone if it was not included in the new phones list
+        // Asegurarse de que el teléfono principal también se agregue si no está en la lista de teléfonos adicionales
         if (!in_array($data['phone'], $phones)) {
             $client->phone()->create(['phone' => $data['phone']]);
         }
 
         return redirect()->route('clients.index');
     }
+
 
     public function destroy(Client $client)
     {

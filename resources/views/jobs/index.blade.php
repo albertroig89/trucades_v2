@@ -33,8 +33,6 @@
                                         </thead>
                                         <tbody>
                                         @foreach ($jobs as $job)
-
-
                                             <tr class="custom-table-row">
                                                 <th>
                                                     <div class="d-flex px-2 py-1">
@@ -58,42 +56,12 @@
                                                     <div class=" d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm">{{ $job->clientname }}</h6>
-{{--                                                            @if (!empty($call->clientphone))--}}
-{{--                                                                <p class="text-xs text-secondary mb-0">{{ $call->clientphone }}</p>--}}
-{{--                                                            @else--}}
-{{--                                                                @if (!empty($call->client))--}}
-{{--                                                                    @php--}}
-{{--                                                                        // Obtener los números de teléfono del cliente y unirlos en una sola línea separados por comas--}}
-{{--                                                                        $phoneNumbers = $phones->where('client_id', $call->client->id)->pluck('phone')->implode(', ');--}}
-{{--                                                                    @endphp--}}
-{{--                                                                    @if (!empty($phoneNumbers))--}}
-{{--                                                                        <p class="text-xs text-secondary mb-0">{{ $phoneNumbers }}</p>--}}
-{{--                                                                    @else--}}
-{{--                                                                        <p class="text-xs text-secondary mb-0">No hay teléfono</p>--}}
-{{--                                                                    @endif--}}
-{{--                                                                @else--}}
-{{--                                                                    <p class="text-xs text-secondary mb-0">No hay teléfono</p>--}}
-{{--                                                                @endif--}}
-{{--                                                            @endif--}}
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td style="width: 450px">
                                                     <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($job->job, 70, '...') }}</p>
                                                 </td>
-{{--                                                @php--}}
-{{--                                                    $user = $users->firstWhere('id', $call->user_id2);--}}
-{{--                                                @endphp--}}
-{{--                                                @if ($user)--}}
-{{--                                                    <td>--}}
-{{--                                                        <div class="d-flex px-2 py-1">--}}
-{{--                                                            <div class="d-flex flex-column justify-content-center">--}}
-{{--                                                                <h6 class="mb-0 text-sm">{{ $user->name }}</h6>--}}
-{{--                                                                <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </td>--}}
-{{--                                                @endif--}}
                                                 <td><h6 class="mb-0 text-sm">0</h6></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->inittime)->format('d-m-y H:i') }}</span></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->endtime)->format('d-m-y H:i') }}</span></td>

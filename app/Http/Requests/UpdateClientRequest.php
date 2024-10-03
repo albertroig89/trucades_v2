@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCallRequest extends FormRequest
+class UpdateClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,10 @@ class UpdateCallRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
-            'client_id' => 'nullable',
-            'stat_id' => 'required',
-            'callinf' => 'required',
-            'clientname' => 'required',
-            'clientphone' => 'nullable',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'phones' => 'array|nullable',
+            'phones.*' => 'nullable|string|max:20', // Validar cada número de teléfono
         ];
     }
 
@@ -39,10 +37,8 @@ class UpdateCallRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'user_id.required' => 'Selecciona un empleado',
-            'clientname.required' => 'Selecciona un cliente o escribe uno',
-            'stat_id.required' => 'Selecciona un estado',
-            'callinf.required' => 'Rellena la información de la llamada'
+            'name.required' => 'Introdueix un nom per al client',
+            'phone.required' => 'Introdueix un telèfon',
         ];
     }
 }
