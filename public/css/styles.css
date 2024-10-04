@@ -818,6 +818,91 @@ body{
 
 
 
+/* Ajustes generales para el datetimepicker en tema oscuro */
+.dark .xdsoft_datetimepicker {
+    background-color: #1a2035;  /* Fondo oscuro para todo el datetimepicker */
+    color: #ffffff;             /* Texto claro */
+    border: 1px solid #444c5c;  /* Borde gris */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/*!* Color de fondo para la cabecera (meses y fechas) *!*/
+/*.dark .xdsoft_monthpicker, .xdsoft_year {*/
+/*    background-color: #1a2035;  !* Fondo oscuro *!*/
+/*    color: #ffffff;             !* Texto blanco *!*/
+/*}*/
+
+/* Ajustes para los meses */
+.dark .xdsoft_month, .xdsoft_year{
+    background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
+    color: #ffffff !important;             /* Texto claro para los meses */
+    border: none;
+}
+
+/* Meses en hover */
+.dark .xdsoft_month:hover, .xdsoft_year:hover {
+    background-color: #344767 !important;  /* Color gris oscuro en hover */
+    color: #ffffff !important;
+}
+
+/* Mes seleccionado */
+.dark .xdsoft_monthpicker .xdsoft_option .xdsoft_current,
+.xdsoft_year span.xdsoft_current {
+    background-color: #4a82d0 !important;  /* Azul para mes/año seleccionado */
+    color: #ffffff !important;
+}
+
+/* Días en el calendario */
+.dark .xdsoft_calendar td {
+    background-color: #1a2035 !important;  /* Fondo oscuro */
+    color: #ffffff !important;             /* Texto claro */
+    border: 1px solid #444c5c;
+}
+
+/* Días no seleccionables (deshabilitados) */
+.dark .xdsoft_calendar td.xdsoft_disabled {
+    color: #999999 !important;             /* Días deshabilitados en gris claro */
+}
+
+/* Día seleccionado */
+.dark .xdsoft_calendar .xdsoft_current {
+    color: #ffffff !important;
+    border-color: #4a82d0;
+}
+
+/* Hover sobre los días */
+.dark .xdsoft_calendar td:hover {
+    background-color: #344767 !important;  /* Fondo gris oscuro en hover */
+    color: #ffffff !important;
+}
+
+/* Horas en el timepicker */
+.dark .xdsoft_timepicker .xdsoft_time {
+    background-color: #1a2035 !important;  /* Fondo oscuro */
+    color: #ffffff !important;             /* Texto claro */
+}
+
+/* Hover sobre las horas */
+.dark .xdsoft_timepicker .xdsoft_time:hover {
+    background-color: #344767 !important;  /* Fondo gris oscuro en hover */
+    color: #ffffff !important;
+}
+
+/*!* Para el botón "Cerrar" *!*/
+/*.dark .xdsoft_close {*/
+/*    background-color: #4a82d0 !important;  !* Fondo azul *!*/
+/*    color: #ffffff !important;*/
+/*}*/
+
+/* Bordes del selector de tiempo */
+.dark .xdsoft_time_box {
+    border-color: #444c5c;                 /* Borde gris */
+}
+
+
+
+
+
 
 
 /*.table {*/
