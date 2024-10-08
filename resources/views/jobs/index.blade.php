@@ -62,7 +62,7 @@
                                                 <td style="width: 450px">
                                                     <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($job->job, 70, '...') }}</p>
                                                 </td>
-                                                <td><h6 class="mb-0 text-sm">0</h6></td>
+                                                <td><h6 class="mb-0 text-sm">{{  $job->attempts }}</h6></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->inittime)->format('d-m-y H:i') }}</span></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->endtime)->format('d-m-y H:i') }}</span></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ $job->totalmin }} min</span></td>
@@ -70,7 +70,7 @@
                                                     <a href="{{ route('jobs.edit', ['job' => $job]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('calls.destroy', $job) }}" method="POST">
+                                                    <form action="{{ route('jobs.destroy', $job) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar el trabajo?')" type="submit">Eliminar</button>

@@ -826,28 +826,32 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 }
 
-/*!* Color de fondo para la cabecera (meses y fechas) *!*/
-/*.dark .xdsoft_monthpicker, .xdsoft_year {*/
-/*    background-color: #1a2035;  !* Fondo oscuro *!*/
-/*    color: #ffffff;             !* Texto blanco *!*/
-/*}*/
-
 /* Ajustes para los meses */
-.dark .xdsoft_month, .xdsoft_year{
+.dark .xdsoft_month, .dark .xdsoft_year{
     background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
     color: #ffffff !important;             /* Texto claro para los meses */
     border: none;
 }
 
+.dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option {
+    background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
+    color: white !important;
+}
+
+.dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {
+    background-color: #344767 !important;  /* Color gris oscuro en hover */
+    color: white !important;
+}
+
 /* Meses en hover */
-.dark .xdsoft_month:hover, .xdsoft_year:hover {
+.dark .xdsoft_month:hover, .dark .xdsoft_year:hover {
     background-color: #344767 !important;  /* Color gris oscuro en hover */
     color: #ffffff !important;
 }
 
 /* Mes seleccionado */
 .dark .xdsoft_monthpicker .xdsoft_option .xdsoft_current,
-.xdsoft_year span.xdsoft_current {
+.dark .xdsoft_year span.xdsoft_current {
     background-color: #4a82d0 !important;  /* Azul para mes/año seleccionado */
     color: #ffffff !important;
 }
@@ -887,12 +891,6 @@ body{
     background-color: #344767 !important;  /* Fondo gris oscuro en hover */
     color: #ffffff !important;
 }
-
-/*!* Para el botón "Cerrar" *!*/
-/*.dark .xdsoft_close {*/
-/*    background-color: #4a82d0 !important;  !* Fondo azul *!*/
-/*    color: #ffffff !important;*/
-/*}*/
 
 /* Bordes del selector de tiempo */
 .dark .xdsoft_time_box {

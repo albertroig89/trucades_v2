@@ -62,9 +62,11 @@ class CreateJobRequest extends FormRequest
         DB::transaction(function () {
             $data = $this->validated();
 
-            $inittime = Carbon::createFromFormat('d-m-Y H:i', $data['inittime']);
-            $endtime = Carbon::createFromFormat('d-m-Y H:i', $data['endtime']);
-            $totalMinutes = $endtime->diffInMinutes($inittime);
+            $inittime = Carbon::createFromFormat('d-m-Y H:i', $data['inittime'])->setTimezone(config('app.timezone'));
+            $endtime = Carbon::createFromFormat('d-m-Y H:i', $data['endtime'])->setTimezone(config('app.timezone'));
+
+            $totalMinutes = abs($endtime->diffInMinutes($inittime));
+
 
             // Definir los datos del trabajo
             $jobData = [

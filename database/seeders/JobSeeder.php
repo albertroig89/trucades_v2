@@ -23,10 +23,6 @@ class JobSeeder extends Seeder
             'endtime' => now(),
             'totalmin' => 60,
             'clientname' => 'Example Client',
-            'queue' => 'office',
-            'payload' => 'Activar office',
-            'attempts' => 0,
-            'available_at' => 0,
         ]);
 
         Job::create([
@@ -37,10 +33,7 @@ class JobSeeder extends Seeder
             'endtime' => now(),
             'totalmin' => 30,
             'clientname' => 'Another Client',
-            'queue' => 'office',
-            'payload' => 'Configurar impresora',
-            'attempts' => 1,
-            'available_at' => 1,
+            'attempts' => 2,
         ]);
 
         Job::create([
@@ -51,10 +44,6 @@ class JobSeeder extends Seeder
             'endtime' => now(),
             'totalmin' => 20,
             'clientname' => 'No ho acabo de pillar',
-            'queue' => 'office',
-            'payload' => 'Revisar servidor de correo',
-            'attempts' => 0,
-            'available_at' => 0,
         ]);
 
         Job::create([
@@ -65,10 +54,7 @@ class JobSeeder extends Seeder
             'endtime' => now(),
             'totalmin' => 40,
             'clientname' => 'Perque tinc que especificar el nom del client',
-            'queue' => 'office',
-            'payload' => 'Configurar red interna',
-            'attempts' => 1,
-            'available_at' => 1,
+            'attempts' => 3,
         ]);
     }
 }
