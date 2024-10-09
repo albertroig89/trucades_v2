@@ -31,12 +31,12 @@
         {{--Favicon--}}
         <link rel="icon" href="{{ asset('images/AR_fnegre.png') }}" type="image/png">
 
-        {{--Script para determinar rutas absolutas para las imagenes que se cargan desde app.js--}}
+        {{--Script para determinar rutas absolutas para las imagenes que se cargan desde darkmode.js--}}
         <script>
             const baseUrl = "{{ asset('') }}";  // Definir baseUrl para app.js
         </script>
-        {{--Scripts propios para el funcionamiento de la pagina--}}
-        <script src="{{ asset('js/app.js') }}"></script>
+        {{--Scripts necessarios en el cambio de tema oscuro y claro--}}
+        <script src="{{ asset('js/darkmode.js') }}"></script>
 
     </head>
     <body class="custom body font-sans antialiased">
@@ -84,47 +84,8 @@
         <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
-        <script>
-            $(document).ready(function () {
-                // Obtener los valores antiguos si existen
-                {{--var oldInitTime = '{{ old('inittime') }}';--}}
-                {{--var oldEndTime = '{{ old('endtime') }}';--}}
-
-                // Inicialización para el campo inittime
-                $('#inittime').datetimepicker({
-                    format: 'd-m-Y H:i',                // Formato de fecha: día-mes-año hora:minuto
-                    startDate: new Date(new Date().getTime() - 60 * 60 * 1000),              // Establece la fecha de inicio como la fecha actual - 1 hora
-                    step: 30                            // Intervalo de 30 minutos para la selección de la hora
-                });
-
-                // Establecer el valor si existe uno viejo
-                // if (oldInitTime) {
-                //     $('#inittime').val(oldInitTime);
-                // }
-
-                // Inicialización para el campo endtime
-                $('#endtime').datetimepicker({
-                    format: 'd-m-Y H:i',                // Mismo formato para endtime
-                    startDate: new Date(),              // La fecha de inicio también será hoy
-                    step: 30                            // Intervalo de 30 minutos para la hora
-                });
-
-                // Establecer el valor si existe uno viejo
-                // if (oldEndTime) {
-                //     $('#endtime').val(oldEndTime);
-                // }
-            });
-        </script>
-
-    <script>
-        $('#call-form').submit(function(e) {
-            e.preventDefault();
-            console.log('Formulario enviado');
-            console.log($('#inittime').val());
-            console.log($('#endtime').val());
-            this.submit();
-        });
-    </script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/datetimepicker.js') }}"></script>
     </body>
 
 </html>
