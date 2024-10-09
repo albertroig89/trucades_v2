@@ -43,6 +43,7 @@ class CreateJobRequest extends FormRequest
         return [
             'clientname.required' => 'Selecciona un cliente o escribe uno',
             'clientname.max' => 'El nombre del cliente no puede exceder los 255 caracteres',
+            'clientname.string' => 'El nombre del cliente debe ser una cadena de texto',
             'job.required' => 'Introduce la descripción del trabajo realizado',
             'inittime.required' => 'Introduce la hora de inicio del trabajo',
             'inittime.date_format' => 'El formato de la hora de inicio no es válido',

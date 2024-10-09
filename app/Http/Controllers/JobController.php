@@ -129,7 +129,7 @@ class JobController extends Controller
     public function histjob()
     {
         $histjobs = HistJob::orderBy('created_at', 'DESC')->paginate(50);
-        $title = "Historic de feines";
+        $title = "Historico de trabajos";
 
         return view('jobs.histjobs', compact('title', 'histjobs'));
     }
