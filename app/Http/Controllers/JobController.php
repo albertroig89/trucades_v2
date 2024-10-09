@@ -11,7 +11,6 @@ use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\CreateJobFromCallRequest;
 use App\Models\Job;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -69,10 +68,11 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
+        $title = 'Editar trabajo';
         $clients = Client::all();
         $users = User::all();
 
-        return view('jobs.edit', compact('job', 'clients', 'users'));
+        return view('jobs.edit', compact('title', 'job', 'clients', 'users'));
     }
 
     /**
@@ -116,19 +116,10 @@ class JobController extends Controller
      */
     public function update(Job $job, UpdateJobRequest $request)
     {
-        $data = $request->validated();
-
-        $inittime = Carbon::createFromFormat('d-m-Y H:i', $data['inittime']);
-        $endtime = Carbon::createFromFormat('d-m-Y H:i', $data['endtime']);
-
-        $data['inittime'] = $inittime;
-        $data['endtime'] = $endtime;
-        $data['totalmin'] = $endtime->diffInMinutes($inittime);
-
-        $job->update($data);
-
+        $request->updateJob($job);
         return redirect()->route('jobs.index');
     }
+
 
     /**
      * Muestra el historial de trabajos.

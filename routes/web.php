@@ -55,7 +55,9 @@ Route::post('/jobs', [JobController::class, 'store'])
     ->middleware('auth')
     ->name('jobs.store');
 
-Route::post('/jobs/{job}', [JobController::class, 'jobfromcall']);
+Route::post('/jobs/{job}', [JobController::class, 'jobfromcall'])
+    ->middleware(['auth'])
+    ->name('jobs.jobfromcall');
 
 Route::get('/jobs/histjobs', [JobController::class, 'histjob'])
     ->middleware(['auth'])

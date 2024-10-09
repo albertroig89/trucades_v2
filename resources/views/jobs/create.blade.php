@@ -44,8 +44,6 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-
-
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="inittime">Inicio del trabajo</label>
                                                     <input type="text" class="form-control @error('inittime') is-invalid @enderror" name="inittime" value="{{ old('inittime') }}" id="inittime"/>
@@ -55,7 +53,6 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="endtime">Final del trabajo</label>
                                                     <input type="text" class="form-control @error('endtime') is-invalid @enderror" name="endtime" value="{{ old('endtime') }}" id="endtime"/>
@@ -65,10 +62,6 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-
-
-
-
 
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="job">Descripción del trabajo</label>
@@ -84,7 +77,7 @@
                                                         <button type="submit" class="btn btn-default btn-sm w-auto">Crear</button>
                                                     </div>
                                                     <div>
-                                                        <a href="{{ route('dashboard') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
+                                                        <a href="{{ route('jobs.index') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
                                                     </div>
                                                 </div>
                                             </div>

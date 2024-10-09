@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Job;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 
 class UpdateJobRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class UpdateJobRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,8 +25,7 @@ class UpdateJobRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
-            'client_id' => 'nullable',
+            'client_id' => 'nullable|exists:clients,id',
             'job' => 'required|string',
             'inittime' => 'required|date_format:d-m-Y H:i',
             'endtime' => 'required|date_format:d-m-Y H:i|after:inittime',
@@ -32,21 +34,57 @@ class UpdateJobRequest extends FormRequest
     }
 
     /**
-     * Get the custom validation messages.
+     * Custom validation messages.
      *
-     * @return array
+     * @return array<string, string>
      */
     public function messages(): array
     {
         return [
-            'user_id.required' => 'Selecciona un empleado',
             'clientname.required' => 'Selecciona un cliente o escribe uno',
-            'job.required' => 'Introduce el trabajo realizado',
-            'inittime.required' => 'Introduce el inicio del trabajo',
-            'inittime.date_format' => 'El formato del inicio del trabajo es inválido',
-            'endtime.required' => 'Introduce el final del trabajo',
-            'endtime.date_format' => 'El formato del final del trabajo es inválido',
-            'endtime.after' => 'El tiempo de finalización debe ser después del inicio',
+            'clientname.max' => 'El nombre del cliente no puede exceder los 255 caracteres',
+            'job.required' => 'Introduce la descripción del trabajo realizado',
+            'inittime.required' => 'Introduce la hora de inicio del trabajo',
+            'inittime.date_format' => 'El formato de la hora de inicio no es válido',
+            'endtime.required' => 'Introduce la hora de finalización del trabajo',
+            'endtime.date_format' => 'El formato de la hora de finalización no es válido',
+            'endtime.after' => 'La hora de finalización debe ser posterior a la hora de inicio',
         ];
     }
+
+    /**
+     * Update the existing job with the validated request data.
+     *
+     * @param Job $job
+     * @return void
+     */
+    public function updateJob(Job $job): void
+    {
+        DB::transaction(function () use ($job) {
+            $data = $this->validated();
+
+            $inittime = Carbon::createFromFormat('d-m-Y H:i', $data['inittime'])->setTimezone(config('app.timezone'));
+            $endtime = Carbon::createFromFormat('d-m-Y H:i', $data['endtime'])->setTimezone(config('app.timezone'));
+
+            $totalMinutes = abs($endtime->diffInMinutes($inittime));
+
+            // Actualizar los datos del trabajo
+            $jobData = [
+                'job' => $data['job'],
+                'inittime' => $inittime,
+                'endtime' => $endtime,
+                'totalmin' => $totalMinutes,
+                'clientname' => $data['clientname'],
+            ];
+
+            // Agregar client_id si está presente
+            if (!empty($data['client_id'])) {
+                $jobData['client_id'] = $data['client_id'];
+            }
+
+            // Actualizar el trabajo existente
+            $job->update($jobData);
+        });
+    }
 }
+

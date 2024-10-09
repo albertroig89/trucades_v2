@@ -86,25 +86,45 @@
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
+                // Obtener los valores antiguos si existen
+                {{--var oldInitTime = '{{ old('inittime') }}';--}}
+                {{--var oldEndTime = '{{ old('endtime') }}';--}}
+
                 // Inicialización para el campo inittime
                 $('#inittime').datetimepicker({
-                    format: 'd-m-Y H:i',           // Formato de fecha: día-mes-año hora:minuto
-                    value: new Date(),             // Establece la fecha y hora actual como valor inicial
-                    minDate: 0,                    // No permite seleccionar fechas anteriores a hoy
-                    startDate: new Date(),         // Establece la fecha de inicio como la fecha actual
-                    step: 30                       // Intervalo de 30 minutos para la selección de la hora
+                    format: 'd-m-Y H:i',                // Formato de fecha: día-mes-año hora:minuto
+                    startDate: new Date(new Date().getTime() - 60 * 60 * 1000),              // Establece la fecha de inicio como la fecha actual - 1 hora
+                    step: 30                            // Intervalo de 30 minutos para la selección de la hora
                 });
+
+                // Establecer el valor si existe uno viejo
+                // if (oldInitTime) {
+                //     $('#inittime').val(oldInitTime);
+                // }
 
                 // Inicialización para el campo endtime
                 $('#endtime').datetimepicker({
-                    format: 'd-m-Y H:i',           // Mismo formato para endtime
-                    value: new Date(),             // Establece la fecha y hora actual
-                    minDate: 0,                    // No permite seleccionar fechas anteriores a hoy
-                    startDate: new Date(),         // La fecha de inicio también será hoy
-                    step: 30                       // Intervalo de 30 minutos para la hora
+                    format: 'd-m-Y H:i',                // Mismo formato para endtime
+                    startDate: new Date(),              // La fecha de inicio también será hoy
+                    step: 30                            // Intervalo de 30 minutos para la hora
                 });
+
+                // Establecer el valor si existe uno viejo
+                // if (oldEndTime) {
+                //     $('#endtime').val(oldEndTime);
+                // }
             });
         </script>
+
+    <script>
+        $('#call-form').submit(function(e) {
+            e.preventDefault();
+            console.log('Formulario enviado');
+            console.log($('#inittime').val());
+            console.log($('#endtime').val());
+            this.submit();
+        });
+    </script>
     </body>
 
 </html>

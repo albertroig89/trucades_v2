@@ -60,39 +60,6 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function () {
-    if ($('#inittime').length) {
-        $('#inittime').datetimepicker({
-            format: 'd-m-y H:i',
-            mask: '39-19-99 29:59'
-        });
-    }
-
-    if ($('#endtime').length) {
-        $('#endtime').datetimepicker({
-            format: 'd-m-y H:i',
-            mask: '39-19-99 29:59'
-        });
-    }
-
-    if ($('#inittime2').length) {
-        $('#inittime2').datetimepicker({
-            format: 'd-m-y H:i'
-        });
-    }
-
-    if ($('#endtime2').length) {
-        $('#endtime2').datetimepicker({
-            format: 'd-m-y H:i'
-        });
-    }
-
-    // Establecer la configuración regional si es necesario
-    if ($.datetimepicker) {
-        $.datetimepicker.setLocale('es');
-    }
-});
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
