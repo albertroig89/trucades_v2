@@ -73,18 +73,22 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="form-group input-group mb-4 input-group-static">
-                                                    <input class="form-check-input" type="checkbox" value="{{ $call->id }}" id="delete" name="delete" checked>
-                                                    <label class="form-check-label" for="flexCheckDefault">
-                                                        Borrar llamada
-                                                    </label>
-                                                </div>
+{{--                                                <div class="form-group input-group mb-4 input-group-static">--}}
+                                                    <div class="form-group input-group mb-4 input-group-static">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="{{ $call->id }}" id="delete" name="delete" checked>
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                Borrar llamada
+                                                            </label>
+                                                        </div>
+                                                    </div>
+{{--                                                </div>--}}
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
                                                         <button type="submit" class="btn btn-default btn-sm w-auto">Crear</button>
                                                     </div>
                                                     <div>
-                                                        <a href="{{ route('jobs.index') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
+                                                        <a href="{{ route('dashboard') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
                                                     </div>
                                                 </div>
                                             </div>

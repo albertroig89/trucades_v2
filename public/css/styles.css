@@ -817,6 +817,23 @@ body{
 }
 
 
+/*!* Hover sobre los días *!*/
+/*.xdsoft_calendar td:hover {*/
+/*    background-color: #1a2035 !important;  !* Fondo gris oscuro en hover *!*/
+/*    color: #ffffff !important;*/
+/*}*/
+
+/*.xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {*/
+/*    background-color: #1a2035 !important;  !* Fondo gris oscuro en hover *!*/
+/*    color: #ffffff !important;*/
+/*}*/
+
+/*!* Día seleccionado *!*/
+/*.xdsoft_calendar .xdsoft_current {*/
+/*    border-color: #4a82d0 !important;  !* Azul para mes/año seleccionado *!*/
+/*}*/
+
+
 
 /* Ajustes generales para el datetimepicker en tema oscuro */
 .dark .xdsoft_datetimepicker {
@@ -898,8 +915,29 @@ body{
 }
 
 
+/*Custom styles for light form check*/
+.form-check {
+    margin-left: -1rem !important;
+}
 
+.form-check-input{
+    background-color: #7b809a !important;
+    border-color: black !important;
+}
 
+.form-check-input:checked {
+    background-color: #344767 !important;
+}
+
+/*Custom styles for dark form check*/
+.dark .form-check-input {
+    background-color: #1a2035 !important;
+    border-color: #7b809a !important;
+}
+
+.dark .form-check-input:checked {
+    background-color: #344767 !important;
+}
 
 
 
