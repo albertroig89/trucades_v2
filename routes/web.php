@@ -98,11 +98,11 @@ Route::delete('/jobs/histjobs/{histjob}', [JobController::class, 'histdestroy'])
 //Route::get('/dashboard', [HomeController::class, 'index'])
 //    ->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [HomeController::class, 'index'])
+Route::get('/', [CallController::class, 'index'])
     ->middleware(['auth'])
-    ->name('dashboard');
+    ->name('calls.index');
 
-route::post('/change-view-preference', [HomeController::class, 'changeViewPreference'])->name('changeViewPreference');
+route::post('/change-view-preference', [CallController::class, 'changeViewPreference'])->name('changeViewPreference');
 
 Route::get('/calls/new', [CallController::class, 'create'])
     ->middleware(['auth'])

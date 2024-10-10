@@ -107,7 +107,7 @@
                                                         <button type="submit" class="btn btn-default btn-sm w-auto">Editar</button>
                                                     </div>
                                                     <div>
-                                                        <a href="{{ route('dashboard') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
+                                                        <a href="{{ route('calls.index') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
                                                     </div>
                                                 </div>
                                             </div>

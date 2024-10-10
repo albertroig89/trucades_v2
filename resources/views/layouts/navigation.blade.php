@@ -5,7 +5,7 @@
             <nav class="navbar custom-navbar navbar-expand-lg border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 start-0 end-0 mx-4">
                 <div class="container-fluid">
                     <!-- Logo -->
-                    <a title="Desarrollado por Albert Roig" data-placement="bottom" href="{{ route('dashboard') }}">
+                    <a title="Desarrollado por Albert Roig" data-placement="bottom" href="{{ route('calls.index') }}">
                         <img src="{{ asset('images/ARl_fnegre.png') }}" alt="Logo" class="navbar-logo">
                     </a>
 
@@ -34,7 +34,7 @@
                                             <i class="material-icons me-2 text-md">add_ic_call</i>
                                             Nueva llamada
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('dashboard')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('calls.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons me-2 text-md">visibility</i>
                                             Ver llamadas
                                         </x-dropdown-link>
@@ -45,7 +45,7 @@
                                             <i class="material-icons me-2 text-md">add_ic_call</i>
                                             Nueva llamada
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('dashboard')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('calls.index')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             <i class="material-icons me-2 text-md">visibility</i>
                                             Ver llamadas
                                         </x-dropdown-link>
