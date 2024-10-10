@@ -30,11 +30,9 @@ class CallController extends Controller
     public function jobfromcall(Call $call)
     {
         $clients = Client::all();
-        $users = User::all();
-        $stats = Stat::all();
-        $phones = Phone::all();
+        $title = 'Nuevo trabajo';
 
-        return view('calls.jobfromcall', compact('call', 'clients', 'users', 'stats', 'phones'));
+        return view('calls.jobfromcall', compact('call', 'clients', 'title'));
     }
 
     // Método para mostrar el formulario de edición de llamada

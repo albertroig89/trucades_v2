@@ -25,12 +25,11 @@ class CreateJobFromCallRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',
             'client_id' => 'nullable|exists:clients,id',
-            'callinf' => 'required|string',
+            'job' => 'required|string',
             'inittime' => 'required|date_format:d-m-Y H:i',
-            'endtime' => 'required|date_format:d-m-Y H:i',
-            'clientname' => 'required_if:client_id,null|string',
+            'endtime' => 'required|date_format:d-m-Y H:i|after:inittime',
+            'clientname' => 'required|string|max:255',
         ];
     }
 
@@ -42,15 +41,15 @@ class CreateJobFromCallRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required' => 'Selecciona un empleat',
-            'user_id.exists' => 'L\'empleat seleccionat no existeix',
-            'callinf.required' => 'Introdueix la informació de la feina',
-            'inittime.required' => 'Introdueix el començament de la feina',
-            'inittime.date_format' => 'El format de la data d\'inici no és vàlid',
-            'endtime.required' => 'Introdueix el final de la feina',
-            'endtime.date_format' => 'El format de la data de finalització no és vàlid',
-            'clientname.required_if' => 'Selecciona un client o escriu-ne un',
-            'clientname.string' => 'El nom del client ha de ser una cadena de text',
+            'clientname.required' => 'Selecciona un cliente o escribe uno',
+            'clientname.max' => 'El nombre del cliente no puede exceder los 255 caracteres',
+            'clientname.string' => 'El nombre del cliente debe ser una cadena de texto',
+            'job.required' => 'Introduce la descripción del trabajo realizado',
+            'inittime.required' => 'Introduce la hora de inicio del trabajo',
+            'inittime.date_format' => 'El formato de la hora de inicio no es válido',
+            'endtime.required' => 'Introduce la hora de finalización del trabajo',
+            'endtime.date_format' => 'El formato de la hora de finalización no es válido',
+            'endtime.after' => 'La hora de finalización debe ser posterior a la hora de inicio',
         ];
     }
 
@@ -70,12 +69,12 @@ class CreateJobFromCallRequest extends FormRequest
 
             // Crear el trabajo
             Job::create([
-                'user_id' => $data['user_id'],
+                'user_id' => auth()->id(), // Asignamos el ID del usuario autenticado
                 'client_id' => $data['client_id'] ?? null,
-                'job' => $data['callinf'],
+                'job' => $data['job'],
                 'inittime' => $inittime,
                 'endtime' => $endtime,
-                'totalmin' => $endtime->diffInMinutes($inittime),
+                'totalmin' => abs($endtime->diffInMinutes($inittime)),
                 'clientname' => $data['clientname'],
             ]);
         });
