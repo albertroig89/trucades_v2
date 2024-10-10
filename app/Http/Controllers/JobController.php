@@ -60,6 +60,20 @@ class JobController extends Controller
         return view('jobs.create', compact('title', 'clients', 'users'));
     }
 
+
+    /**
+     * Metodo para mostrar el formulario de creación de trabajo desde una llamada
+     *
+     * @return \Illuminate\View\View
+     */
+    public function jobfromcallindex(Call $call)
+    {
+        $clients = Client::all();
+        $title = 'Nuevo trabajo';
+
+        return view('calls.jobfromcall', compact('call', 'clients', 'title'));
+    }
+
     /**
      * Muestra el formulario para editar un trabajo existente.
      *

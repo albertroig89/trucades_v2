@@ -75,4 +75,3 @@
         </div>
     </main>
 </x-app-layout>
-

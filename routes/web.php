@@ -51,6 +51,10 @@ Route::get('/jobs/new', [JobController::class, 'create'])
     ->middleware(['auth'])
     ->name('jobs.create');
 
+Route::get('/jobs/{call}', [JobController::class, 'jobfromcallindex'])
+    ->middleware(['auth'])
+    ->name('jobs.jobfromcallindex');
+
 Route::post('/jobs', [JobController::class, 'store'])
     ->middleware('auth')
     ->name('jobs.store');
@@ -107,10 +111,6 @@ Route::get('/calls/new', [CallController::class, 'create'])
 Route::post('/calls', [CallController::class, 'store'])
     ->middleware(['auth'])
     ->name('calls.store');
-
-Route::get('/calls/{call}', [CallController::class, 'jobfromcall'])
-    ->middleware(['auth'])
-    ->name('calls.jobfromcall');
 
 Route::get('/calls/{call}/edit', [CallController::class, 'edit'])
     ->where('call', '\d+')

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateCallRequest;
 use App\Models\Call;
 use App\Models\Client;
-use App\Models\Phone;
 use App\Models\Stat;
 use App\Models\User;
 use App\Http\Requests\CreateCallRequest;
@@ -14,7 +13,7 @@ use Illuminate\Http\Request;
 class CallController extends Controller
 {
 
-    // Método para mostrar el formulario de creación de llamada
+    // Metodo para mostrar el formulario de creación de llamada
     public function create()
     {
         $title = 'Nueva llamada';
@@ -26,16 +25,7 @@ class CallController extends Controller
         return view('calls.create', compact('title', 'clients', 'users', 'stats', 'nStat'));
     }
 
-    // Método para mostrar el formulario de creación de trabajo desde una llamada
-    public function jobfromcall(Call $call)
-    {
-        $clients = Client::all();
-        $title = 'Nuevo trabajo';
-
-        return view('calls.jobfromcall', compact('call', 'clients', 'title'));
-    }
-
-    // Método para mostrar el formulario de edición de llamada
+    // Metodo para mostrar el formulario de edición de llamada
     public function edit(Call $call)
     {
         $title = 'Editar llamada';
@@ -46,7 +36,7 @@ class CallController extends Controller
         return view('calls.edit', compact('title', 'call', 'clients', 'users', 'stats'));
     }
 
-    // Método para almacenar una nueva llamada
+    // Metodo para almacenar una nueva llamada
     public function store(CreateCallRequest $request)
     {
         $request->createCall();
@@ -54,7 +44,7 @@ class CallController extends Controller
     }
 
 
-    // Método para actualizar una llamada existente
+    // Metodo para actualizar una llamada existente
     public function update(UpdateCallRequest $request, Call $call)
     {
         // Obtenemos los datos validados del request
@@ -74,7 +64,7 @@ class CallController extends Controller
         return redirect()->route('dashboard');
     }
 
-    // Método para eliminar una llamada existente
+    // Metodo para eliminar una llamada existente
     public function destroy(Call $call)
     {
         $call->delete();

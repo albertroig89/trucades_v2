@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Client;
 use Illuminate\Database\Seeder;
 use App\Models\Job;
 
@@ -14,46 +15,52 @@ class JobSeeder extends Seeder
      */
     public function run()
     {
+        $client1 = Client::find(1); // Recuperar el cliente con client_id = 1
+        $client2 = Client::find(2);
+        $client3 = Client::find(3);
+        $client4 = Client::find(4);
+
+
         // Insertar trabajos específicos
         Job::create([
             'user_id' => 2,
-            'client_id' => 3,
+            'client_id' => $client3->id,
             'job' => 'Activar office',
             'inittime' => now()->addMinutes(-60),
             'endtime' => now(),
             'totalmin' => 60,
-            'clientname' => 'Example Client',
+            'clientname' => $client3->name,
         ]);
 
         Job::create([
             'user_id' => 2,
-            'client_id' => 1,
+            'client_id' => $client1->id,
             'job' => 'Configurar impresora',
             'inittime' => now()->addMinutes(-30),
             'endtime' => now(),
             'totalmin' => 30,
-            'clientname' => 'Another Client',
+            'clientname' => $client1->name,
             'attempts' => 2,
         ]);
 
         Job::create([
             'user_id' => 2,
-            'client_id' => 2,
+            'client_id' => $client2->id,
             'job' => 'Revisar servidor de correo',
             'inittime' => now()->addMinutes(-20),
             'endtime' => now(),
             'totalmin' => 20,
-            'clientname' => 'No ho acabo de pillar',
+            'clientname' => $client2->name,
         ]);
 
         Job::create([
             'user_id' => 2,
-            'client_id' => 4,
+            'client_id' => $client4->id,
             'job' => 'Configurar red interna',
             'inittime' => now()->addMinutes(-40),
             'endtime' => now(),
             'totalmin' => 40,
-            'clientname' => 'Perque tinc que especificar el nom del client',
+            'clientname' => $client4->name,
             'attempts' => 3,
         ]);
     }

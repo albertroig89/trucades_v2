@@ -34,7 +34,7 @@
                                     @foreach ($calls as $call)
 
 
-                                        <tr onclick="window.location='{{ route('calls.jobfromcall', ['call' => $call]) }}';" class="custom-table-row">
+                                        <tr onclick="window.location='{{ route('jobs.jobfromcallindex', ['call' => $call]) }}';" class="custom-table-row">
                                             <th>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
