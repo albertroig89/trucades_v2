@@ -55,13 +55,28 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\View\View
      */
-    public function edit(User $user)
+    public function edit(User $user = null)
     {
-        $title = 'Editar usuario';
+        // Si no se proporciona un usuario, utiliza el usuario autenticado
+        $user = $user ?? auth()->user();
+
+        // Determina si es el propio perfil del usuario autenticado
+        if ($user->is(auth()->user())) {
+            // Vista para el perfil del usuario autenticado
+            $title = 'Editar perfil';
+            $view = 'profile.edit'; // Asegúrate de que esta sea la vista correcta
+        } else {
+            // Vista para editar otro usuario
+            $title = 'Editar usuario';
+            $view = 'users.edit';
+        }
+
         $departments = Department::all();
 
-        return view('users.edit', compact('title', 'departments', 'user'));
+        // Retorna la vista correspondiente
+        return view($view, compact('title', 'departments', 'user'));
     }
+
 
     /**
      * Almacena un nuevo usuario en la base de datos.

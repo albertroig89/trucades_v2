@@ -19,8 +19,8 @@
                                         <form role="form" action="{{ route('users.store') }}" id="call-form" method="post" autocomplete="off" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group card-body">
+                                                {{--Div for user name--}}
                                                 <div class="form-group input-group mb-4 input-group-static">
-
                                                     <!-- Input text for user name -->
                                                     <label class="form-label" for="name">Nombre de usuario</label>
                                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
@@ -31,6 +31,7 @@
                                                         </div>
                                                     @enderror
                                                 </div>
+                                                {{--Div for email--}}
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="email">E-mail</label>
                                                     <!-- Input email for email -->
@@ -42,6 +43,7 @@
                                                         </div>
                                                     @enderror
                                                 </div>
+                                                {{--Div for department select--}}
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="department_id">Departamento</label>
                                                     <!-- Select for department_id -->
@@ -61,6 +63,7 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+                                                {{--Div for avatar--}}
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="avatar">Avatar</label>
                                                     <!-- Input file for avatar -->
@@ -72,6 +75,7 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+                                                {{--Div for password--}}
                                                 <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
                                                     <label class="form-label" for="password">Contraseña</label>
                                                     <!-- Input password -->
@@ -87,6 +91,15 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+                                                {{--Div for password confirmation--}}
+                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                    <label class="form-label" for="password_confirmation">Confirmar contraseña</label>
+                                                    <input name="password_confirmation" type="password" class="form-control" id="password_confirmation" value="{{ old('password_confirmation') }}" style="padding-right: 40px;">
+                                                    <span class="material-icons" id="toggleConfirmIcon">
+                                                        visibility
+                                                    </span>
+                                                </div>
+
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>

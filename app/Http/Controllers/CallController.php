@@ -18,13 +18,6 @@ use Illuminate\Http\Request;
 class CallController extends Controller
 {
 
-
-
-
-
-
-
-
     /**
      * Show the application dashboard.
      *
@@ -111,12 +104,6 @@ class CallController extends Controller
     }
 
 
-
-
-
-
-
-
     // Metodo para mostrar el formulario de creación de llamada
     public function create()
     {
@@ -144,7 +131,7 @@ class CallController extends Controller
     public function store(CreateCallRequest $request)
     {
         $request->createCall();
-        return redirect()->route('dashboard');
+        return redirect()->route('calls.index');
     }
 
 
@@ -172,7 +159,7 @@ class CallController extends Controller
     public function destroy(Call $call)
     {
         $call->delete();
-        return redirect()->route('dashboard');
+        return redirect()->route('calls.index');
     }
 }
 

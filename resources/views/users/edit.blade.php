@@ -86,6 +86,14 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+                                                {{--Div for password confirmation--}}
+                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                    <label class="form-label" for="password_confirmation">Confirmar contraseña</label>
+                                                    <input name="password_confirmation" type="password" class="form-control" id="password_confirmation" value="{{ old('password_confirmation') }}" style="padding-right: 40px;">
+                                                    <span class="material-icons" id="toggleConfirmIcon">
+                                                        visibility
+                                                    </span>
+                                                </div>
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>

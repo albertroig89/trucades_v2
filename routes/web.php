@@ -33,6 +33,10 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])
     ->middleware(['auth'])
     ->name('users.edit');
 
+Route::get('/profile', [UserController::class, 'edit'])
+    ->middleware(['auth'])
+    ->name('users.profile.edit');
+
 Route::put('/users/{user}', [UserController::class, 'update'])
     ->middleware(['auth'])
     ->name('users.update');
@@ -166,9 +170,9 @@ Route::post('/clients/import', [ClientController::class, 'import']);
 //----------------------------------------------------------------------------------------------SETTINGS
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

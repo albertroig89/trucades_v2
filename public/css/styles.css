@@ -666,13 +666,31 @@ body{
     color: white;
 }
 
-.dark #toggleIcon {
+#toggleIcon {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     z-index: 10; /* Asegúrate de que el ícono esté por encima del input */
+    color: #7b809a; /* Asegúrate de que el color sea gris */
+}
+
+.dark #toggleIcon {
+    color: #495057; /* Asegúrate de que el color sea gris */
+}
+
+#toggleConfirmIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10; /* Asegúrate de que el ícono esté por encima del input */
+    color: #7b809a; /* Asegúrate de que el color sea gris */
+}
+
+.dark #toggleConfirmIcon {
     color: #495057; /* Asegúrate de que el color sea gris */
 }
 

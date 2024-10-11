@@ -26,7 +26,7 @@ class CreateUserRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:8|confirmed',
             'department_id' => 'required|exists:departments,id',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
@@ -47,8 +47,8 @@ class CreateUserRequest extends FormRequest
             'email.email' => 'Introduce un correo electrónico válido',
             'email.unique' => 'El correo electrónico ya existe',
             'password.required' => 'Especifica una contraseña',
-            'password.min' => 'La contraseña tiene que tener un mínimo de 6 caracteres',
-// 'password.confirmed' => 'Las contraseñas no coinciden',
+            'password.min' => 'La contraseña tiene que tener un mínimo de 8 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden',
             'department_id.required' => 'El departamento es obligatorio',
             'department_id.exists' => 'El departamento seleccionado no existe',
             'avatar.image' => 'El avatar tiene que ser una imagen',

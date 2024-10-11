@@ -11,22 +11,32 @@ $(document).ready(function() {
 });
 
 
-//Script para alternar el tipo de input entre "password" y "text"
+// Script para alternar el tipo de input entre "password" y "text"
 document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
+    const passwordConfirmInput = document.getElementById('password_confirmation');
     const toggleIcon = document.getElementById('toggleIcon');
+    const toggleConfirmIcon = document.getElementById('toggleConfirmIcon');
 
-    // Verifica si los elementos existen antes de añadir el listener
+    // Alternar visibilidad del campo de contraseña principal
     if (passwordInput && toggleIcon) {
         toggleIcon.addEventListener('click', function () {
-            // Alternar el tipo de input entre "password" y "text"
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            // Cambiar el ícono entre "visibility" y "visibility_off"
+            this.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+        });
+    }
+
+    // Alternar visibilidad del campo de confirmación de contraseña
+    if (passwordConfirmInput && toggleConfirmIcon) {
+        toggleConfirmIcon.addEventListener('click', function () {
+            const type = passwordConfirmInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordConfirmInput.setAttribute('type', type);
             this.textContent = type === 'password' ? 'visibility' : 'visibility_off';
         });
     }
 });
+
 
 
 //Script para inicializar el select2

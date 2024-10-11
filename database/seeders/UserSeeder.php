@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Cristina Dretera',
-            'email' => 'administracio@gmail.com',
+            'email' => 'administracion@gmail.com',
             'password' => bcrypt('123456'),
             'department_id' => $admId,
             'avatar' => 'assets/img/team-5.jpg',

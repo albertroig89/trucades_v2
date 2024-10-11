@@ -192,7 +192,7 @@
                                 </a>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuUser">
                                     <div class="d-none d-lg-block">
-                                        <x-dropdown-link :href="route('profile.edit')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('users.profile.edit')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             {{ __('Perfil') }}
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('logout') }}">
@@ -206,7 +206,7 @@
                                     </div>
 
                                     <div class="d-lg-none">
-                                        <x-dropdown-link :href="route('profile.edit')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                        <x-dropdown-link :href="route('users.profile.edit')" class="custom-dropdown-item dropdown-item border-radius-md">
                                             {{ __('Perfil') }}
                                         </x-dropdown-link>
 

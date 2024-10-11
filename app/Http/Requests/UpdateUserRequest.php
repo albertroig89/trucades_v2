@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $this->route('user')->id, // Permitir el mismo email del usuario editado
-            'password' => 'nullable|string|min:6', // Password es opcional
+            'password' => 'nullable|string|min:8|confirmed', // Password es opcional
             'department_id' => 'required|exists:departments,id',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
@@ -44,7 +44,8 @@ class UpdateUserRequest extends FormRequest
             'email.required' => 'Introduce un correo electrónico',
             'email.email' => 'Introduce un correo electrónico válido',
             'email.unique' => 'El correo electrónico ya existe',
-            'password.min' => 'La contraseña tiene que tener un mínimo de 6 caracteres',
+            'password.min' => 'La contraseña tiene que tener un mínimo de 8 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden',
             'department_id.required' => 'El departamento es obligatorio',
             'department_id.exists' => 'El departamento seleccionado no existe',
             'avatar.image' => 'El avatar tiene que ser una imagen',
