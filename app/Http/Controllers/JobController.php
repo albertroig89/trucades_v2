@@ -15,23 +15,21 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Muestra una lista de trabajos.
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        // Obtener la preferencia de vista desde la solicitud
+        $viewType = $request->get('viewType', 'index'); // 'index' por defecto
+
         $jobs = Job::orderBy('created_at', 'DESC')->paginate(50);
         $users = User::all();
         $title = 'Trabajos';
 
-        return view('jobs.index', compact('title', 'jobs', 'users'));
+        return view("jobs.$viewType", compact('title', 'jobs', 'users'));
     }
 
     /**
@@ -66,7 +64,7 @@ class JobController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function jobfromcallindex(Call $call)
+    public function jobfromcallform(Call $call)
     {
         $clients = Client::all();
         $title = 'Nuevo trabajo';

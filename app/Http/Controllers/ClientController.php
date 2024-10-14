@@ -18,10 +18,13 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
+        // Obtener la preferencia de vista desde la solicitud
+        $viewType = $request->get('viewType', 'index'); // 'index' por defecto
+
         $clients = Client::name($request->get('name'))->orderBy('name')->paginate(50);
         $phones = Phone::all();
         $title = 'Clientes';
-        return view('clients.index', compact('title', 'clients', 'phones'));
+        return view("clients.$viewType", compact('title', 'clients', 'phones'));
     }
 
     public function create()

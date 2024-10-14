@@ -33,7 +33,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach ($jobs as $job)
-                                            <tr class="custom-table-row">
+                                            <tr onclick="window.location='{{ route('jobs.show', ['job' => $job]) }}';" class="custom-table-row">
                                                 <th>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
@@ -73,7 +73,7 @@
                                                     <form action="{{ route('jobs.destroy', $job) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar el trabajo?')" type="submit">Eliminar</button>
+                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar el trabajo?')" type="submit">Eliminar</button>
                                                     </form>
                                                 </td>
                                             </tr>

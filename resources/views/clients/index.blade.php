@@ -61,9 +61,9 @@
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('clients.destroy', $client) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar el cliente?')" type="submit">Eliminar</button>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar el cliente?')" type="submit">Eliminar</button>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -57,8 +57,8 @@
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('users.destroy', $user) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar el usuario?')" type="submit">Eliminar</button>
                                                     </form>
                                                 </td>

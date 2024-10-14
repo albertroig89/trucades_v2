@@ -15,12 +15,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        // Obtener la preferencia de vista desde la solicitud
+        $viewType = $request->get('viewType', 'index'); // 'index' por defecto
+
         $users = User::all();
         $title = 'Usuarios';
 
-        return view('users.index', compact('title', 'users'));
+        return view("users.$viewType", compact('title', 'users'));
     }
 
     /**
