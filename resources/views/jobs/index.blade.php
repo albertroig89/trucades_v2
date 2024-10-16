@@ -1,7 +1,7 @@
 <x-app-layout>
     <main>
 
-        @include('layouts.partials.tablesheader')
+        @include('jobs.partials.jobsheader')
 
         <div class="container-fluid py-4">
             <div class="row">

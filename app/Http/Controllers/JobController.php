@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Call;
 use App\Models\Client;
+use App\Models\Department;
 use App\Models\HistJob;
 use App\Models\HistJob2;
 use App\Http\Requests\CreateJobRequest;
@@ -25,13 +26,61 @@ class JobController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::orderBy('created_at', 'DESC')->paginate(50);
+//        $jobs = Job::orderBy('created_at', 'DESC')->paginate(50);
         $users = User::all();
         $title = 'Trabajos';
 
-        return view('jobs.index', compact('title', 'jobs', 'users'));
+
+
+
+
+
+        $techId = Department::where('title', 'Tecnico')->value('id');
+        $admId = Department::where('title', 'Administración')->value('id');
+        $globId = Department::where('title', 'Global')->value('id');
+
+        $globalId = User::where('name', 'Global')->value('id');
+        $alljobs = false;
+
+        // Lógica para determinar el usuario actual y trabajos relevantes
+        if (!empty($request->get('user_id')) && $request->get('user_id') == "100") {
+            $alljobs = true;
+            $userid = auth()->id();
+            $user = User::find($userid);
+        } elseif (empty($request->get('user_id'))) {
+            $userid = auth()->id();
+            $user = User::find($userid);
+        } else {
+            $userid = $request->get('user_id');
+            $user = User::find($userid);
+        }
+
+
+        // Determinar los trabajos basados en el departamento del usuario y el ID de usuario
+        if (empty($request->get('user_id')) && auth()->user()->department_id === $techId) {
+            $jobs = Job::whereIn('user_id', [auth()->id(), $globalId])
+                ->orderBy('user_id', 'DESC')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(50);
+        } elseif (empty($request->get('user_id')) && auth()->user()->department_id === $admId) {
+            $jobs = Job::orderBy('created_at', 'DESC')->paginate(20);
+            $alljobs = true;
+        } elseif (empty($request->get('user_id'))) {
+            $jobs = Job::where('user_id', auth()->id())
+                ->orderBy('created_at', 'DESC')
+                ->paginate(50);
+        } elseif ($request->get('user_id') == "100") {
+            $jobs = Job::orderBy('created_at', 'DESC')->paginate(100);
+        } else {
+            $jobs = Job::where('user_id', $request->get('user_id'))
+                ->orderBy('created_at', 'DESC')
+                ->paginate(50);
+        }
+
+
+        return view('jobs.index', compact('title', 'jobs', 'users', 'alljobs', 'user', 'globId', 'techId'));
     }
 
     /**
