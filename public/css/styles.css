@@ -126,109 +126,67 @@ body{
 }
 
 
-/*Colors of view selector*/
-.nav-custom{
-    background-color: red !important;
-}
-.nav-custom:active{
-    background-color: #7b809a !important;
-}
-.dark .nav-custom{
-    background-color: #344767 !important;
-}
-
-.dark .nav-custom:active{
-    background-color: #344767 !important;
-}
 
 
 
+/*!*Colors of view selector*!*/
+/*.nav-custom{*/
+/*    background-color: red !important;*/
+/*}*/
+/*.nav-custom:active{*/
+/*    background-color: #7b809a !important;*/
+/*}*/
+/*.dark .nav-custom{*/
+/*    background-color: #344767 !important;*/
+/*}*/
+
+/*.dark .nav-custom:active{*/
+/*    background-color: #344767 !important;*/
+/*}*/
 
 
+/*.nav.nav-pills .nav-link {*/
+/*    z-index: 3;*/
+/*    color: #344767;*/
+/*    border-radius: 0.5rem;*/
+/*    background-color: inherit;*/
+/*}*/
+
+/*.nav.nav-pills .nav-link.active {*/
+/*    animation: 0.2s ease;*/
+/*}*/
 
 
+/*.nav.nav-pills .nav-link:hover:not(.active) {*/
+/*    color: #344767;*/
+/*}*/
 
-/* Estilos del contenedor y los botones */
-.nav.nav-custom.nav-pills .nav-link {
-    position: relative;
-    z-index: 2;
-    background-color: transparent;
-    color: #fff;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    border-radius: 0.5rem;
-}
+/*.nav.nav-pills .nav-link {*/
+/*    z-index: 3;*/
+/*    font-weight: bold;*/
+/*    color: white;*/
+/*    border-radius: 0.5rem;*/
+/*    background-color: inherit;*/
+/*}*/
 
-.nav.nav-custom.nav-pills .nav-link.active {
-    color: white;
-}
+/*.nav.nav-pills .nav-link.active {*/
+/*    animation: 0.2s ease;*/
+/*}*/
 
-.moving-tab-bg {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 0.5rem;
-    z-index: 1;
-    transition: all 0.4s ease;
-}
+/*.nav.nav-pills .nav-link:hover:not(.active) {*/
+/*    color: #344767;*/
+/*}*/
 
-/* Estilo para cuando está activada la vista escritorio */
-.nav.nav-custom.nav-pills .nav-link.active[value="1"] ~ .moving-tab-bg {
-    left: 0;
-}
-
-/* Estilo para cuando está activada la vista móvil */
-.nav.nav-custom.nav-pills .nav-link.active[value="0"] ~ .moving-tab-bg {
-    left: 50%;
-}
+/*!*margin adjust for view selector*!*/
+/*.viewselector{*/
+/*    margin: -2.5rem 0 -1.8rem 0;*/
+/*}*/
 
 
 
 
 
 
-
-
-
-
-.nav.nav-pills .nav-link {
-    z-index: 3;
-    color: #344767;
-    border-radius: 0.5rem;
-    background-color: inherit;
-}
-
-.nav.nav-pills .nav-link.active {
-    animation: 0.2s ease;
-}
-
-
-.nav.nav-pills .nav-link:hover:not(.active) {
-    color: #344767;
-}
-
-.dark .nav.nav-pills .nav-link {
-    z-index: 3;
-    color: white;
-    border-radius: 0.5rem;
-    background-color: inherit;
-}
-
-.dark .nav.nav-pills .nav-link.active {
-    animation: 0.2s ease;
-}
-
-.dark .nav.nav-pills .nav-link:hover:not(.active) {
-    color: #344767;
-}
-
-/*margin adjust for view selector*/
-.viewselector{
-    margin: -2.5rem 0 -1.8rem 0;
-}
 
 /*margin adjust for form card*/
 .form-card-position{

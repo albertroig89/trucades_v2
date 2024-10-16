@@ -31,8 +31,8 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h6>Email:{{ $user->email }}</h6>
-                                                <h6>Departamento: {{ $user->department->title }}</h6>
+                                                <p class="text-sm font-weight-bold text-secondary">Email: {{ $user->email }}</p>
+                                                <p class="text-sm font-weight-bold text-secondary">Departamento: {{ $user->department->title }}</p>
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
                                                 <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-default btn-sm w-auto">Editar</a>

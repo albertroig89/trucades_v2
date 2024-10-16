@@ -35,7 +35,7 @@
                                                 </span>
                                             </div>
                                             <div class="card-body">
-                                                <h6 class="text-sm">{{ $job->clientname }}</h6>
+                                                <h6>{{ $job->clientname }}</h6>
                                                 <p class="text-sm font-weight-bold text-secondary">
                                                     {{ \Illuminate\Support\Str::limit($job->job, 250, '...') }}
                                                 </p>
