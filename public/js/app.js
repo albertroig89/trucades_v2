@@ -76,6 +76,109 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Script para cambiar la vista de la página con links en lugar de botones
+document.addEventListener('DOMContentLoaded', function () {
+    // Verificar si el enlace para "Escritorio" existe antes de agregar el evento
+    const desktopViewLink = document.getElementById('desktop-view');
+    if (desktopViewLink) {
+        desktopViewLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir comportamiento predeterminado
+            console.log('Enviando preferencia de vista: Escritorio');
+            document.getElementById('desktop').value = 1; // Setear el valor del campo oculto
+            document.getElementById('view-preference-form').submit(); // Enviar formulario
+        });
+    }
+
+    // Verificar si el enlace para "Móvil" existe antes de agregar el evento
+    const mobileViewLink = document.getElementById('mobile-view');
+    if (mobileViewLink) {
+        mobileViewLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir comportamiento predeterminado
+            console.log('Enviando preferencia de vista: Móvil');
+            document.getElementById('desktop').value = 0; // Setear el valor del campo oculto
+            document.getElementById('view-preference-form').submit(); // Enviar formulario
+        });
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("Script de actualización del moving-tab se ha cargado.");
+
+    const desktopViewLink = document.getElementById('desktop-view');
+    const mobileViewLink = document.getElementById('mobile-view');
+    const desktopInput = document.getElementById('desktop');
+    const viewPreferenceForm = document.getElementById('view-preference-form');
+    const navWrapper = document.querySelector('.nav-wrapper .nav-pills');
+
+    if (desktopViewLink && mobileViewLink && desktopInput && navWrapper) {
+        let movingDiv;
+
+        // Crear el `moving-tab` una sola vez
+        if (!navWrapper.querySelector('.moving-tab')) {
+            movingDiv = document.createElement('div');
+            movingDiv.classList.add('moving-tab', 'position-absolute', 'nav-link');
+            movingDiv.style.transition = '.5s ease';
+            navWrapper.appendChild(movingDiv);
+            console.log("Se ha creado el moving-tab.");
+        } else {
+            movingDiv = navWrapper.querySelector('.moving-tab');
+        }
+
+        const updateViewState = () => {
+            console.log("Actualizando el moving-tab.");
+
+            // Obtener el enlace activo en función de la clase "active"
+            const activeLink = document.querySelector('.nav-link.active');
+
+            if (activeLink && movingDiv) {
+                // Actualizar el moving-tab para que coincida con el enlace activo
+                const offsetWidth = activeLink.offsetWidth;
+                const offsetLeft = activeLink.offsetLeft;
+
+                movingDiv.style.width = `${offsetWidth}px`;
+                movingDiv.style.transform = `translate3d(${offsetLeft}px, 0, 0)`;
+
+                console.log(`Moving-tab actualizado: width=${offsetWidth}, left=${offsetLeft}`);
+            } else {
+                console.log("No se encontró el enlace activo o el moving-tab.");
+            }
+        };
+
+        // Inicializar estado después de la carga completa del DOM
+        updateViewState();
+
+        // Eventos para cambiar la vista
+        desktopViewLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            console.log('Enviando preferencia de vista: Escritorio');
+            desktopInput.value = 1;
+            viewPreferenceForm.submit();
+        });
+
+        mobileViewLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            console.log('Enviando preferencia de vista: Móvil');
+            desktopInput.value = 0;
+            viewPreferenceForm.submit();
+        });
+
+        // Actualizar `moving-tab` al redimensionar la ventana
+        window.addEventListener('resize', function () {
+            updateViewState();
+        });
+
+        // Forzar la actualización del moving-tab después de un pequeño retraso
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                console.log("Página cargada completamente, actualizando estado.");
+                updateViewState();
+            }, 200);
+        });
+    } else {
+        console.log("No se encontraron todos los elementos necesarios para actualizar el moving-tab.");
+    }
+});
 
 //Script AJAX para buscar clientes de forma dinamica en la tabla
 document.addEventListener('DOMContentLoaded', function () {

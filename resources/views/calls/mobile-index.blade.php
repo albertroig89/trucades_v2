@@ -17,7 +17,7 @@
                             <div class="row d-flex flex-wrap justify-content-start p-4 pt-0">
                                 @forelse($calls as $call)
                                     <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
-                                        <div class="callcard h-100 border-radius-xl shadow-sm" onclick="window.location='{{ route('jobs.jobfromcallindex', ['call' => $call]) }}';">
+                                        <div class="callcard h-100 border-radius-xl shadow-sm" onclick="window.location='{{ route('jobs.jobfromcallform', ['call' => $call]) }}';">
                                             <div class="card-header callheadercard d-flex align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center">
                                                     @if($call->user->avatar)

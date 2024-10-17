@@ -28,14 +28,12 @@ class JobController extends Controller
      */
     public function index(Request $request)
     {
+        // Obtener la preferencia de vista desde la solicitud
+        $viewType = $request->get('viewType', 'index'); // 'index' por defecto
+
 //        $jobs = Job::orderBy('created_at', 'DESC')->paginate(50);
         $users = User::all();
         $title = 'Trabajos';
-
-
-
-
-
 
         $techId = Department::where('title', 'Tecnico')->value('id');
         $admId = Department::where('title', 'Administración')->value('id');
@@ -78,9 +76,7 @@ class JobController extends Controller
                 ->orderBy('created_at', 'DESC')
                 ->paginate(50);
         }
-
-
-        return view('jobs.index', compact('title', 'jobs', 'users', 'alljobs', 'user', 'globId', 'techId'));
+        return view("jobs.$viewType", compact('title', 'jobs', 'users', 'alljobs', 'user', 'globId', 'techId'));
     }
 
     /**
@@ -115,7 +111,7 @@ class JobController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function jobfromcallindex(Call $call)
+    public function jobfromcallform(Call $call)
     {
         $clients = Client::all();
         $title = 'Nuevo trabajo';

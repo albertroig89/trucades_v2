@@ -4,8 +4,8 @@
             <h2 class="font-semibold text-xl leading-tight mt-4">
                 {{ $title }}
             </h2>
-            <form class="float-end" method="GET" action="{{ url('/') }}">
-                <select class="form-select form-select-lg text-secondary" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
+            <form class="float-end" method="GET" action="{{ route('calls.index') }}">
+                <select class="form-select form-select-lg" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
                     @if ($allcalls == true)
                         <option value="100">Todas las llamadas</option>
                     @else
@@ -27,20 +27,21 @@
                 <div class="nav-wrapper position-relative end-0">
                     <form id="view-preference-form" action="{{ route('changeViewPreference') }}" method="POST">
                         @csrf
-                        <ul class="nav nav-custom nav-pills nav-fill position-relative" role="tablist" style="overflow: hidden;">
-                            <li class="nav-item">
-                                <button type="submit" name="desktop" value="1" class="nav-link mb-0 px-0 py-1 {{ auth()->user()->desktop ? 'active' : '' }}">
-                                    Escritorio
-                                </button>
-                            </li>
-                            <li class="nav-item">
-                                <button type="submit" name="desktop" value="0" class="nav-link mb-0 px-0 py-1 {{ !auth()->user()->desktop ? 'active' : '' }}">
-                                    Móvil
-                                </button>
-                            </li>
-                        </ul>
-                        <div class="moving-tab-bg"></div>
+                        <input type="hidden" name="desktop" id="desktop" value="">
                     </form>
+
+                    <ul class="nav nav-custom nav-pills nav-fill" role="tablist">
+                        <li class="nav-item">
+                            <a href="#" id="desktop-view" class="nav-link mb-0 px-0 py-1 {{ auth()->user()->desktop ? 'active' : '' }}">
+                                Escritorio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" id="mobile-view" class="nav-link mb-0 px-0 py-1 {{ !auth()->user()->desktop ? 'active' : '' }}">
+                                Móvil
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

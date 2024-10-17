@@ -26,6 +26,9 @@ class CallController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
+        // Obtener la preferencia de vista desde la solicitud
+        $viewType = $request->get('viewType', 'index'); // 'index' por defecto
+
         $title = 'Llamadas';
         $users = User::all();
         $phones = Phone::all();
@@ -77,11 +80,11 @@ class CallController extends Controller
                 ->paginate(50);
         }
 
-        // Verificar la preferencia del usuario (escritorio o móvil)
-        $view = auth()->user()->desktop ? 'calls.index' : 'calls.mobile-index';
+//        // Verificar la preferencia del usuario (escritorio o móvil)
+//        $view = auth()->user()->desktop ? 'calls.index' : 'calls.mobile-index';
 
         // Retorna la vista correspondiente
-        return view($view, compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'user', 'allcalls'));
+        return view("calls.$viewType", compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'user', 'allcalls'));
     }
 
 

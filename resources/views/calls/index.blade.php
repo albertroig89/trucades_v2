@@ -34,7 +34,7 @@
                                         @foreach ($calls as $call)
 
 
-                                            <tr onclick="window.location='{{ route('jobs.jobfromcallindex', ['call' => $call]) }}';" class="custom-table-row">
+                                            <tr onclick="window.location='{{ route('jobs.jobfromcallform', ['call' => $call]) }}';" class="custom-table-row">
                                                 <th>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
@@ -108,7 +108,7 @@
                                                     <form action="{{ route('calls.destroy', $call) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
+                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar la llamada?')" type="submit">Eliminar</button>
                                                     </form>
                                                 </td>
                                             </tr>
