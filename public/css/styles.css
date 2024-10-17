@@ -94,7 +94,7 @@ body{
 
 }
 .custom-table-row:hover{
-    background-color:  #ced4da !important;
+    background-color: #e9ecef !important;
 }
 
 /*Dark table custom style*/
@@ -199,7 +199,7 @@ body{
 
 /*Card custom style*/
 .customcard {
-    background-color: #adb5bd;
+    background-color: #f8f9fa;
 }
 
 /*Card dark custom style*/
@@ -592,7 +592,7 @@ body{
 /*Styles for labels filled on focus in forms light theme*/
 .input-group.input-group-dynamic.is-focused label,
 .input-group.input-group-static.is-focused label {
-    color: black;
+    color: #344767;
 }
 
 
@@ -608,7 +608,7 @@ body{
 .input-group.input-group-dynamic .form-control:focus,
 .input-group.input-group-static .form-control,
 .input-group.input-group-static .form-control:focus {
-    background-image: linear-gradient(0deg, black 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
+    background-image: linear-gradient(0deg, #344767 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
 }
 
 
@@ -662,7 +662,7 @@ body{
 
 /* Ajuste del contenedor de select2 */
 .select2-container--default .select2-selection--single {
-    background-color: #adb5bd !important; /* Fondo claro */
+    background-color: #fff !important; /* Fondo claro */
     color: white !important; /* Texto blanco */
     border: 1px solid #61677C !important; /* Borde gris oscuro */
     height: 40px !important; /* Ajusta la altura si es necesario */
@@ -713,7 +713,7 @@ body{
 /* Cambiar el color de fondo de las opciones seleccionadas */
 .dark .select2-container--default .select2-results__option[aria-selected="true"] {
     background-color: #344767 !important;
-    color: black !important; /* Texto negro */
+    color: black !important;
 }
 
 /* Cambiar el color del texto del elemento que estaba previamente seleccionado */
@@ -725,24 +725,24 @@ body{
 
 /* Placeholder personalizado */
 .dark select option[value=""] {
-    color: #B0B0B0 !important; /* Placeholder gris */
+    color: #B0B0B0 !important;
 }
 
 /* Cambiar el color del borde al enfocar */
 .dark select:focus {
-    border-color: white !important; /* Color del borde enfocado */
+    border-color: white !important;
 }
 
 /* Cambiar el color de fondo de la lista desplegable */
 .dark select option {
-    background-color: #1a2035 !important; /* Fondo oscuro */
-    color: #7b809a !important; /* Texto negro */
+    background-color: #1a2035 !important;
+    color: #7b809a !important;
 }
 
 /* Estilo de opción seleccionada */
 .dark select option:checked {
-    background-color: white !important; /* Fondo oscuro */
-    color: black !important; /* Texto blanco */
+    background-color: white !important;
+    color: black !important;
 }
 
 /* Cambiar el color de fondo de las opciones al pasar el mouse */
@@ -754,24 +754,22 @@ body{
 
 /*Custom styles for call cards*/
 .callcard {
-    background-color: #42464f !important;
+    background-color: #f8f9fa !important;
     cursor: pointer !important;
 }
 
 .callcard:hover {
-    background-color: #23272e !important;
+    background-color: #e9ecef !important;
 }
 
 .callcard h6{
-    color: white !important;
+    color: #1a2035 !important;
 }
 
 .callheadercard{
-    background-color: #1a2035 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 8px 0 rgba(52, 71, 103, 0.2);
 }
-
-
-
 /*Dark custom styles for call cards*/
 .dark .callcard {
     background-color: #282c34 !important;
@@ -787,6 +785,7 @@ body{
 
 .dark .callheadercard{
     background-color: #1a2035 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 
@@ -818,35 +817,47 @@ body{
 
 
 
+
+/* Meses en hover */
+.xdsoft_month:hover, .xdsoft_year:hover {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+}
+
+
+/* Hover sobre los días */
+.dark .xdsoft_calendar td:hover {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+}
+
+
+
+
+
 /* Ajustes generales para el datetimepicker en tema oscuro */
 .dark .xdsoft_datetimepicker {
-    background-color: #1a2035;  /* Fondo oscuro para todo el datetimepicker */
-    color: #ffffff;             /* Texto claro */
-    border: 1px solid #444c5c;  /* Borde gris */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    background-color: #1a2035;
+    color: #ffffff;
+    border: 1px solid #444c5c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Ajustes para los meses */
 .dark .xdsoft_month, .dark .xdsoft_year{
-    background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
-    color: #ffffff !important;             /* Texto claro para los meses */
+    background-color: #1a2035 !important;
+    color: #ffffff !important;
     border: none;
 }
 
 .dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option {
-    background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
+    background-color: #1a2035 !important;
     color: white !important;
 }
 
 .dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {
-    background-color: #344767 !important;  /* Color gris oscuro en hover */
+    background-color: #344767 !important;
     color: white !important;
-}
-
-/* Meses en hover */
-.dark .xdsoft_month:hover, .dark .xdsoft_year:hover {
-    background-color: #344767 !important;  /* Color gris oscuro en hover */
-    color: #ffffff !important;
 }
 
 /* Mes seleccionado */
@@ -873,13 +884,6 @@ body{
     color: #ffffff !important;
     border-color: #4a82d0;
 }
-
-/* Hover sobre los días */
-.dark .xdsoft_calendar td:hover {
-    background-color: #344767 !important;  /* Fondo gris oscuro en hover */
-    color: #ffffff !important;
-}
-
 /* Horas en el timepicker */
 .dark .xdsoft_timepicker .xdsoft_time {
     background-color: #1a2035 !important;  /* Fondo oscuro */
@@ -925,7 +929,7 @@ body{
 /*Styles for clients dinamic search*/
 /* Estilos para el campo de búsqueda en tema claro (estilos base) */
 #search-client {
-    width: 175px; /* Ajusta según necesites */
+    width: 175px;
     border-radius: 10px;
     border: 1px solid #ccc;
     background-color: #fff;
@@ -971,110 +975,40 @@ body{
 
 
 
-/*.table {*/
-/*    font-size: small;*/
-/*}*/
-/*table{*/
-/*    height: 100px;*/
-/*}*/
-/*.nota{*/
-/*    width: 40%;*/
-/*}*/
-/*th{*/
-/*    text-align: center;*/
-/*}*/
-/*td{*/
-/*    text-align: center;*/
-/*}*/
-/*estils iconos*/
-/*.oi-plus{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
+/*Styles for user select in calls and jobs*/
+/* Estilos para el select en tema claro (estilos base) */
+.user-select {
+    width: 175px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1a2035;
+    font-weight: bold;
+    padding: 0.5rem;
+    transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+    appearance: none; /* Remover estilos del navegador para select */
+}
 
-/*}*/
-/*.oi-plus:hover{*/
-/*    color: #1c1c1c;*/
+.user-select:focus {
+    box-shadow: 0 0 10px #344767;
+    outline: none;
+}
 
-/*}*/
-/*.oi-eye{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
-/*}*/
-/*.oi-eye:hover{*/
-/*    color: #1c1c1c;*/
+/* Ajuste del contenedor del select para alinearlo a la derecha */
+.user-select-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    align-items: center;
+    margin-top: 1rem;
+}
 
-/*}*/
-/*.oi-pencil{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
-/*}*/
-/*.oi-pencil:hover{*/
-/*    color: #1c1c1c;*/
+/* Estilos para el select en tema oscuro */
+.dark .user-select {
+    border: 1px solid #444;
+    background-color: #282c34;
+    color: #fff;
+}
 
-/*}*/
-/*.oi-trash{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
-/*}*/
-/*.oi-trash:hover{*/
-/*    color: #1c1c1c;*/
-
-/*}*/
-/*.btn-link{*/
-/*    padding: 0px;*/
-/*    border:none;*/
-/*}*/
-/*estils datetime picker*/
-/*.container {*/
-/*    margin-top: 5px;*/
-/*    margin-left: 10px;*/
-/*    width: 600px;*/
-/*}*/
-/*estils botons envio*/
-/*.btn-primary{*/
-/*    background-color: #686868;*/
-/*    border-color: #1c1c1c;*/
-/*}*/
-/*.btn-primary:hover{*/
-/*    background-color: #1c1c1c;*/
-/*    border-color: #686868;*/
-/*}*/
-/*!*estils links per a tornar atras com un boto*!*/
-/*.btn-default{*/
-/*    background-color: #686868;*/
-/*    border-color: #1c1c1c;*/
-/*    color: white;*/
-/*}*/
-/*.btn-default:hover{*/
-/*    background-color: #1c1c1c;*/
-/*    border-color: #686868;*/
-/*    color: white;*/
-/*}*/
-/*.btn-default:active{*/
-/*    background-color: #006dcc;*/
-/*    border-color: #003399;*/
-/*}*/
-/*.btn-default:focus{*/
-/*    background-color: #006dcc;*/
-/*    border-color: #006dcc;*/
-/*}*/
-/*!*estils dropdown*!*/
-/*.dropdown-item{*/
-/*    active-color: #686868;;*/
-/*}*/
-/*!*estils logo*!*/
-/*.logo{*/
-/*    width: 15%;*/
-/*}*/
-/*.logolink{*/
-/*    margin-right: -900px;*/
-/*}*/
-/*.loginlink{*/
-/*    margin-right: 0px;*/
-/*}*/
-/*.login{*/
-/*    margin-left:60%;*/
-/*}*/
-/*.card{*/
-/*    !*float:center;*!*/
-/*}*/
+.dark .user-select:focus {
+    background-color: #23272e;
+}

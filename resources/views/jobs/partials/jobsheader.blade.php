@@ -4,23 +4,25 @@
             <h2 class="font-semibold text-xl leading-tight mt-4">
                 {{ $title }}
             </h2>
-            <form class="float-end" method="GET" action="{{ route('jobs.index') }}">
-                <select class="form-select form-select-lg text-secondary" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
-                    @if ($alljobs == true)
-                        <option value="100">Todos los trabajos</option>
-                    @else
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        <option value="100">Todos los trabajos</option>
-                    @endif
-                    @foreach ($users as $user)
-                        @if (auth()->id() != $user->id)
+            <div class="user-select-container">
+                <form method="GET" action="{{ route('jobs.index') }}">
+                    <select class="user-select" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
+                        @if ($alljobs == true)
+                            <option value="100">Todos los trabajos</option>
+                        @else
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @elseif ($alljobs == true)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            <option value="100">Todos los trabajos</option>
                         @endif
-                    @endforeach
-                </select>
-            </form>
+                        @foreach ($users as $user)
+                            @if (auth()->id() != $user->id)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @elseif ($alljobs == true)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </form>
+            </div>
         </div>
         <div class="row text-center viewselector">
             <div class="col-4 mx-auto">
