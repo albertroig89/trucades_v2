@@ -922,6 +922,53 @@ body{
     background-color: #344767 !important;
 }
 
+/*Styles for clients dinamic search*/
+/* Estilos para el campo de búsqueda en tema claro (estilos base) */
+#search-client {
+    width: 175px; /* Ajusta según necesites */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1a2035;
+    font-weight: bold;
+    padding: 0.5rem;
+    transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+
+}
+
+#search-client::placeholder {
+    color: #7b809a;
+}
+
+#search-client:focus {
+    box-shadow: 0 0 10px #344767;
+    outline: none;
+}
+
+/* Ajuste del contenedor del campo de búsqueda para alinearlo a la derecha */
+.search-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* Estilos para el campo de búsqueda en tema oscuro */
+.dark #search-client {
+    border: 1px solid #444;
+    background-color: #282c34;
+    color: #fff;
+}
+
+.dark #search-client::placeholder {
+    color: #ccc;
+}
+
+.dark #search-client:focus {
+    background-color: #23272e;
+}
+
+
 
 
 /*.table {*/
