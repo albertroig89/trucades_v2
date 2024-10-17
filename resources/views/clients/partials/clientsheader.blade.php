@@ -4,6 +4,9 @@
             <h2 class="font-semibold text-xl leading-tight mt-4">
                 {{ $title }}
             </h2>
+            <div class="col-4 mx-auto mt-3 float-end">
+                <input type="text" id="search-client" class="form-control" placeholder="Buscar cliente...">
+            </div>
         </div>
         <div class="row text-center viewselector">
             <div class="col-4 mx-auto">

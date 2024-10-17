@@ -18,9 +18,24 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        $clients = Client::name($request->get('name'))->orderBy('name')->paginate(50);
+        $query = Client::query();
+
+        if ($request->ajax()) {
+            if ($request->has('search') && !empty($request->get('search'))) {
+                $query->where('name', 'like', '%' . $request->get('search') . '%');
+            }
+            $clients = $query->orderBy('name')->paginate(50);
+            $phones = Phone::all();
+
+            return response()->json([
+                'html' => view('clients.partials.clientstable', compact('clients', 'phones'))->render(),
+            ]);
+        }
+
+        $clients = $query->orderBy('name')->paginate(50);
         $phones = Phone::all();
         $title = 'Clientes';
+
         return view('clients.index', compact('title', 'clients', 'phones'));
     }
 

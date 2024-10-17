@@ -75,3 +75,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+//Script AJAX para buscar clientes de forma dinamica en la tabla
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('search-client');
+
+    searchInput.addEventListener('keyup', function () {
+        const query = searchInput.value;
+
+        fetch("{{ route('clients.index') }}?search=" + query, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('.table-responsive').innerHTML = data.html;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+});
