@@ -180,22 +180,55 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-//Script AJAX para buscar clientes de forma dinamica en la tabla
+//Scripts AJAX para buscar clientes de forma dinamica
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('search-client');
+    const resultsContainer = document.getElementById('resultsContainer');
 
-    searchInput.addEventListener('keyup', function () {
-        const query = searchInput.value;
+    if (searchInput && resultsContainer) {
+        searchInput.addEventListener('input', debounce(function () {
+            const searchValue = this.value;
 
-        fetch("{{ route('clients.index') }}?search=" + query, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
+            // Determinar el tipo de vista actual (escritorio o móvil)
+            let viewType = 'clientstable'; // Valor predeterminado
+
+            const desktopViewLink = document.getElementById('desktop-view');
+            const mobileViewLink = document.getElementById('mobile-view');
+
+            // Verificamos si las pestañas existen y cuál tiene la clase 'active'
+            if (desktopViewLink && desktopViewLink.classList.contains('active')) {
+                viewType = 'clientstable';
+            } else if (mobileViewLink && mobileViewLink.classList.contains('active')) {
+                viewType = 'clientcards';
             }
-        })
-            .then(response => response.json())
-            .then(data => {
-                document.querySelector('.table-responsive').innerHTML = data.html;
+
+            // Hacer la solicitud fetch
+            fetch(`/clients/search?search=${encodeURIComponent(searchValue)}&viewType=${viewType}`, {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
             })
-            .catch(error => console.error('Error:', error));
-    });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.html) {
+                        resultsContainer.innerHTML = data.html;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }, 300));
+    }
 });
+
+// Función debounce para optimizar las búsquedas
+function debounce(func, delay) {
+    let debounceTimer;
+    return function () {
+        const context = this;
+        const args = arguments;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(context, args), delay);
+    };
+}
+
+

@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clients/import', [ClientController::class, 'import']);
     // Rutas basicas de Clients
     Route::resource('clients', ClientController::class)->except(['show']);
+    Route::get('/clients/search', [ClientController::class, 'index'])->name('clients.search');
 });
 
 // ----------------------------------------------------------------------------------------------VIEW PREFERENCES

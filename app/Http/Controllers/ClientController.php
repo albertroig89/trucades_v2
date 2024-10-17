@@ -27,15 +27,18 @@ class ClientController extends Controller
             $clients = $query->orderBy('name')->paginate(50);
             $phones = Phone::all();
 
+            // Obtener la preferencia de vista desde la solicitud (index o cards)
+            $viewType = $request->get('viewType', 'clientstable');
+
             return response()->json([
-                'html' => view('clients.partials.clientstable', compact('clients', 'phones'))->render(),
+                'html' => view("clients.partials.$viewType", compact('clients', 'phones'))->render(),
             ]);
         }
 
-        // Obtener la preferencia de vista desde la solicitud
-        $viewType = $request->get('viewType', 'index'); // 'index' por defecto
+        // Obtener la preferencia de vista desde la solicitud (index o cards)
+        $viewType = $request->get('viewType', 'index');
 
-        $clients = Client::name($request->get('name'))->orderBy('name')->paginate(50);
+        $clients = $query->orderBy('name')->paginate(50);
         $phones = Phone::all();
         $title = 'Clientes';
         return view("clients.$viewType", compact('title', 'clients', 'phones'));
