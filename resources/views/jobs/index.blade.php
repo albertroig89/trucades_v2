@@ -81,7 +81,7 @@
                                         </tbody>
                                     </table>
                                 @else
-                                    <li>No tienes trabajos realizados</li>
+                                    <h6 class="text-center text-secondary">No tienes trabajos realizados</h6>
                                 @endif
                             </div>
                         </div>

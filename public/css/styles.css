@@ -15,6 +15,10 @@ body{
     height: auto;
 }
 
+.navbar a{
+    font-weight: bold;
+}
+
 
 /*Custom navbar style for desktop*/
 @media (min-width: 992px) {
@@ -273,6 +277,9 @@ body{
     text-align: center;
 }
 
+.custom-footer p{
+    font-weight: bold;
+}
 
 .custom-footer .footer-logo {
     width: 250px;

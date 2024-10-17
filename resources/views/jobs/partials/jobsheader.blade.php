@@ -5,7 +5,7 @@
                 {{ $title }}
             </h2>
             <form class="float-end" method="GET" action="{{ route('jobs.index') }}">
-                <select class="form-select form-select-lg" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
+                <select class="form-select form-select-lg text-secondary" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
                     @if ($alljobs == true)
                         <option value="100">Todos los trabajos</option>
                     @else

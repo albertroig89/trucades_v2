@@ -67,7 +67,7 @@
                                         </tbody>
                                     </table>
                                 @else
-                                    <li>No hay usuarios</li>
+                                    <h6 class="text-center text-secondary">No hay usuarios registrados</h6>
                                 @endif
                             </div>
                         </div>

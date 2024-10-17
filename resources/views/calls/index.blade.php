@@ -116,7 +116,7 @@
                                         </tbody>
                                     </table>
                                 @else
-                                    <li>No tienes llamadas pendientes</li>
+                                    <h6 class="text-center text-secondary">No tienes llamadas pendientes</h6>
                                 @endif
                             </div>
                         </div>
