@@ -662,39 +662,47 @@ body{
 
 /* Ajuste del contenedor de select2 */
 .select2-container--default .select2-selection--single {
-    background-color: #fff !important; /* Fondo claro */
-    color: white !important; /* Texto blanco */
-    border: 1px solid #61677C !important; /* Borde gris oscuro */
-    height: 40px !important; /* Ajusta la altura si es necesario */
-    border-radius: 0.375rem; /*Bordes redondeados */
+    background-color: #fff !important;
+    color: white !important;
+    border: 1px solid #61677C !important;
+    height: 40px !important;
+    border-radius: 0.375rem;
 }
 
 
+.dark .select2-container--default .select2-results__option--selected {
+    color: #344767 !important;
+}
+
+.dark .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white !important;
+}
+
 /*Dark style for Select2*/
 .dark .select2-container--default .select2-selection--single {
-    background-color: #2A2D34 !important; /* Fondo oscuro */
-    border: 1px solid #61677C !important; /* Borde gris oscuro */
+    background-color: #2A2D34 !important;
+    border: 1px solid #d2d2d2 !important;
 }
 
 /* Placeholder personalizado */
 .dark .select2-container--default .select2-selection--single .select2-selection__placeholder {
-    color: #B0B0B0 !important; /* Placeholder gris */
+    color: #7b809a !important;
 }
 
 /* Cambiar el color del borde al enfocar */
 .dark .select2-container--default .select2-selection--single:focus {
-    border-color: white !important; /* Color del borde enfocado */
+    border-color: white !important;
 }
 
 /* Cambiar el color de fondo de la lista desplegable */
 .dark .select2-dropdown {
-    background-color: #1a2035 !important; /* Fondo oscuro */
-    color: #7b809a !important; /* Texto blanco */
+    background-color: #1a2035 !important;
+    color: #7b809a !important;
 }
 
 /* Estilo de opción seleccionada */
 .select2-results__option--highlighted[aria-selected] {
-    background-color: #344767 !important; /* Fondo verde claro */
+    background-color: #344767 !important;
 }
 
 /* Padding en las opciones */
@@ -706,7 +714,7 @@ body{
 
 /* Cambiar el color de fondo de las opciones al pasar el mouse */
 .dark .select2-results__option--selectable:hover {
-    background-color: #007BFF !important; /* Cambia el color de fondo al pasar el mouse */
+    background-color: #007BFF !important;
     color: white !important;
 }
 
@@ -718,7 +726,7 @@ body{
 
 /* Cambiar el color del texto del elemento que estaba previamente seleccionado */
 .dark .select2-results__option[aria-selected="true"].select2-results__option--highlighted {
-    color: white !important; /* Texto blanco para el seleccionado */
+    color: white !important;
 }
 
 /*Dark style for normal selects*/
@@ -754,23 +762,42 @@ body{
 
 /*Custom styles for call cards*/
 .callcard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #f8f9fa !important;
     cursor: pointer !important;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(52, 71, 103, 0.2);
+    border-radius: 8px;
 }
 
 .callcard:hover {
     background-color: #e9ecef !important;
 }
 
-.callcard h6{
+.callcard h6 {
     color: #1a2035 !important;
 }
 
-.callheadercard{
+.callheadercard {
     background-color: #ffffff !important;
     box-shadow: 0 4px 8px 0 rgba(52, 71, 103, 0.2);
 }
-/*Dark custom styles for call cards*/
+
+/* Contenido de la tarjeta */
+.card-content {
+    flex-grow: 1; /* Hace que el contenido ocupe todo el espacio disponible */
+}
+
+/* Estilo del pie de la tarjeta (botones) */
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* Asegura que los botones estén distribuidos uniformemente */
+    margin-top: auto; /* Empuja el card-footer al fondo de la tarjeta */
+}
+
+/* Tema oscuro */
 .dark .callcard {
     background-color: #282c34 !important;
 }
@@ -779,14 +806,15 @@ body{
     background-color: #23272e !important;
 }
 
-.dark .callcard h6{
+.dark .callcard h6 {
     color: white !important;
 }
 
-.dark .callheadercard{
+.dark .callheadercard {
     background-color: #1a2035 !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
+
 
 
 
@@ -863,42 +891,42 @@ body{
 /* Mes seleccionado */
 .dark .xdsoft_monthpicker .xdsoft_option .xdsoft_current,
 .dark .xdsoft_year span.xdsoft_current {
-    background-color: #4a82d0 !important;  /* Azul para mes/año seleccionado */
+    background-color: #4a82d0 !important;
     color: #ffffff !important;
 }
 
 /* Días en el calendario */
 .dark .xdsoft_calendar td {
-    background-color: #1a2035 !important;  /* Fondo oscuro */
-    color: #ffffff !important;             /* Texto claro */
+    background-color: #1a2035 !important;
+    color: #ffffff !important;
     border: 1px solid #444c5c;
 }
 
 /* Días no seleccionables (deshabilitados) */
 .dark .xdsoft_calendar td.xdsoft_disabled {
-    color: #999999 !important;             /* Días deshabilitados en gris claro */
+    color: #999999 !important;
 }
 
 /* Día seleccionado */
 .dark .xdsoft_calendar .xdsoft_current {
     color: #ffffff !important;
-    border-color: #4a82d0;
+    border-color: #344767;
 }
 /* Horas en el timepicker */
 .dark .xdsoft_timepicker .xdsoft_time {
-    background-color: #1a2035 !important;  /* Fondo oscuro */
-    color: #ffffff !important;             /* Texto claro */
+    background-color: #1a2035 !important;
+    color: #ffffff !important;
 }
 
 /* Hover sobre las horas */
 .dark .xdsoft_timepicker .xdsoft_time:hover {
-    background-color: #344767 !important;  /* Fondo gris oscuro en hover */
+    background-color: #344767 !important;
     color: #ffffff !important;
 }
 
 /* Bordes del selector de tiempo */
 .dark .xdsoft_time_box {
-    border-color: #444c5c;                 /* Borde gris */
+    border-color: #444c5c;
 }
 
 
@@ -1011,4 +1039,19 @@ body{
 
 .dark .user-select:focus {
     background-color: #23272e;
+}
+
+
+/* Estilos para los inputs, selects y textareas en tema oscuro */
+.dark input,
+.dark select,
+.dark textarea {
+    color: #ffffff;
+}
+
+/* Estilos para los inputs cuando están enfocados en tema oscuro*/
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+    color: #7b809a;
 }
