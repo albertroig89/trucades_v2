@@ -60,12 +60,10 @@ class UserController extends Controller
      */
     public function edit(User $user = null)
     {
-        // Si no se proporciona un usuario, utiliza el usuario autenticado
-        $user = $user ?? auth()->user();
-
-        // Determina si es el propio perfil del usuario autenticado
-        if ($user->is(auth()->user())) {
+        // Verificar si se está accediendo a la ruta de perfil del usuario autenticado
+        if (request()->route()->named('users.profile.edit')) {
             // Vista para el perfil del usuario autenticado
+            $user = auth()->user();
             $title = 'Editar perfil';
             $view = 'profile.edit'; // Asegúrate de que esta sea la vista correcta
         } else {

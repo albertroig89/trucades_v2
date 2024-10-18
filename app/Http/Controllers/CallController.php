@@ -155,7 +155,7 @@ class CallController extends Controller
             'clientphone' => $data['clientphone'] ?? null,
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('calls.index');
     }
 
     // Metodo para eliminar una llamada existente

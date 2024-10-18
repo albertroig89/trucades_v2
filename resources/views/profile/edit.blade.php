@@ -18,8 +18,8 @@
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
                                         <form role="form" action="{{ route('users.update', $user->id) }}" id="call-form" method="post" autocomplete="off" enctype="multipart/form-data">
-                                            @method('PUT')
                                             @csrf
+                                            @method('PUT')
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
 
@@ -46,14 +46,9 @@
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="department_id">Departamento</label>
-                                                    <!-- Select for department_id -->
-                                                    <select class="form-control" name="department_id" id="department_id" disabled>
-                                                        @foreach($departments as $department)
-                                                            <option value="{{ $department->id }}" {{ old('department_id', $user->department->id) == $department->id ? 'selected' : '' }}>
-                                                                {{ $department->title }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <!-- Input for department_id non editable -->
+                                                    <input type="text" class="form-control" value="{{ $user->department->title }}" readonly>
+                                                    <input type="hidden" name="department_id" value="{{ $user->department->id }}">
                                                     <!-- Error message for department_id select -->
                                                     @error('department_id')
                                                     <div class="invalid-feedback">
@@ -101,7 +96,7 @@
                                                         <button type="submit" class="btn btn-default btn-sm w-auto">Editar</button>
                                                     </div>
                                                     <div>
-                                                        <a href="{{ route('users.index') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
+                                                        <a href="{{ route('calls.index') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>
                                                     </div>
                                                 </div>
                                             </div>
