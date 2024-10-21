@@ -256,6 +256,10 @@ body{
     -webkit-appearance: none;
 }
 
+.dark .btn:focus{
+    color: #344767;
+}
+
 /*Button new call styles light theme*/
 .dark .btn-ncall {
     --bs-btn-color: #000;
@@ -827,107 +831,151 @@ body{
 }
 
 
-/*!* Hover sobre los días *!*/
-/*.xdsoft_calendar td:hover {*/
-/*    background-color: #1a2035 !important;  !* Fondo gris oscuro en hover *!*/
-/*    color: #ffffff !important;*/
-/*}*/
-
-/*.xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {*/
-/*    background-color: #1a2035 !important;  !* Fondo gris oscuro en hover *!*/
-/*    color: #ffffff !important;*/
-/*}*/
-
-/*!* Día seleccionado *!*/
-/*.xdsoft_calendar .xdsoft_current {*/
-/*    border-color: #4a82d0 !important;  !* Azul para mes/año seleccionado *!*/
-/*}*/
 
 
 
+/* Absolute position for invalid feedback for problems with icons for calendar and password */
+.invalid-feedback {
+    position: absolute;
+    bottom: -1.4rem; /* Ajusta la posición del mensaje de error */
+    /*font-size: 0.875rem; !* Tamaño de letra menor para el mensaje *!*/
+}
 
-/* Meses en hover */
-.xdsoft_month:hover, .xdsoft_year:hover {
+
+/**/
+/* Flatpickr styles */
+/**/
+
+/*Color for today in light theme*/
+.flatpickr-calendar .flatpickr-day.today{
+    background-color: #1a2035 !important;
+    color: #fff;
+}
+
+/* Disabled days */
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: #999999 !important;
+}
+
+/* Color for disabled year in dark and light theme*/
+.flatpickr-current-month input.cur-year[disabled]{
+    color: #999999 !important;
+}
+
+/* Selected day for light theme */
+.flatpickr-calendar .flatpickr-day.selected {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+    border-color: #344767 !important;
+}
+
+
+/*Time picker hover */
+.flatpickr-time .flatpickr-time-separator:hover,
+.flatpickr-hour:hover, .flatpickr-minute:hover {
     background-color: #344767 !important;
     color: #ffffff !important;
 }
 
 
-/* Hover sobre los días */
-.dark .xdsoft_calendar td:hover {
-    background-color: #344767 !important;
-    color: #ffffff !important;
-}
 
-
-
-
-
-/* Ajustes generales para el datetimepicker en tema oscuro */
-.dark .xdsoft_datetimepicker {
+/* General settings for flatpickr in dark theme */
+.dark .flatpickr-calendar {
     background-color: #1a2035;
     color: #ffffff;
     border: 1px solid #444c5c;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/* Ajustes para los meses */
-.dark .xdsoft_month, .dark .xdsoft_year{
+/* Month and year dropdowns */
+.dark .flatpickr-months .flatpickr-month {
     background-color: #1a2035 !important;
     color: #ffffff !important;
     border: none;
 }
 
-.dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option {
+.dark .flatpickr-monthDropdown-months {
     background-color: #1a2035 !important;
     color: white !important;
+    border: none;
 }
 
-.dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {
+/* Today day for dark theme*/
+.dark .flatpickr-calendar .flatpickr-day.today{
+    background-color: #282c34 !important;
+    color: #fff;
+}
+
+/* Selected day for dark theme */
+.dark .flatpickr-calendar .flatpickr-day.selected {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+    border-color: #344767 !important;
+}
+
+.dark .flatpickr-monthDropdown-months .flatpickr-month:hover {
     background-color: #344767 !important;
     color: white !important;
 }
 
-/* Mes seleccionado */
-.dark .xdsoft_monthpicker .xdsoft_option .xdsoft_current,
-.dark .xdsoft_year span.xdsoft_current {
+/* Selected month/year */
+.dark .flatpickr-monthDropdown-months .flatpickr-current-month,
+.dark .flatpickr-months .flatpickr-year {
     background-color: #4a82d0 !important;
     color: #ffffff !important;
 }
 
-/* Días en el calendario */
-.dark .xdsoft_calendar td {
+/* Calendar days */
+.dark .flatpickr-days {
     background-color: #1a2035 !important;
-    color: #ffffff !important;
-    border: 1px solid #444c5c;
 }
 
-/* Días no seleccionables (deshabilitados) */
-.dark .xdsoft_calendar td.xdsoft_disabled {
+.dark .flatpickr-day {
+    color: #ffffff !important;
+    /*border: 1px solid #444c5c;*/
+}
+
+ /*Disabled days*/
+.dark .flatpickr-day.flatpickr-disabled,
+.dark .flatpickr-day.prevMonthDay,
+.dark .flatpickr-day.nextMonthDay {
     color: #999999 !important;
 }
 
-/* Día seleccionado */
-.dark .xdsoft_calendar .xdsoft_current {
-    color: #ffffff !important;
-    border-color: #344767;
-}
-/* Horas en el timepicker */
-.dark .xdsoft_timepicker .xdsoft_time {
+ /*Time picker */
+.dark .flatpickr-time {
     background-color: #1a2035 !important;
     color: #ffffff !important;
+    border-top: 1px solid #444c5c;
 }
 
-/* Hover sobre las horas */
-.dark .xdsoft_timepicker .xdsoft_time:hover {
+ /*Time picker hover */
+.dark .flatpickr-time .flatpickr-time-separator:hover,
+.dark .flatpickr-hour:hover, .dark .flatpickr-minute:hover {
     background-color: #344767 !important;
     color: #ffffff !important;
 }
 
-/* Bordes del selector de tiempo */
-.dark .xdsoft_time_box {
+ /*Border for time selection box */
+.dark .flatpickr-time {
     border-color: #444c5c;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*Custom styles for light form check*/
@@ -1007,6 +1055,7 @@ body{
 /* Estilos para el select en tema claro (estilos base) */
 .user-select {
     width: 175px;
+    text-align: center;
     border-radius: 10px;
     border: 1px solid #ccc;
     background-color: #fff;

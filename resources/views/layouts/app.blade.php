@@ -25,7 +25,8 @@
         <!-- CSS Files -->
         <link id="pagestyle" href="{{asset('assets/css/material-kit.css')}}" rel="stylesheet" /> <!--Theme styles-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" /> <!-- Select2 Styles-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css" /> <!-- Datetimepicker Styles--> <!-- Datetimepicker Styles-->
+{{--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css" /> <!-- Datetimepicker Styles--> <!-- Datetimepicker Styles-->--}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- Datetimepicker Styles-->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" media="screen" /> <!--Custom styles-->
 
         {{--Favicon--}}
@@ -91,8 +92,9 @@
         <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/es.js"></script><!-- Formato en español para el datepicker -->
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/datetimepicker.js') }}"></script>
     </body>
 
 </html>
