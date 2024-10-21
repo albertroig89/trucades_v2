@@ -116,7 +116,7 @@ class JobController extends Controller
         $clients = Client::all();
         $title = 'Nuevo trabajo';
 
-        return view('calls.jobfromcall', compact('call', 'clients', 'title'));
+        return view('jobs.jobfromcall', compact('call', 'clients', 'title'));
     }
 
     /**

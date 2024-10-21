@@ -22,14 +22,25 @@
                                             <div class="form-group card-body">
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="client_id">Cliente:</label>
-                                                    <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
-                                                        <option></option>
-                                                        @foreach ($clients as $client)
-                                                            <option value="{{ ($client->id) }}" {{ old('client_id', $job->client->id) == $client->id ? 'selected' : '' }}>
-                                                                {{ $client->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    @if(empty($job->client))
+                                                        <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
+                                                            <option></option>
+                                                            @foreach ($clients as $client)
+                                                                <option value="{{ ($client->id) }}">
+                                                                    {{ $client->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    @else
+                                                        <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
+                                                            <option></option>
+                                                            @foreach ($clients as $client)
+                                                                <option value="{{ ($client->id) }}" {{ old('client_id', $job->client->id) == $client->id ? 'selected' : '' }}>
+                                                                    {{ $client->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    @endif
                                                     @error('client_id')
                                                     <div class="invalid-feedback">
                                                         <small>{{ $errors->first('client_id') }}</small>
@@ -45,24 +56,52 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static">
+
+
+                                                <div class="form-group input-group mb-4 input-group-static @error('inittime') has-error @enderror">
                                                     <label for="inittime">Inicio del trabajo</label>
-                                                    <input type="text" class="form-control @error('inittime') is-invalid @enderror" name="inittime" value="{{ old('inittime', \Carbon\Carbon::parse($job->inittime)->format('d-m-Y H:i')) }}" id="inittime"/>
-                                                    @error('inittime')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('inittime') }}</small>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker @error('inittime') is-invalid @enderror" name="inittime" value="{{ old('inittime', \Carbon\Carbon::parse($job->inittime)->format('d-m-Y H:i'))  }}" id="inittime" />
+                                                        @error('inittime')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('inittime') }}</small>
+                                                        </div>
+                                                        @enderror
                                                     </div>
-                                                    @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static">
+                                                <div class="form-group input-group mb-4 input-group-static @error('endtime') has-error @enderror">
                                                     <label for="endtime">Final del trabajo</label>
-                                                    <input type="text" class="form-control @error('endtime') is-invalid @enderror" name="endtime" value="{{ old('endtime', \Carbon\Carbon::parse($job->endtime)->format('d-m-Y H:i')) }}" id="endtime"/>
-                                                    @error('endtime')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('endtime') }}</small>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker @error('endtime') is-invalid @enderror" name="endtime" value="{{ old('endtime', \Carbon\Carbon::parse($job->endtime)->format('d-m-Y H:i'))  }}" id="endtime" />
+                                                        @error('endtime')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('endtime') }}</small>
+                                                        </div>
+                                                        @enderror
                                                     </div>
-                                                    @enderror
                                                 </div>
+
+
+{{--                                                <div class="form-group input-group mb-4 input-group-static">--}}
+{{--                                                    <label for="inittime">Inicio del trabajo</label>--}}
+{{--                                                    <input type="text" class="form-control @error('inittime') is-invalid @enderror" name="inittime" value="{{ old('inittime', \Carbon\Carbon::parse($job->inittime)->format('d-m-Y H:i')) }}" id="inittime"/>--}}
+{{--                                                    @error('inittime')--}}
+{{--                                                    <div class="invalid-feedback">--}}
+{{--                                                        <small>{{ $errors->first('inittime') }}</small>--}}
+{{--                                                    </div>--}}
+{{--                                                    @enderror--}}
+{{--                                                </div>--}}
+{{--                                                <div class="form-group input-group mb-4 input-group-static">--}}
+{{--                                                    <label for="endtime">Final del trabajo</label>--}}
+{{--                                                    <input type="text" class="form-control @error('endtime') is-invalid @enderror" name="endtime" value="{{ old('endtime', \Carbon\Carbon::parse($job->endtime)->format('d-m-Y H:i')) }}" id="endtime"/>--}}
+{{--                                                    @error('endtime')--}}
+{{--                                                    <div class="invalid-feedback">--}}
+{{--                                                        <small>{{ $errors->first('endtime') }}</small>--}}
+{{--                                                    </div>--}}
+{{--                                                    @enderror--}}
+{{--                                                </div>--}}
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="job">Descripción del trabajo</label>
                                                     <textarea name="job" type="text" class="form-control @error('job') is-invalid @enderror" id="job">{{ old('job' , $job->job) }}</textarea>

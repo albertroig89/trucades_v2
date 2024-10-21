@@ -232,3 +232,19 @@ function debounce(func, delay) {
 }
 
 
+//Script para funcionamiento del flatpickr
+document.addEventListener("DOMContentLoaded", function() {
+    const datepickers = document.querySelectorAll(".datepicker");
+    datepickers.forEach(function(datepicker) {
+        flatpickr(datepicker, {
+            enableTime: true,
+            dateFormat: "d-m-Y H:i", // Formato similar al que ya tienes
+            time_24hr: true,         // Para mostrar el tiempo en formato 24 horas
+            minuteIncrement: 15,     // Intervalo de 15 minutos
+            locale: flatpickr.l10ns.es, // Aplica el idioma español
+            minDate: new Date(new Date().setMonth(new Date().getMonth() - 6)), // Seis meses antes de hoy
+            maxDate: new Date().setHours(23, 59, 59, 999), // Establece la fecha límite al final del día de hoy
+            defaultDate: datepicker.value ? new Date(datepicker.value) : new Date().setSeconds(0, 0), // Ajusta para quitar segundos
+        });
+    });
+});

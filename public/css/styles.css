@@ -94,7 +94,7 @@ body{
 
 }
 .custom-table-row:hover{
-    background-color:  #ced4da !important;
+    background-color: #e9ecef !important;
 }
 
 /*Dark table custom style*/
@@ -199,7 +199,7 @@ body{
 
 /*Card custom style*/
 .customcard {
-    background-color: #adb5bd;
+    background-color: #f8f9fa;
 }
 
 /*Card dark custom style*/
@@ -254,6 +254,10 @@ body{
     position: relative;
     overflow: hidden;
     -webkit-appearance: none;
+}
+
+.dark .btn:focus{
+    color: #344767;
 }
 
 /*Button new call styles light theme*/
@@ -592,7 +596,7 @@ body{
 /*Styles for labels filled on focus in forms light theme*/
 .input-group.input-group-dynamic.is-focused label,
 .input-group.input-group-static.is-focused label {
-    color: black;
+    color: #344767;
 }
 
 
@@ -608,7 +612,7 @@ body{
 .input-group.input-group-dynamic .form-control:focus,
 .input-group.input-group-static .form-control,
 .input-group.input-group-static .form-control:focus {
-    background-image: linear-gradient(0deg, black 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
+    background-image: linear-gradient(0deg, #344767 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, #d2d2d2 1px, rgba(209, 209, 209, 0) 0);
 }
 
 
@@ -662,39 +666,47 @@ body{
 
 /* Ajuste del contenedor de select2 */
 .select2-container--default .select2-selection--single {
-    background-color: #adb5bd !important; /* Fondo claro */
-    color: white !important; /* Texto blanco */
-    border: 1px solid #61677C !important; /* Borde gris oscuro */
-    height: 40px !important; /* Ajusta la altura si es necesario */
-    border-radius: 0.375rem; /*Bordes redondeados */
+    background-color: #fff !important;
+    color: white !important;
+    border: 1px solid #61677C !important;
+    height: 40px !important;
+    border-radius: 0.375rem;
 }
 
 
+.dark .select2-container--default .select2-results__option--selected {
+    color: #344767 !important;
+}
+
+.dark .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white !important;
+}
+
 /*Dark style for Select2*/
 .dark .select2-container--default .select2-selection--single {
-    background-color: #2A2D34 !important; /* Fondo oscuro */
-    border: 1px solid #61677C !important; /* Borde gris oscuro */
+    background-color: #2A2D34 !important;
+    border: 1px solid #d2d2d2 !important;
 }
 
 /* Placeholder personalizado */
 .dark .select2-container--default .select2-selection--single .select2-selection__placeholder {
-    color: #B0B0B0 !important; /* Placeholder gris */
+    color: #7b809a !important;
 }
 
 /* Cambiar el color del borde al enfocar */
 .dark .select2-container--default .select2-selection--single:focus {
-    border-color: white !important; /* Color del borde enfocado */
+    border-color: white !important;
 }
 
 /* Cambiar el color de fondo de la lista desplegable */
 .dark .select2-dropdown {
-    background-color: #1a2035 !important; /* Fondo oscuro */
-    color: #7b809a !important; /* Texto blanco */
+    background-color: #1a2035 !important;
+    color: #7b809a !important;
 }
 
 /* Estilo de opción seleccionada */
 .select2-results__option--highlighted[aria-selected] {
-    background-color: #344767 !important; /* Fondo verde claro */
+    background-color: #344767 !important;
 }
 
 /* Padding en las opciones */
@@ -706,43 +718,43 @@ body{
 
 /* Cambiar el color de fondo de las opciones al pasar el mouse */
 .dark .select2-results__option--selectable:hover {
-    background-color: #007BFF !important; /* Cambia el color de fondo al pasar el mouse */
+    background-color: #007BFF !important;
     color: white !important;
 }
 
 /* Cambiar el color de fondo de las opciones seleccionadas */
 .dark .select2-container--default .select2-results__option[aria-selected="true"] {
     background-color: #344767 !important;
-    color: black !important; /* Texto negro */
+    color: black !important;
 }
 
 /* Cambiar el color del texto del elemento que estaba previamente seleccionado */
 .dark .select2-results__option[aria-selected="true"].select2-results__option--highlighted {
-    color: white !important; /* Texto blanco para el seleccionado */
+    color: white !important;
 }
 
 /*Dark style for normal selects*/
 
 /* Placeholder personalizado */
 .dark select option[value=""] {
-    color: #B0B0B0 !important; /* Placeholder gris */
+    color: #B0B0B0 !important;
 }
 
 /* Cambiar el color del borde al enfocar */
 .dark select:focus {
-    border-color: white !important; /* Color del borde enfocado */
+    border-color: white !important;
 }
 
 /* Cambiar el color de fondo de la lista desplegable */
 .dark select option {
-    background-color: #1a2035 !important; /* Fondo oscuro */
-    color: #7b809a !important; /* Texto negro */
+    background-color: #1a2035 !important;
+    color: #7b809a !important;
 }
 
 /* Estilo de opción seleccionada */
 .dark select option:checked {
-    background-color: white !important; /* Fondo oscuro */
-    color: black !important; /* Texto blanco */
+    background-color: white !important;
+    color: black !important;
 }
 
 /* Cambiar el color de fondo de las opciones al pasar el mouse */
@@ -754,25 +766,42 @@ body{
 
 /*Custom styles for call cards*/
 .callcard {
-    background-color: #42464f !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f8f9fa !important;
     cursor: pointer !important;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(52, 71, 103, 0.2);
+    border-radius: 8px;
 }
 
 .callcard:hover {
-    background-color: #23272e !important;
+    background-color: #e9ecef !important;
 }
 
-.callcard h6{
-    color: white !important;
+.callcard h6 {
+    color: #1a2035 !important;
 }
 
-.callheadercard{
-    background-color: #1a2035 !important;
+.callheadercard {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 8px 0 rgba(52, 71, 103, 0.2);
 }
 
+/* Contenido de la tarjeta */
+.card-content {
+    flex-grow: 1; /* Hace que el contenido ocupe todo el espacio disponible */
+}
 
+/* Estilo del pie de la tarjeta (botones) */
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* Asegura que los botones estén distribuidos uniformemente */
+    margin-top: auto; /* Empuja el card-footer al fondo de la tarjeta */
+}
 
-/*Dark custom styles for call cards*/
+/* Tema oscuro */
 .dark .callcard {
     background-color: #282c34 !important;
 }
@@ -781,13 +810,15 @@ body{
     background-color: #23272e !important;
 }
 
-.dark .callcard h6{
+.dark .callcard h6 {
     color: white !important;
 }
 
-.dark .callheadercard{
+.dark .callheadercard {
     background-color: #1a2035 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
+
 
 
 
@@ -800,102 +831,151 @@ body{
 }
 
 
-/*!* Hover sobre los días *!*/
-/*.xdsoft_calendar td:hover {*/
-/*    background-color: #1a2035 !important;  !* Fondo gris oscuro en hover *!*/
-/*    color: #ffffff !important;*/
-/*}*/
-
-/*.xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {*/
-/*    background-color: #1a2035 !important;  !* Fondo gris oscuro en hover *!*/
-/*    color: #ffffff !important;*/
-/*}*/
-
-/*!* Día seleccionado *!*/
-/*.xdsoft_calendar .xdsoft_current {*/
-/*    border-color: #4a82d0 !important;  !* Azul para mes/año seleccionado *!*/
-/*}*/
 
 
 
-/* Ajustes generales para el datetimepicker en tema oscuro */
-.dark .xdsoft_datetimepicker {
-    background-color: #1a2035;  /* Fondo oscuro para todo el datetimepicker */
-    color: #ffffff;             /* Texto claro */
-    border: 1px solid #444c5c;  /* Borde gris */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+/* Absolute position for invalid feedback for problems with icons for calendar and password */
+.invalid-feedback {
+    position: absolute;
+    bottom: -1.4rem; /* Ajusta la posición del mensaje de error */
+    /*font-size: 0.875rem; !* Tamaño de letra menor para el mensaje *!*/
 }
 
-/* Ajustes para los meses */
-.dark .xdsoft_month, .dark .xdsoft_year{
-    background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
-    color: #ffffff !important;             /* Texto claro para los meses */
+
+/**/
+/* Flatpickr styles */
+/**/
+
+/*Color for today in light theme*/
+.flatpickr-calendar .flatpickr-day.today{
+    background-color: #1a2035 !important;
+    color: #fff;
+}
+
+/* Disabled days */
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: #999999 !important;
+}
+
+/* Color for disabled year in dark and light theme*/
+.flatpickr-current-month input.cur-year[disabled]{
+    color: #999999 !important;
+}
+
+/* Selected day for light theme */
+.flatpickr-calendar .flatpickr-day.selected {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+    border-color: #344767 !important;
+}
+
+
+/*Time picker hover */
+.flatpickr-time .flatpickr-time-separator:hover,
+.flatpickr-hour:hover, .flatpickr-minute:hover {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+}
+
+
+
+/* General settings for flatpickr in dark theme */
+.dark .flatpickr-calendar {
+    background-color: #1a2035;
+    color: #ffffff;
+    border: 1px solid #444c5c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Month and year dropdowns */
+.dark .flatpickr-months .flatpickr-month {
+    background-color: #1a2035 !important;
+    color: #ffffff !important;
     border: none;
 }
 
-.dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option {
-    background-color: #1a2035 !important;  /* Fondo oscuro para los meses */
+.dark .flatpickr-monthDropdown-months {
+    background-color: #1a2035 !important;
+    color: white !important;
+    border: none;
+}
+
+/* Today day for dark theme*/
+.dark .flatpickr-calendar .flatpickr-day.today{
+    background-color: #282c34 !important;
+    color: #fff;
+}
+
+/* Selected day for dark theme */
+.dark .flatpickr-calendar .flatpickr-day.selected {
+    background-color: #344767 !important;
+    color: #ffffff !important;
+    border-color: #344767 !important;
+}
+
+.dark .flatpickr-monthDropdown-months .flatpickr-month:hover {
+    background-color: #344767 !important;
     color: white !important;
 }
 
-.dark .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select .xdsoft_option:hover {
-    background-color: #344767 !important;  /* Color gris oscuro en hover */
-    color: white !important;
-}
-
-/* Meses en hover */
-.dark .xdsoft_month:hover, .dark .xdsoft_year:hover {
-    background-color: #344767 !important;  /* Color gris oscuro en hover */
+/* Selected month/year */
+.dark .flatpickr-monthDropdown-months .flatpickr-current-month,
+.dark .flatpickr-months .flatpickr-year {
+    background-color: #4a82d0 !important;
     color: #ffffff !important;
 }
 
-/* Mes seleccionado */
-.dark .xdsoft_monthpicker .xdsoft_option .xdsoft_current,
-.dark .xdsoft_year span.xdsoft_current {
-    background-color: #4a82d0 !important;  /* Azul para mes/año seleccionado */
+/* Calendar days */
+.dark .flatpickr-days {
+    background-color: #1a2035 !important;
+}
+
+.dark .flatpickr-day {
+    color: #ffffff !important;
+    /*border: 1px solid #444c5c;*/
+}
+
+ /*Disabled days*/
+.dark .flatpickr-day.flatpickr-disabled,
+.dark .flatpickr-day.prevMonthDay,
+.dark .flatpickr-day.nextMonthDay {
+    color: #999999 !important;
+}
+
+ /*Time picker */
+.dark .flatpickr-time {
+    background-color: #1a2035 !important;
+    color: #ffffff !important;
+    border-top: 1px solid #444c5c;
+}
+
+ /*Time picker hover */
+.dark .flatpickr-time .flatpickr-time-separator:hover,
+.dark .flatpickr-hour:hover, .dark .flatpickr-minute:hover {
+    background-color: #344767 !important;
     color: #ffffff !important;
 }
 
-/* Días en el calendario */
-.dark .xdsoft_calendar td {
-    background-color: #1a2035 !important;  /* Fondo oscuro */
-    color: #ffffff !important;             /* Texto claro */
-    border: 1px solid #444c5c;
+ /*Border for time selection box */
+.dark .flatpickr-time {
+    border-color: #444c5c;
 }
 
-/* Días no seleccionables (deshabilitados) */
-.dark .xdsoft_calendar td.xdsoft_disabled {
-    color: #999999 !important;             /* Días deshabilitados en gris claro */
-}
 
-/* Día seleccionado */
-.dark .xdsoft_calendar .xdsoft_current {
-    color: #ffffff !important;
-    border-color: #4a82d0;
-}
 
-/* Hover sobre los días */
-.dark .xdsoft_calendar td:hover {
-    background-color: #344767 !important;  /* Fondo gris oscuro en hover */
-    color: #ffffff !important;
-}
 
-/* Horas en el timepicker */
-.dark .xdsoft_timepicker .xdsoft_time {
-    background-color: #1a2035 !important;  /* Fondo oscuro */
-    color: #ffffff !important;             /* Texto claro */
-}
 
-/* Hover sobre las horas */
-.dark .xdsoft_timepicker .xdsoft_time:hover {
-    background-color: #344767 !important;  /* Fondo gris oscuro en hover */
-    color: #ffffff !important;
-}
 
-/* Bordes del selector de tiempo */
-.dark .xdsoft_time_box {
-    border-color: #444c5c;                 /* Borde gris */
-}
+
+
+
+
+
+
 
 
 /*Custom styles for light form check*/
@@ -925,7 +1005,7 @@ body{
 /*Styles for clients dinamic search*/
 /* Estilos para el campo de búsqueda en tema claro (estilos base) */
 #search-client {
-    width: 175px; /* Ajusta según necesites */
+    width: 175px;
     border-radius: 10px;
     border: 1px solid #ccc;
     background-color: #fff;
@@ -971,110 +1051,56 @@ body{
 
 
 
-/*.table {*/
-/*    font-size: small;*/
-/*}*/
-/*table{*/
-/*    height: 100px;*/
-/*}*/
-/*.nota{*/
-/*    width: 40%;*/
-/*}*/
-/*th{*/
-/*    text-align: center;*/
-/*}*/
-/*td{*/
-/*    text-align: center;*/
-/*}*/
-/*estils iconos*/
-/*.oi-plus{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
+/*Styles for user select in calls and jobs*/
+/* Estilos para el select en tema claro (estilos base) */
+.user-select {
+    width: 175px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1a2035;
+    font-weight: bold;
+    padding: 0.5rem;
+    transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+    appearance: none; /* Remover estilos del navegador para select */
+}
 
-/*}*/
-/*.oi-plus:hover{*/
-/*    color: #1c1c1c;*/
+.user-select:focus {
+    box-shadow: 0 0 10px #344767;
+    outline: none;
+}
 
-/*}*/
-/*.oi-eye{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
-/*}*/
-/*.oi-eye:hover{*/
-/*    color: #1c1c1c;*/
+/* Ajuste del contenedor del select para alinearlo a la derecha */
+.user-select-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    align-items: center;
+    margin-top: 1rem;
+}
 
-/*}*/
-/*.oi-pencil{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
-/*}*/
-/*.oi-pencil:hover{*/
-/*    color: #1c1c1c;*/
+/* Estilos para el select en tema oscuro */
+.dark .user-select {
+    border: 1px solid #444;
+    background-color: #282c34;
+    color: #fff;
+}
 
-/*}*/
-/*.oi-trash{*/
-/*    color: #686868;*/
-/*    font-size: small;*/
-/*}*/
-/*.oi-trash:hover{*/
-/*    color: #1c1c1c;*/
+.dark .user-select:focus {
+    background-color: #23272e;
+}
 
-/*}*/
-/*.btn-link{*/
-/*    padding: 0px;*/
-/*    border:none;*/
-/*}*/
-/*estils datetime picker*/
-/*.container {*/
-/*    margin-top: 5px;*/
-/*    margin-left: 10px;*/
-/*    width: 600px;*/
-/*}*/
-/*estils botons envio*/
-/*.btn-primary{*/
-/*    background-color: #686868;*/
-/*    border-color: #1c1c1c;*/
-/*}*/
-/*.btn-primary:hover{*/
-/*    background-color: #1c1c1c;*/
-/*    border-color: #686868;*/
-/*}*/
-/*!*estils links per a tornar atras com un boto*!*/
-/*.btn-default{*/
-/*    background-color: #686868;*/
-/*    border-color: #1c1c1c;*/
-/*    color: white;*/
-/*}*/
-/*.btn-default:hover{*/
-/*    background-color: #1c1c1c;*/
-/*    border-color: #686868;*/
-/*    color: white;*/
-/*}*/
-/*.btn-default:active{*/
-/*    background-color: #006dcc;*/
-/*    border-color: #003399;*/
-/*}*/
-/*.btn-default:focus{*/
-/*    background-color: #006dcc;*/
-/*    border-color: #006dcc;*/
-/*}*/
-/*!*estils dropdown*!*/
-/*.dropdown-item{*/
-/*    active-color: #686868;;*/
-/*}*/
-/*!*estils logo*!*/
-/*.logo{*/
-/*    width: 15%;*/
-/*}*/
-/*.logolink{*/
-/*    margin-right: -900px;*/
-/*}*/
-/*.loginlink{*/
-/*    margin-right: 0px;*/
-/*}*/
-/*.login{*/
-/*    margin-left:60%;*/
-/*}*/
-/*.card{*/
-/*    !*float:center;*!*/
-/*}*/
+
+/* Estilos para los inputs, selects y textareas en tema oscuro */
+.dark input,
+.dark select,
+.dark textarea {
+    color: #ffffff;
+}
+
+/* Estilos para los inputs cuando están enfocados en tema oscuro*/
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+    color: #7b809a;
+}

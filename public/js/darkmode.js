@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para determinar el color basado en el tema
     function getLabelColor() {
-        return prefersDarkScheme.matches ? 'white' : 'black';  // Blanco para oscuro, negro para claro
+        return prefersDarkScheme.matches ? 'white' : '#344767';  // Blanco para oscuro, negro para claro
     }
 
     // Selecciona todos los elementos select y textarea en la página
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     // Función para determinar el color basado en el tema
     function getLabelColor() {
-        return prefersDarkScheme.matches ? 'white' : 'black';  // Blanco para oscuro, negro para claro
+        return prefersDarkScheme.matches ? 'white' : '#344767';  // Blanco para oscuro, negro para claro
     }
 
     // Inicializar select2

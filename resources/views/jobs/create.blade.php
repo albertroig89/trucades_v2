@@ -44,25 +44,30 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static">
+                                                <div class="form-group input-group mb-4 input-group-static @error('inittime') has-error @enderror">
                                                     <label for="inittime">Inicio del trabajo</label>
-                                                    <input type="text" class="form-control @error('inittime') is-invalid @enderror" name="inittime" value="{{ old('inittime') }}" id="inittime"/>
-                                                    @error('inittime')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('inittime') }}</small>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker @error('inittime') is-invalid @enderror" name="inittime" value="{{ old('inittime') }}" id="inittime" />
+                                                        @error('inittime')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('inittime') }}</small>
+                                                        </div>
+                                                        @enderror
                                                     </div>
-                                                    @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static">
+                                                <div class="form-group input-group mb-4 input-group-static @error('endtime') has-error @enderror">
                                                     <label for="endtime">Final del trabajo</label>
-                                                    <input type="text" class="form-control @error('endtime') is-invalid @enderror" name="endtime" value="{{ old('endtime') }}" id="endtime"/>
-                                                    @error('endtime')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('endtime') }}</small>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                        <input type="text" class="form-control datepicker @error('endtime') is-invalid @enderror" name="endtime" value="{{ old('endtime') }}" id="endtime" />
+                                                        @error('endtime')
+                                                        <div class="invalid-feedback">
+                                                            <small>{{ $errors->first('endtime') }}</small>
+                                                        </div>
+                                                        @enderror
                                                     </div>
-                                                    @enderror
                                                 </div>
-
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="job">Descripción del trabajo</label>
                                                     <textarea name="job" type="text" class="form-control @error('job') is-invalid @enderror" id="job">{{ old('job') }}</textarea>
