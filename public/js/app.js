@@ -1,14 +1,50 @@
-//Script para agregar teléfonos adicionales en los clientes
+// Script para agregar teléfonos adicionales en los clientes
 $(document).ready(function() {
-    $("#add_phone").click(function(){
-        var contador = $("input[type='text']").length;
+    $("#add_phone").click(function() {
+        // Contar el número de inputs de teléfonos addicionales (inicia desde 0 en el formulario de creacion)
+        var currentCount = $(".phone-input-additional").length;
 
-        $(this).before('<div class="form-group input-group mb-4 input-group-static mt-4" style="position: relative;"><label class="form-label" for="phones'+ contador +'">Teléfono '+ contador +':</label><input name="phones[]" type="text" class="form-control" id="phones'+ contador +'"><button type="button" class="btn btn-default delete_phone mt-4">Borrar telèfon</button></div>');
+        // Número para mostrar en el label (inicia desde 1)
+        var displayIndex = currentCount + 2;
+
+        // Crear nuevo HTML para el teléfono adicional
+        var newPhoneInput = `
+            <div class="form-group input-group mb-4 input-group-static mt-4 is-focus" style="position: relative;">
+                <label class="form-label" for="phones${currentCount}">Teléfono ${displayIndex}:</label>
+                <input name="phones[]" type="text" class="form-control phone-input phone-input-additional" id="phones${currentCount}">
+                <div class="button">
+                    <button type="button" class="btn btn-default delete_phone btn-sm mt-2">Borrar teléfono</button>
+                </div>
+                <!-- Error message for additional phones -->
+<!--                @if($errors->has('phones.' + currentCount))-->
+<!--                    <div class="invalid-feedback">-->
+<!--                        <small>{{ $errors->first('phones.' + currentCount) }}</small>-->
+<!--                    </div>-->
+<!--                @endif-->
+            </div>`;
+
+        // Añadir el nuevo teléfono justo después del último input de teléfono
+        $(".phone-input").last().closest('.form-group').after(newPhoneInput);
+
+        // Reactivar la funcionalidad de Bootstrap para los labels flotantes
+        $(`#phones${currentCount}`).on('focus', function() {
+            $(this).closest('.form-group').addClass('is-focused');
+        }).on('blur', function() {
+            if ($(this).val() === '') {
+                $(this).closest('.form-group').removeClass('is-focused');
+            }
+        });
     });
-    $(document).on('click', '.delete_phone', function(){
-        $(this).parent().remove();
+
+    // Eliminar teléfonos adicionales
+    $(document).on('click', '.delete_phone', function() {
+        $(this).closest('.form-group').remove();
     });
 });
+
+
+
+
 
 
 // Script para alternar el tipo de input entre "password" y "text"

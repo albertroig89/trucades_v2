@@ -9,14 +9,14 @@
                     <div class="customcard card my-4">
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white ps-3">Formulario de creación de clientes</h6>
+                                <h6 class="text-white ps-3">Formulario de edición de clientes</h6>
                             </div>
                         </div>
                         <section>
                             <div class="container py-4">
                                 <div class="row">
                                     <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-                                        <form role="form" action="{{ route('clients.edit', $client->id) }}" id="call-form" method="post" autocomplete="off">
+                                        <form role="form" action="{{ route('clients.update', $client->id) }}" id="call-form" method="post" autocomplete="off">
 
                                             @method('PUT')
                                             @csrf
@@ -45,32 +45,39 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
-
-
-                                                    <label class="form-label" for="phone">Teléfono:</label>
                                                     @foreach ($phones as $phone)
-                                                        {{ $loop->iteration }}
-                                                        @if($loop === 1)
-                                                            <!-- Input text for phone -->
-                                                            <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone', $client->phone) }}">
+                                                        @if($loop->first)
+                                                            <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                                <label class="form-label" for="phone">Teléfono:</label>
+                                                                <!-- Input text for primary phone -->
+                                                                <input name="phone" type="text" class="form-control phone-input @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone', $phone->phone) }}">
+                                                                <div class="button">
+                                                                    <button type="button" id="add_phone" class="btn btn-default btn-sm mt-4">Añadir teléfono</button>
+                                                                </div>
+                                                                <!-- Error message for phone select -->
+                                                                @error('phone')
+                                                                <div class="invalid-feedback">
+                                                                    <small>{{ $errors->first('phone') }}</small>
+                                                                </div>
+                                                                @enderror
+                                                            </div>
                                                         @else
-                                                            <label class="form-label " for="phones'+ contador +'">Teléfono:</label>
-                                                            <input id="phones'+ contador +'" name="phones[]" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $client->phone) }}">
-                                                            <button type="button" class="btn btn-default delete_phone float-right">Borrar teléfono</button>
+                                                            <div class="form-group input-group mb-4 input-group-static mt-4" style="position: relative;">
+                                                                <label class="form-label" for="phones_{{ $loop->index - 1 }}">Teléfono {{ $loop->iteration }}:</label>
+                                                                <input id="phones_{{ $loop->index - 1 }}" name="phones[]" type="text" class="form-control phone-input phone-input-additional @error('phones.' . ($loop->index - 1)) is-invalid @enderror" value="{{ old('phones.' . ($loop->index - 1), $phone->phone) }}">
+                                                                <div class="button">
+                                                                    <button type="button" class="btn btn-default delete_phone btn-sm mt-2">Borrar teléfono</button>
+                                                                </div>
+                                                                <!-- Error message for additional phones -->
+                                                                @error('phones.' . ($loop->index - 1))
+                                                                <div class="invalid-feedback">
+                                                                    <small>{{ $errors->first('phones.' . ($loop->index - 1)) }}</small>
+                                                                </div>
+                                                                @enderror
+                                                            </div>
                                                         @endif
                                                     @endforeach
-                                                    <div class="button">
-                                                        <button type="button" id="add_phone" class="btn btn-default mt-4">Afegir telèfon</button>
-                                                    </div>
 
-                                                    <!-- Error message for phone select -->
-                                                    @error('phone')
-                                                    <div class="invalid-feedback">
-                                                        <small>{{ $errors->first('phone') }}</small>
-                                                    </div>
-                                                    @enderror
-                                                </div>
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>

@@ -6,13 +6,11 @@ use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use App\Http\Requests\CreateClientRequest;
 use App\Models\Phone;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Illuminate\Support\Collection;
 
 class ClientController extends Controller
 {
@@ -47,8 +45,7 @@ class ClientController extends Controller
     public function create()
     {
         $title = 'Nuevo cliente';
-        $clients = Client::all();
-        return view('clients.create', compact('title', 'clients'));
+        return view('clients.create', compact('title'));
     }
 
     public function edit(Client $client)
@@ -67,34 +64,9 @@ class ClientController extends Controller
 
     public function update(UpdateClientRequest $request, Client $client)
     {
-        // Obtenemos los datos validados del request
-        $data = $request->validated();
-
-        // Actualizamos los datos principales del cliente
-        $client->update([
-            'name' => $data['name'],
-            'phone' => $data['phone'],
-        ]);
-
-        // Gestionar los registros de teléfonos adicionales
-        $phones = $data['phones'] ?? [];  // Si no hay teléfonos adicionales, usa un array vacío
-
-        // Eliminamos los registros antiguos de teléfonos y agregamos los nuevos
-        $client->phone()->delete(); // Eliminar los teléfonos antiguos
-        foreach ($phones as $phone) {
-            if (!empty($phone)) {
-                $client->phone()->create(['phone' => $phone]);
-            }
-        }
-
-        // Asegurarse de que el teléfono principal también se agregue si no está en la lista de teléfonos adicionales
-        if (!in_array($data['phone'], $phones)) {
-            $client->phone()->create(['phone' => $data['phone']]);
-        }
-
+        $request->updateClient($client);
         return redirect()->route('clients.index');
     }
-
 
     public function destroy(Client $client)
     {

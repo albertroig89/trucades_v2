@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\Client;
+use App\Models\Phone;
 
 class CreateClientRequest extends FormRequest
 {
@@ -25,10 +26,10 @@ class CreateClientRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:clients,email', // Cambiado a clients para la tabla correcta
-            'phone' => 'required|string|max:20',
+            'email' => 'nullable|email|unique:clients,email',
+            'phone' => 'required|string|regex:/^[0-9]+$/|max:20',
             'phones' => 'nullable|array',
-            'phones.*' => 'nullable|string|max:20', // Validación para cada teléfono adicional
+            'phones.*' => 'nullable|string|regex:/^[0-9]+$/|max:20',
         ];
     }
 
@@ -43,9 +44,11 @@ class CreateClientRequest extends FormRequest
             'name.required' => 'Introduce un nombre para el cliente',
             'email.email' => 'Introduce un correo electrónico válido',
             'email.unique' => 'El correo electrónico ya existe',
-            'phone.required' => 'Introduce un telèfono',
-            'phones.array' => 'Los teléfonos adicionales deben ser una matriz válida',
-            'phones.*.string' => 'Los telefonos addicionales tienen que ser cadenas de texto',
+            'phone.required' => 'Es obligatorio introducir un teléfono como minimo',
+            'phone.regex' => 'El teléfono debe ser numerico',
+            'phone.max' => 'El teléfono no debe superar los 20 digitos',
+            'phones.*.regex' => 'El teléfono debe ser numerico',
+            'phones.*.max' => 'El teléfono no debe superar los 20 digitos',
         ];
     }
 
@@ -66,14 +69,14 @@ class CreateClientRequest extends FormRequest
             ]);
 
             // Crear el primer teléfono
-            $client->phone()->create([
+            $client->phones()->create([
                 'phone' => $data['phone'],
             ]);
 
             // Crear teléfonos adicionales si existen
             if (!empty($data['phones'])) {
                 foreach ($data['phones'] as $phone) {
-                    $client->phone()->create([
+                    $client->phones()->create([
                         'phone' => $phone,
                     ]);
                 }

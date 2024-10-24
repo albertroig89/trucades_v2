@@ -44,20 +44,18 @@
                                                 </div>
                                                 <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
 
-
                                                     <label class="form-label" for="phone">Teléfono:</label>
                                                     <!-- Input email for phone -->
-                                                    <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone') }}">
-                                                    <div class="button">
-                                                        <button type="button" id="add_phone" class="btn btn-default mt-4">Afegir telèfon</button>
-                                                    </div>
-
+                                                    <input name="phone" type="text" class="form-control phone-input @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone') }}">
                                                     <!-- Error message for phone select -->
                                                     @error('phone')
                                                     <div class="invalid-feedback">
                                                         <small>{{ $errors->first('phone') }}</small>
                                                     </div>
                                                     @enderror
+                                                    <div class="button">
+                                                        <button type="button" id="add_phone" class="btn btn-default btn-sm mt-4">Añadir teléfono</button>
+                                                    </div>
                                                 </div>
                                                 <!-- Div container for buttons -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
