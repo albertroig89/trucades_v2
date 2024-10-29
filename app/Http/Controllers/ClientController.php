@@ -22,7 +22,7 @@ class ClientController extends Controller
             if ($request->has('search') && !empty($request->get('search'))) {
                 $query->where('name', 'like', '%' . $request->get('search') . '%');
             }
-            $clients = $query->orderBy('name')->paginate(50);
+            $clients = $query->orderBy('name')->paginate(40);
             $phones = Phone::all();
 
             // Obtener la preferencia de vista desde la solicitud (index o cards)
@@ -36,7 +36,7 @@ class ClientController extends Controller
         // Obtener la preferencia de vista desde la solicitud (index o cards)
         $viewType = $request->get('viewType', 'index');
 
-        $clients = $query->orderBy('name')->paginate(50);
+        $clients = $query->orderBy('name')->paginate(40);
         $phones = Phone::all();
         $title = 'Clientes';
         return view("clients.$viewType", compact('title', 'clients', 'phones'));

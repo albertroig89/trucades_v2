@@ -17,10 +17,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $query = User::query();
         // Obtener la preferencia de vista desde la solicitud
         $viewType = $request->get('viewType', 'index'); // 'index' por defecto
 
-        $users = User::all();
+        $users = $query->orderBy('id')->paginate(20);
         $title = 'Usuarios';
 
         return view("users.$viewType", compact('title', 'users'));

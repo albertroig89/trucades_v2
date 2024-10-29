@@ -1104,3 +1104,68 @@ body{
 .dark textarea:focus {
     color: #7b809a;
 }
+
+
+/*Styles for pagination links*/
+/* Estilos básicos para los links de paginación en modo claro */
+.pagination {
+    font-weight: bold;
+}
+
+/* Estilo para el link inactivo en paginación */
+.page-item .page-link {
+    background-color: #f8f9fa;
+    color: #7b809a;
+    border-color: #444;
+}
+
+/* Estilo para el link activo en paginación */
+.page-item.active .page-link {
+    background-image: linear-gradient(195deg, #4c586b 0%, #344767 100%) !important;
+    color: #ffffff;
+    border-color: transparent;
+}
+
+/* Estilos para hover */
+.page-item .page-link:hover {
+    background-color: #e9ecef;
+    color: #1a2035;
+    border-color: #4c586b;
+}
+
+/* Estilos para el foco (cuando el elemento es seleccionado pero no activo) */
+.page-item .page-link:focus {
+    border-color: #7b809a;
+}
+
+.page-item .page-link:focus,
+.page-item .page-link:active {
+    outline: 2px solid #7b809a;
+    box-shadow: 0 0 10px #344767;
+}
+
+
+/* Estilos básicos para los links de paginación en modo oscuro */
+.dark .page-item .page-link {
+    background-color: #1a2035;
+    color: #ffffff;
+    border-color: #23272e;
+}
+
+/* Estilos para hover */
+.dark .page-item .page-link:hover {
+    background-color: #23272e;
+    color: #7b809a;
+    border-color: #4c586b;
+}
+
+/* Estilos para el foco (cuando el elemento es seleccionado pero no activo) */
+.dark .page-item .page-link:focus {
+    border-color: #7b809a;
+}
+
+.dark .page-item .page-link:focus,
+.dark .page-item .page-link:active {
+    outline: 2px solid #7b809a;
+    box-shadow: 0 0 0 1px #4c586b;
+}
