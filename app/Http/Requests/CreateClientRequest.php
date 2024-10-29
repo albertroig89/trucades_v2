@@ -29,7 +29,7 @@ class CreateClientRequest extends FormRequest
             'email' => 'nullable|email|unique:clients,email',
             'phone' => 'required|string|regex:/^[0-9]+$/|max:20',
             'phones' => 'nullable|array',
-            'phones.*' => 'nullable|string|regex:/^[0-9]+$/|max:20',
+            'phones.*' => 'nullable|string|max:20',
         ];
     }
 
@@ -45,10 +45,9 @@ class CreateClientRequest extends FormRequest
             'email.email' => 'Introduce un correo electrónico válido',
             'email.unique' => 'El correo electrónico ya existe',
             'phone.required' => 'Es obligatorio introducir un teléfono como minimo',
-            'phone.regex' => 'El teléfono debe ser numerico',
-            'phone.max' => 'El teléfono no debe superar los 20 digitos',
-            'phones.*.regex' => 'El teléfono debe ser numerico',
-            'phones.*.max' => 'El teléfono no debe superar los 20 digitos',
+            'phone.regex' => 'El teléfono principal debe ser numerico',
+            'phone.max' => 'El teléfono principal no debe superar los 20 digitos',
+            'phones.*.max' => 'Los teléfonos adicionales no pueden superar los 20 caracteres',
         ];
     }
 
