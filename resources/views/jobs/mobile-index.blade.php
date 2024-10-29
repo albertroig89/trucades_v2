@@ -55,6 +55,11 @@
                                 @endforelse
                             </div>
                         </div>
+                        <div class="row text-center py-2">
+                            <div class="col-4 mx-auto">
+                                {{ $jobs->links('components.bootstrap-5-pagination') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
