@@ -819,10 +819,6 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
-
-
-
-
 /*Adjust badges for diferent calls states regardless of their content*/
 .badge {
     width: 85px; /* Ajusta el tamaño según tus necesidades */
@@ -830,16 +826,6 @@ body{
     text-align: center; /* Asegura que el texto esté centrado */
 }
 
-
-
-
-
-/* Absolute position for invalid feedback for problems with icons for calendar and password */
-.invalid-feedback {
-    position: absolute;
-    bottom: -1.4rem; /* Ajusta la posición del mensaje de error */
-    /*font-size: 0.875rem; !* Tamaño de letra menor para el mensaje *!*/
-}
 
 
 /**/
@@ -964,18 +950,6 @@ body{
 .dark .flatpickr-time {
     border-color: #444c5c;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*Custom styles for light form check*/

@@ -67,14 +67,14 @@
                                                     <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
                                                         <label class="form-label" for="phones_{{ $index }}">Teléfono {{ $index + 1 }}:</label>
                                                         <input id="phones_{{ $index }}" name="phones[{{ $index }}]" type="text" class="form-control phone-input phone-input-additional @error('phones.' . $index) is-invalid @enderror" value="{{ $phone }}">
-                                                        <div class="button">
-                                                            <button type="button" class="btn btn-default delete_phone btn-sm mt-2">Borrar teléfono</button>
-                                                        </div>
                                                         @error('phones.' . $index)
                                                         <div class="invalid-feedback">
                                                             <small>{{ $errors->first('phones.' . $index) }}</small>
                                                         </div>
                                                         @enderror
+                                                        <div class="button">
+                                                            <button type="button" class="btn btn-default delete_phone btn-sm mt-2">Borrar teléfono</button>
+                                                        </div>
                                                     </div>
                                                 @endforeach
                                                 <!-- Div container for buttons -->
