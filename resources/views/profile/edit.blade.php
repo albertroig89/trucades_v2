@@ -9,8 +9,7 @@
                     <div class="customcard card my-4">
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3 d-flex align-items-center">
-                                <img src="{{ asset($user->avatar) }}" alt="down-arrow" class="avatar avatar-sm me-3 ms-3 border-radius-lg">
-                                <h6 class="text-white m-0">{{ $user->name }}</h6>
+                                <h6 class="text-white ps-3">Formulario de edición de perfil</h6>
                             </div>
                         </div>
                         <section>
@@ -21,6 +20,9 @@
                                             @csrf
                                             @method('PUT')
                                             <div class="form-group card-body">
+                                                <div class="form-group input-group mb-4 input-group-static d-flex justify-content-center">
+                                                    <img src="{{ asset($user->avatar) }}" alt="down-arrow" class="avatar-xxxl border-radius-lg">
+                                                </div>
                                                 <div class="form-group input-group mb-4 input-group-static">
 
                                                     <!-- Input text for user name -->
@@ -47,7 +49,8 @@
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="department_id">Departamento</label>
                                                     <!-- Input for department_id non editable -->
-                                                    <input type="text" class="form-control" value="{{ $user->department->title }}" readonly>
+                                                    <p class="form-control-plaintext">{{ $user->department->title }}</p>
+{{--                                                    <input type="text" class="form-control" value="{{ $user->department->title }}" readonly>--}}
                                                     <input type="hidden" name="department_id" value="{{ $user->department->id }}">
                                                     <!-- Error message for department_id select -->
                                                     @error('department_id')

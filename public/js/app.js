@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
+//Script para los estilos de cambio de vista "animacion"
 document.addEventListener('DOMContentLoaded', function () {
     console.log("Script de actualización del moving-tab se ha cargado.");
 
