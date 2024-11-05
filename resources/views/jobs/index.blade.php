@@ -38,7 +38,7 @@
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
                                                             @if($job->user->avatar)
-                                                                <img src="{{ $job->user->avatar }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
+                                                                <img src="{{ asset($job->user->avatar) }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                                             @else
                                                                 <img src="{{ asset('images/AR_fblanc.png') }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                                             @endif

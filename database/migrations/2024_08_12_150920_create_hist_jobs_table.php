@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('hist_jobs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username');
+            $table->string('email')->unique();
+            $table->string('avatar');
+            $table->unsignedTinyInteger('attempts')->default(1);
             $table->string('job', 1000);
             $table->dateTime('inittime');
             $table->dateTime('endtime');

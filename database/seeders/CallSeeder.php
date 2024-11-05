@@ -93,6 +93,8 @@ class CallSeeder extends Seeder
             ],
         ];
 
+        Call::factory(150)->create();
+
         foreach ($calls as $callData) {
             $client = $clients->get($callData['client_id']);
             Call::create(array_merge($callData, [

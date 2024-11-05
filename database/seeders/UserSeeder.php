@@ -28,6 +28,7 @@ class UserSeeder extends Seeder
             'email' => 'global@gmail.com',
             'password' => bcrypt('123456'),
             'department_id' => $globId,
+            'avatar' => 'images/global.png',
         ]);
 
         User::create([

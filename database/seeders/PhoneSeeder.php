@@ -51,7 +51,7 @@ class PhoneSeeder extends Seeder
         ]);
 
         // Crear instancias de Phone usando el Factory
-        Phone::factory(40)->create();
+        Phone::factory(80)->create();
     }
 }
 

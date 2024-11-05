@@ -61,20 +61,20 @@ class JobController extends Controller
             $jobs = Job::whereIn('user_id', [auth()->id(), $globalId])
                 ->orderBy('user_id', 'DESC')
                 ->orderBy('created_at', 'DESC')
-                ->paginate(50);
+                ->paginate(40);
         } elseif (empty($request->get('user_id')) && auth()->user()->department_id === $admId) {
             $jobs = Job::orderBy('created_at', 'DESC')->paginate(20);
             $alljobs = true;
         } elseif (empty($request->get('user_id'))) {
             $jobs = Job::where('user_id', auth()->id())
                 ->orderBy('created_at', 'DESC')
-                ->paginate(50);
+                ->paginate(40);
         } elseif ($request->get('user_id') == "100") {
             $jobs = Job::orderBy('created_at', 'DESC')->paginate(100);
         } else {
             $jobs = Job::where('user_id', $request->get('user_id'))
                 ->orderBy('created_at', 'DESC')
-                ->paginate(50);
+                ->paginate(40);
         }
         return view("jobs.$viewType", compact('title', 'jobs', 'users', 'alljobs', 'user', 'globId', 'techId'));
     }
@@ -187,7 +187,7 @@ class JobController extends Controller
      */
     public function histjob()
     {
-        $histjobs = HistJob::orderBy('created_at', 'DESC')->paginate(50);
+        $histjobs = HistJob::orderBy('created_at', 'DESC')->paginate(40);
         $title = "Historico de trabajos";
 
         return view('jobs.histjobs', compact('title', 'histjobs'));
@@ -253,6 +253,9 @@ class JobController extends Controller
     {
         HistJob::create([
             'username' => $job->user->name,
+            'email' => $job->user->email,
+            'avatar' => $job->user->avatar,
+            'attempts' => $job->attempts,
             'job' => $job->job,
             'inittime' => $job->inittime,
             'endtime' => $job->endtime,

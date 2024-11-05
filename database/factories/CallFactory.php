@@ -22,9 +22,9 @@ class CallFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Crea un usuario relacionado
-            'user_id2' => User::factory(), // Otro usuario relacionado, si aplica
-            'stat_id' => Stat::factory(), // Relaciona con un estado
+            'user_id' => User::inRandomOrder()->first()->id, // Selecciona un usuario existente aleatoriamente
+            'user_id2' => User::inRandomOrder()->first()->id, // Otro usuario existente aleatorio, si aplica
+            'stat_id' => Stat::inRandomOrder()->first()->id, // Relaciona con un estado ya existente
             'callinf' => $this->faker->sentence, // Información de la llamada
             'clientname' => $this->faker->name, // Nombre del cliente
             'clientphone' => $this->faker->phoneNumber, // Teléfono del cliente

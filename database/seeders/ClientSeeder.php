@@ -36,7 +36,7 @@ class ClientSeeder extends Seeder
         ]);
 
         // Generar clientes ficticios
-        Client::factory(40)->create();
+        Client::factory(60)->create();
     }
 }
 

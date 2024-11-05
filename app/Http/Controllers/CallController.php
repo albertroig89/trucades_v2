@@ -62,7 +62,7 @@ class CallController extends Controller
                 ->orderBy('user_id', 'DESC')
                 ->orderBy('stat_id')
                 ->orderBy('created_at', 'DESC')
-                ->paginate(50);
+                ->paginate(40);
         } elseif (empty($request->get('user_id')) && auth()->user()->department_id === $admId) {
             $calls = Call::orderBy('created_at', 'DESC')->paginate(20);
             $allcalls = true;
@@ -70,14 +70,14 @@ class CallController extends Controller
             $calls = Call::where('user_id', auth()->id())
                 ->orderBy('stat_id')
                 ->orderBy('created_at', 'DESC')
-                ->paginate(50);
+                ->paginate(40);
         } elseif ($request->get('user_id') == "100") {
             $calls = Call::orderBy('created_at', 'DESC')->paginate(100);
         } else {
             $calls = Call::where('user_id', $request->get('user_id'))
                 ->orderBy('stat_id')
                 ->orderBy('created_at', 'DESC')
-                ->paginate(50);
+                ->paginate(40);
         }
 
 //        // Verificar la preferencia del usuario (escritorio o móvil)

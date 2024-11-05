@@ -8,6 +8,6 @@ class HistJob extends Model
 {
     // Atributos que se pueden llenar de forma masiva
     protected $fillable = [
-        'username', 'job', 'inittime', 'endtime', 'totalmin', 'clientname',
+        'username', 'email', 'avatar', 'attempts', 'job', 'inittime', 'endtime', 'totalmin', 'clientname',
     ];
 }

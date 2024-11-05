@@ -63,6 +63,8 @@ class JobSeeder extends Seeder
             'clientname' => $client4->name,
             'attempts' => 3,
         ]);
+
+        Job::factory(150)->create();
     }
 }
 
