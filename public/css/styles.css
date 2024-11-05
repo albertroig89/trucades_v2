@@ -1092,9 +1092,30 @@ body{
     color: #fff;
 }
 
-
+/*Styles for avatar in edit profile form*/
 .avatar-xxxl{
     width: 200px !important;
     height: 200px !important;
     margin-bottom: 2rem;
+}
+
+
+
+/* Aplica el mismo estilo de enfoque al label del campo de calendario */
+.input-group-static.label-focused {
+    color: #fff !important; /* Asegúrate de cambiar el color al blanco cuando el campo está enfocado */
+}
+
+.input-group-text.focus-visible ~ input.form-control {
+    border-color: #fff; /* También asegúrate de ajustar el color del borde si es necesario */
+}
+
+/* Opcional: Forzar el cambio de color para cualquier input-group al enfocar el input */
+.input-group > .form-control:focus ~ .form-label {
+    color: #ffffff !important; /* Cambia el color al blanco cuando se enfoca */
+}
+
+/* Si el color del label debe cambiar para cualquier input cuando está seleccionado */
+.input-group-static .form-control:focus + label {
+    color: #ffffff; /* Cambia al color blanco */
 }

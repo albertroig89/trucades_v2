@@ -104,7 +104,7 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
-                                                        <button type="submit" class="btn btn-default btn-sm w-auto">Editar</button>
+                                                        <button type="submit" class="btn btn-default btn-sm w-auto">Guardar</button>
                                                     </div>
                                                     <div>
                                                         <a href="{{ route('calls.index') }}" type="button" class="btn btn-default btn-sm w-auto">Volver</a>

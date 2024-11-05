@@ -111,8 +111,8 @@ class CreateUserRequest extends FormRequest
             }
         }
 
-        $width = 100;
-        $height = 100;
+        $width = 250;
+        $height = 250;
 
         // Colores de fondo claros y oscuros
         $backgroundColors = [
@@ -142,7 +142,7 @@ class CreateUserRequest extends FormRequest
         $fontPath = public_path('fonts/Blanka-Regular.otf');
 
         // Tamaño de la fuente
-        $fontSize = 40;
+        $fontSize = 100;
 
         // Calcular la caja delimitadora del texto
         $bbox = imagettfbbox($fontSize, 0, $fontPath, $initials);

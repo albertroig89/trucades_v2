@@ -12,7 +12,8 @@ applyTheme();
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
 
 
-//Script para cambiar el logo y el favicon en funcion de si el tema es oscuro o claro
+
+// //Script para cambiar el logo y el favicon en funcion de si el tema es oscuro o claro
 document.addEventListener("DOMContentLoaded", function() {
     const logo = document.querySelector('.footer-logo');
     const favicon = document.querySelector('link[rel="icon"]');
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Selecciona todos los elementos select y textarea en la página
-    const inputs = document.querySelectorAll('select, textarea');
+    const inputs = document.querySelectorAll('select, textarea, input[type="text"]');
 
     // Itera sobre cada input y agrega los listeners de eventos
     inputs.forEach(function(input) {
