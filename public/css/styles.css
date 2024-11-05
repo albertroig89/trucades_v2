@@ -56,7 +56,7 @@ body{
 
 /*Navbar custom style*/
 .custom-navbar {
-    background-image: linear-gradient(195deg, #344767 0%, #4c586b 100%) !important;
+    background-image: linear-gradient(195deg, #4c586b 0%, #344767 100%) !important;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(52, 71, 103, 1) !important;
     color: black !important;
     font-weight: bold;
@@ -64,7 +64,7 @@ body{
 
 /*Navbar dark custom style*/
 .dark .custom-navbar {
-    background-image: linear-gradient(195deg, #4c586b 0%, #344767 100%) !important;
+    background-image: linear-gradient(195deg, #344767 0%, #4c586b 100%) !important;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(52, 71, 103, 1) !important;
     color: white !important;
 }
@@ -128,68 +128,6 @@ body{
 .dark .custom-table h6{
     color: white !important;
 }
-
-
-
-
-
-/*!*Colors of view selector*!*/
-/*.nav-custom{*/
-/*    background-color: red !important;*/
-/*}*/
-/*.nav-custom:active{*/
-/*    background-color: #7b809a !important;*/
-/*}*/
-/*.dark .nav-custom{*/
-/*    background-color: #344767 !important;*/
-/*}*/
-
-/*.dark .nav-custom:active{*/
-/*    background-color: #344767 !important;*/
-/*}*/
-
-
-/*.nav.nav-pills .nav-link {*/
-/*    z-index: 3;*/
-/*    color: #344767;*/
-/*    border-radius: 0.5rem;*/
-/*    background-color: inherit;*/
-/*}*/
-
-/*.nav.nav-pills .nav-link.active {*/
-/*    animation: 0.2s ease;*/
-/*}*/
-
-
-/*.nav.nav-pills .nav-link:hover:not(.active) {*/
-/*    color: #344767;*/
-/*}*/
-
-/*.nav.nav-pills .nav-link {*/
-/*    z-index: 3;*/
-/*    font-weight: bold;*/
-/*    color: white;*/
-/*    border-radius: 0.5rem;*/
-/*    background-color: inherit;*/
-/*}*/
-
-/*.nav.nav-pills .nav-link.active {*/
-/*    animation: 0.2s ease;*/
-/*}*/
-
-/*.nav.nav-pills .nav-link:hover:not(.active) {*/
-/*    color: #344767;*/
-/*}*/
-
-/*!*margin adjust for view selector*!*/
-/*.viewselector{*/
-/*    margin: -2.5rem 0 -1.8rem 0;*/
-/*}*/
-
-
-
-
-
 
 
 /*margin adjust for form card*/
@@ -1142,4 +1080,21 @@ body{
 .dark .page-item .page-link:active {
     outline: 2px solid #7b809a;
     box-shadow: 0 0 0 1px #4c586b;
+}
+
+
+.form-control-plaintext {
+
+    font-weight: bold;
+}
+
+.dark .form-control-plaintext {
+    color: #fff;
+}
+
+
+.avatar-xxxl{
+    width: 200px !important;
+    height: 200px !important;
+    margin-bottom: 2rem;
 }
