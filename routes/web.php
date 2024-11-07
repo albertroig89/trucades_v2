@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jobs/from-call/{call}', [JobController::class, 'jobfromcallform'])->name('jobs.jobfromcallform');
     Route::post('/jobs/jobfromcall/{job}', [JobController::class, 'jobfromcall'])->name('jobs.jobfromcall');
     Route::get('/jobs/histjobs', [JobController::class, 'histjob'])->name('jobs.histjobs');
+    Route::get('/jobs/exportform', [JobController::class, 'exportform'])->name('jobs.exportform');
+    Route::get('/jobs/export', [JobController::class, 'export'])->name('jobs.export');
+    Route::get('/jobs/exportperform', [JobController::class, 'exportperform'])->name('jobs.exportperform');
     Route::get('/jobs/histjobs2', [JobController::class, 'histjob2'])->name('jobs.histjobs2');
     Route::get('/jobs/counter', [JobController::class, 'count'])->name('jobs.count');
     Route::delete('/jobs/histjobs/{histjob}', [JobController::class, 'histdestroy'])->name('jobs.histdestroy');

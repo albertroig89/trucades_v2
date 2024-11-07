@@ -1119,3 +1119,59 @@ body{
 .input-group-static .form-control:focus + label {
     color: #ffffff; /* Cambia al color blanco */
 }
+
+
+
+/*Styles for user select in calls and jobs*/
+/* Estilos para el select en tema claro (estilos base) */
+.format-select {
+    font-size: 0.90rem;
+    width: 150px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #1a2035;
+    font-weight: bold;
+    padding: 0.5rem;
+    transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+    appearance: none; /* Remover estilos del navegador para select */
+}
+
+.format-select:focus {
+    box-shadow: 0 0 10px #344767;
+    outline: none;
+}
+
+/* Ajuste del contenedor del select para alinearlo a la derecha */
+.format-select-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    align-items: center;
+}
+
+/* Estilos para el select en tema oscuro */
+.dark .format-select {
+    border: 1px solid #444;
+    background-color: #282c34;
+    color: #fff;
+}
+
+.dark .format-select:focus {
+    background-color: #23272e;
+}
+
+.format-select.is-invalid{
+    border: 2px solid #fd5c70;
+}
+
+.export-totals{
+    color: #344767;
+    background-color: #e9ecef ;
+    font-weight: bold;
+}
+
+.dark .export-totals{
+    color: #fff;
+    background-color: #23272e;
+}
+

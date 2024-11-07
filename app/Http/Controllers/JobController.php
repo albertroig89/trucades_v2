@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExportJobFormRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Call;
 use App\Models\Client;
@@ -192,6 +193,34 @@ class JobController extends Controller
 
         return view('jobs.histjobs', compact('title', 'histjobs'));
     }
+    /**
+     * Muestra la pagina para exportar y facturar trabajos.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function exportform()
+    {
+        $title = "Exportar trabajos";
+        $clients = Client::all();
+        $users = User::all();
+
+        return view('jobs.exportform', compact('title', 'users', 'clients'));
+    }
+
+    public function export(ExportJobFormRequest $request)
+    {
+        $title = "Exportación de trabajos";
+
+        // Obtener la consulta preparada a partir del request
+        $query = $request->buildQuery();
+
+        // Obtener los trabajos paginados
+        $jobs = $query->paginate(40)->appends($request->all());
+
+        // Retornar una vista con los resultados para permitir la selección de opciones de exportación
+        return view('jobs.export', compact('title', 'jobs'));
+    }
+
 
     /**
      * Muestra el historial de trabajos ocultos.

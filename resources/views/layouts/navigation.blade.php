@@ -24,29 +24,29 @@
                             <!-- Llamadas -->
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="material-icons me-2 text-md">call</i>
+                                    <i class="material-symbols-outlined me-2 text-md">call</i>
                                     Llamadas
                                     <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
                                         <x-dropdown-link :href="route('calls.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">add_ic_call</i>
+                                            <i class="material-symbols-outlined me-2 text-md">add_ic_call</i>
                                             Nueva llamada
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('calls.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver llamadas
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
                                         <x-dropdown-link :href="route('calls.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">add_ic_call</i>
+                                            <i class="material-symbols-outlined me-2 text-md">add_ic_call</i>
                                             Nueva llamada
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('calls.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver llamadas
                                         </x-dropdown-link>
                                     </div>
@@ -56,53 +56,61 @@
                             <!-- Trabajos -->
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="material-icons me-2 text-md">work</i>
+                                    <i class="material-symbols-outlined me-2 text-md">work</i>
                                     Trabajos
                                     <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
                                         <x-dropdown-link :href="route('jobs.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">add</i>
+                                            <i class="material-symbols-outlined me-2 text-md">add</i>
                                             Nuevo trabajo
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver trabajos
                                         </x-dropdown-link>
+                                        <x-dropdown-link :href="route('jobs.exportform')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                            <i class="material-symbols-outlined me-2 text-md">file_export</i>
+                                            Exportar trabajos
+                                        </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.histjobs')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">work_history</i>
+                                            <i class="material-symbols-outlined me-2 text-md">work_history</i>
                                             Ver histórico de trabajos
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility_off</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility_off</i>
                                             Ver histórico oculto
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">timer</i>
+                                            <i class="material-symbols-outlined me-2 text-md">timer</i>
                                             Contador de trabajos
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
                                         <x-dropdown-link :href="route('jobs.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">add</i>
+                                            <i class="material-symbols-outlined me-2 text-md">add</i>
                                             Nuevo trabajo
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver trabajos
                                         </x-dropdown-link>
+                                        <x-dropdown-link :href="route('jobs.exportform')" class="custom-dropdown-item dropdown-item border-radius-md">
+                                            <i class="material-symbols-outlined me-2 text-md">file_export</i>
+                                            Exportar trabajos
+                                        </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.histjobs')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">work_history</i>
+                                            <i class="material-symbols-outlined me-2 text-md">work_history</i>
                                             Ver histórico de trabajos
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility_off</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility_off</i>
                                             Ver histórico oculto
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">timer</i>
+                                            <i class="material-symbols-outlined me-2 text-md">timer</i>
                                             Contador de trabajos
                                         </x-dropdown-link>
                                     </div>
@@ -112,29 +120,29 @@
                             <!-- Usuarios -->
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="material-icons me-2 text-md">person</i>
+                                    <i class="material-symbols-outlined me-2 text-md">person</i>
                                     Usuarios
                                     <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
                                         <x-dropdown-link :href="route('users.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">person_add</i>
+                                            <i class="material-symbols-outlined me-2 text-md">person_add</i>
                                             Nuevo usuario
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('users.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver usuarios
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
                                         <x-dropdown-link :href="route('users.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">person_add</i>
+                                            <i class="material-symbols-outlined me-2 text-md">person_add</i>
                                             Nuevo usuario
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('users.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver usuarios
                                         </x-dropdown-link>
                                     </div>
@@ -144,37 +152,37 @@
                             <!-- Clientes -->
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <x-dropdown-link class="custom-nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="material-icons me-2 text-md">contacts</i>
+                                    <i class="material-symbols-outlined me-2 text-md">contacts</i>
                                     Clientes
                                     <img src="{{ asset('assets/img/down-arrow-white.svg') }}" alt="down-arrow" class="arrow ms-auto">
                                 </x-dropdown-link>
                                 <div class="custom-nav-dropdown dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
                                     <div class="d-none d-lg-block">
                                         <x-dropdown-link :href="route('clients.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">person_add</i>
+                                            <i class="material-symbols-outlined me-2 text-md">person_add</i>
                                             Nuevo cliente
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('clients.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver clientes
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('clients.import')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">publish</i>
+                                            <i class="material-symbols-outlined me-2 text-md">publish</i>
                                             Importar clientes
                                         </x-dropdown-link>
                                     </div>
 
                                     <div class="d-lg-none">
                                         <x-dropdown-link :href="route('clients.create')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">person_add</i>
+                                            <i class="material-symbols-outlined me-2 text-md">person_add</i>
                                             Nuevo cliente
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('clients.index')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">visibility</i>
+                                            <i class="material-symbols-outlined me-2 text-md">visibility</i>
                                             Ver clientes
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('clients.import')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-icons me-2 text-md">publish</i>
+                                            <i class="material-symbols-outlined me-2 text-md">publish</i>
                                             Importar clientes
                                         </x-dropdown-link>
                                     </div>

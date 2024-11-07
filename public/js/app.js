@@ -287,7 +287,7 @@ function debounce(func, delay) {
 }
 
 
-//Script para funcionamiento del flatpickr
+//Script para funcionamiento del flatpickr para los trabajos
 document.addEventListener("DOMContentLoaded", function() {
     const datepickers = document.querySelectorAll(".datepicker");
     datepickers.forEach(function(datepicker) {
@@ -303,3 +303,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+//Script para funcionamiento del flatpickr para las exportaciones
+document.addEventListener("DOMContentLoaded", function() {
+    const datepickersExport = document.querySelectorAll(".datepicker-export");
+    datepickersExport.forEach(function(datepicker) {
+        flatpickr(datepicker, {
+            enableTime: false, // No habilitar la hora
+            dateFormat: "d-m-Y", // Solo fecha
+            locale: flatpickr.l10ns.es, // Aplica el idioma español
+            minDate: new Date(new Date().setMonth(new Date().getMonth() - 6)), // Seis meses antes de hoy
+            maxDate: new Date().setHours(23, 59, 59, 999), // Establece la fecha límite al final del día de hoy
+            defaultDate: datepicker.value ? new Date(datepicker.value) : new Date(), // Fecha actual sin segundos
+        });
+    });
+});
+
