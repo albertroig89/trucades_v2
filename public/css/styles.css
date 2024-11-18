@@ -1123,7 +1123,7 @@ body{
 
 
 /*Styles for user select in calls and jobs*/
-/* Estilos para el select en tema claro (estilos base) */
+/* Estilos para el format select en tema claro (estilos base) */
 .format-select {
     font-size: 0.90rem;
     width: 150px;
@@ -1134,7 +1134,7 @@ body{
     font-weight: bold;
     padding: 0.5rem;
     transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
-    appearance: none; /* Remover estilos del navegador para select */
+    appearance: none;
 }
 
 .format-select:focus {
@@ -1145,11 +1145,11 @@ body{
 /* Ajuste del contenedor del select para alinearlo a la derecha */
 .format-select-container {
     display: flex;
-    justify-content: flex-end; /* Alinea a la derecha */
+    justify-content: flex-end;
     align-items: center;
 }
 
-/* Estilos para el select en tema oscuro */
+/* Estilos para el format select en tema oscuro */
 .dark .format-select {
     border: 1px solid #444;
     background-color: #282c34;
@@ -1164,14 +1164,20 @@ body{
     border: 2px solid #fd5c70;
 }
 
+
+/*Styles for total line in export view*/
 .export-totals{
-    color: #344767;
+    color: #fd5c70;
     background-color: #e9ecef ;
     font-weight: bold;
 }
 
 .dark .export-totals{
-    color: #fff;
     background-color: #23272e;
 }
 
+/*Margin for the view selector*/
+.viewselector {
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+}

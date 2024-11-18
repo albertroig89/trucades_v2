@@ -76,7 +76,7 @@
                                                     @enderror
                                                 </div>
                                                 {{--Div for password--}}
-                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="password">Contraseña</label>
                                                     <!-- Input password -->
                                                     <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{ old('password') }}" style="padding-right: 40px;">
@@ -92,7 +92,7 @@
                                                     @enderror
                                                 </div>
                                                 {{--Div for password confirmation--}}
-                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="password_confirmation">Confirmar contraseña</label>
                                                     <input name="password_confirmation" type="password" class="form-control" id="password_confirmation" value="{{ old('password_confirmation') }}" style="padding-right: 40px;">
                                                     <span class="material-icons" id="toggleConfirmIcon">

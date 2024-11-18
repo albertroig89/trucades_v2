@@ -319,3 +319,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+//Script para la exportación de trabajos para impresión
+document.addEventListener('DOMContentLoaded', function() {
+    const exportForm = document.querySelector('form[data-action-url]');
+    const exportFormatSelect = document.getElementById('export_format');
+
+    if (exportForm && exportFormatSelect) {
+        exportForm.addEventListener('submit', function(event) {
+            // Verificar si se seleccionó la opción de imprimir
+            if (exportFormatSelect.value === 'print') {
+                // Cambiar el atributo target a "_blank" para imprimir en una nueva pestaña
+                exportForm.setAttribute('target', '_blank');
+            } else {
+                // Asegurarse de que las demás acciones no se realicen en una nueva pestaña
+                exportForm.removeAttribute('target');
+            }
+        });
+    }
+});
+

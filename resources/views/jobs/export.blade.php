@@ -3,18 +3,27 @@
         @include('layouts.partials.header')
 
         <div class="container-fluid py-4">
-            <div class="row">
+            <div class="row form-card-position">
                 <div class="col-12">
                     <div class="customcard card my-4">
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <h6 class="text-white ps-3">Exportar Trabajos Realizados</h6>
+                                    <h6 class="text-white ps-3">Exportar trabajos realizados entre {{ $initdate }} y el {{ $enddate }}
+                                        @if ($client)
+                                            para el cliente "{{ $client->name }}"
+                                        @endif
+
+                                        @if ($user)
+                                            por el usuario "{{ $user->name }}"
+                                        @endif
+                                    </h6>
                                 </div>
-                                <form action="{{ route('jobs.exportperform') }}" class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
-                                    @csrf
-                                    <input type="hidden" name="inittime" value="{{ request('inittime') }}">
-                                    <input type="hidden" name="endtime" value="{{ request('endtime') }}">
+                                <form action="{{ route('jobs.exportperform') }}" target="_blank" data-action-url="{{ route('jobs.exportperform') }}" class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
+
+                                @csrf
+                                    <input type="hidden" name="initdate" value="{{ request('initdate') }}">
+                                    <input type="hidden" name="enddate" value="{{ request('enddate') }}">
                                     <input type="hidden" name="client_id" value="{{ request('client_id') }}">
                                     <input type="hidden" name="user_id" value="{{ request('user_id') }}">
                                     <div class="format-select-container form-group mb-0 me-3 d-inline-flex align-items-center">
@@ -69,7 +78,10 @@
                                                     <!-- Mostrar el total de minutos para el cliente anterior -->
                                                     <tr class="export-totals">
                                                         <td colspan="7">Minutos totales para "{{ $currentClientName }}"</td>
-                                                        <td>{{ $totalMinutesClient }} min</td>
+                                                        <td>
+                                                            {{ $totalMinutesClient }} min
+                                                            ({{ number_format($totalMinutesClient / 60, 2) }} horas)
+                                                        </td>
                                                     </tr>
                                                 @endif
                                                 @php
@@ -96,7 +108,7 @@
                                                         </div>
                                                     </div>
                                                 </th>
-                                                <td scope="row">
+                                                <td>
                                                     <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->created_at)->format('d-m-y H:i') }}</span>
                                                 </td>
                                                 <td>
@@ -124,7 +136,10 @@
                                         @if ($currentClient !== null)
                                             <tr class="export-totals">
                                                 <td colspan="7">Minutos totales para "{{ $currentClientName }}"</td>
-                                                <td>{{ $totalMinutesClient }} min</td>
+                                                <td>
+                                                    {{ $totalMinutesClient }} min
+                                                    ({{ number_format($totalMinutesClient / 60, 2) }} horas)
+                                                </td>
                                             </tr>
                                         @endif
                                         </tbody>

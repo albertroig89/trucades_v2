@@ -48,7 +48,7 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                <div class="form-group input-group mb-4 input-group-static">
 
                                                     <label class="form-label" for="phone">Teléfono:</label>
                                                     <!-- Input email for phone -->
@@ -64,7 +64,7 @@
                                                     </div>
                                                 </div>
                                                 @foreach (old('phones', []) as $index => $phone)
-                                                    <div class="form-group input-group mb-4 input-group-static" style="position: relative;">
+                                                    <div class="form-group input-group mb-4 input-group-static">
                                                         <label class="form-label" for="phones_{{ $index }}">Teléfono {{ $index + 1 }}:</label>
                                                         <input id="phones_{{ $index }}" name="phones[{{ $index }}]" type="text" class="form-control phone-input phone-input-additional @error('phones.' . $index) is-invalid @enderror" value="{{ $phone }}">
                                                         @error('phones.' . $index)

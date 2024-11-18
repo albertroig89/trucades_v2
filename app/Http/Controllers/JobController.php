@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExportJobFormRequest;
+use App\Http\Requests\ExportJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Call;
 use App\Models\Client;
@@ -171,7 +172,7 @@ class JobController extends Controller
      * Actualiza un trabajo existente.
      *
      * @param Job $job
-     * @param Request $request
+     * @param UpdateJobRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Job $job, UpdateJobRequest $request)
@@ -207,6 +208,12 @@ class JobController extends Controller
         return view('jobs.exportform', compact('title', 'users', 'clients'));
     }
 
+    /**
+     * Filtra los trabajos para su exportacion.
+     *
+     * @param ExportJobFormRequest $request
+     * @return \Illuminate\View\View
+     */
     public function export(ExportJobFormRequest $request)
     {
         $title = "Exportación de trabajos";
@@ -217,10 +224,28 @@ class JobController extends Controller
         // Obtener los trabajos paginados
         $jobs = $query->paginate(40)->appends($request->all());
 
+        // Obtener las fechas de inicio y fin del request
+        $initdate = $request->input('initdate');
+        $enddate = $request->input('enddate');
+
+        // Obtener cliente y usuario (si están presentes)
+        $client = $request->input('client_id') ? Client::find($request->input('client_id')) : null;
+        $user = $request->input('user_id') ? User::find($request->input('user_id')) : null;
+
         // Retornar una vista con los resultados para permitir la selección de opciones de exportación
-        return view('jobs.export', compact('title', 'jobs'));
+        return view('jobs.export', compact('title', 'jobs', 'initdate', 'enddate', 'client', 'user'));
     }
 
+    /**
+     * Exporta los trabajos filtrados anteriormente.
+     *
+     * @param ExportJobRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function exportperform(ExportJobRequest $request)
+    {
+        return $request->exportJobs();
+    }
 
     /**
      * Muestra el historial de trabajos ocultos.

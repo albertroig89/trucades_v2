@@ -69,7 +69,7 @@ class ExportJobFormRequest extends FormRequest
         }
 
         // Ordenar los trabajos por cliente y luego por usuario
-        $query->orderBy('client_id')->orderBy('user_id');
+        $query->orderBy('client_id')->orderBy('user_id')->orderBy('inittime');
 
         return $query;
     }
