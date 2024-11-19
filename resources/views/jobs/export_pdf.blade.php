@@ -19,7 +19,7 @@
                 padding: 5px;
             }
             th {
-                background-color: #f2f2f2;
+                background-color: #D9D9D9;
                 text-align: left;
             }
             td:nth-child(5), td:nth-child(6) {
@@ -63,7 +63,7 @@
                 @if ($currentClientId !== $job->client_id)
                     @if ($currentClientId !== null)
                         <!-- Mostrar el total de minutos para el cliente anterior -->
-                        <tr style="background-color: #f2f2f2;">
+                        <tr style="background-color: #E3E3E3;">
                             <td colspan="5" style="font-weight: bold;">Minutos totales para "{{ $currentClientName }}"</td>
                             <td colspan="2" style="font-weight: bold;">
                                 {{ $totalMinutesClient }} min
@@ -98,7 +98,7 @@
 
             <!-- Mostrar el total para el último cliente -->
             @if ($currentClientId !== null)
-                <tr style="background-color: #f2f2f2;">
+                <tr style="background-color: #E3E3E3;">
                     <td colspan="5" style="font-weight: bold;">Minutos totales para "{{ $currentClientName }}"</td>
                     <td colspan="2" style="font-weight: bold;">
                         {{ $totalMinutesClient }} min

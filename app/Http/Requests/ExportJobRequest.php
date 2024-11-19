@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\JobsExport;
+
 
 class ExportJobRequest extends FormRequest
 {
@@ -114,7 +116,7 @@ class ExportJobRequest extends FormRequest
             ];
         }
 
-        $filename = 'trabajos_exportados_' . now()->format('Y_m_d_H_i_s') . '.csv';
+        $filename = 'trabajos_exportados_' . now()->format('d-m-Y_H-i') . '.csv';
 
         $handle = fopen(storage_path('app/public/' . $filename), 'w');
         fputcsv($handle, array_keys($csvData[0]));
@@ -134,7 +136,7 @@ class ExportJobRequest extends FormRequest
 
     protected function exportToExcel($jobs, $deleteAfterExport)
     {
-        $filename = 'trabajos_exportados_' . now()->format('Y_m_d_H_i_s') . '.xlsx';
+        $filename = 'trabajos_exportados_' . now()->format('d-m-Y_H-i') . '.xlsx';
 
         // Utiliza Maatwebsite Excel para crear el archivo Excel
         Excel::store(new JobsExport($jobs), $filename, 'public');
