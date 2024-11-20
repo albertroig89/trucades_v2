@@ -9,16 +9,17 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use PhpOffice\PhpSpreadsheet\Style\Font;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 
-class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvents
+class ExcelJobsExport implements FromCollection, WithHeadings, WithMapping, WithEvents
 {
     protected $jobs;
+    protected $title;
 
-    public function __construct($jobs)
+    public function __construct($jobs, $inittime, $endtime)
     {
         $this->jobs = $jobs;
+        $this->title = 'Exportación de trabajos a excel entre ' . \Carbon\Carbon::parse($inittime)->format('d-m-y') . ' y el ' . \Carbon\Carbon::parse($endtime)->format('d-m-y');
     }
 
     /**
@@ -83,8 +84,8 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
             $job->clientname,                                     // Nombre del cliente
             $job->job,                                            // Trabajo realizado
             $job->attempts,                                       // Intentos
-            $job->inittime ? \Carbon\Carbon::parse($job->inittime)->format('d-m-Y H:i') : '',  // Inicio del trabajo
-            $job->endtime ? \Carbon\Carbon::parse($job->endtime)->format('d-m-Y H:i') : '',   // Fin del trabajo
+            $job->inittime ? \Carbon\Carbon::parse($job->inittime)->format('d-m-y H:i') : '',  // Inicio del trabajo
+            $job->endtime ? \Carbon\Carbon::parse($job->endtime)->format('d-m-y H:i') : '',   // Fin del trabajo
             is_numeric($job->totalmin) ? $job->totalmin . ' min' : $job->totalmin,            // Tiempo empleado
         ];
     }
@@ -98,6 +99,22 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
             AfterSheet::class => function (AfterSheet $event) {
                 $sheet = $event->sheet->getDelegate();
 
+                // Añadir el título al Excel en la primera fila
+                $sheet->mergeCells('A1:G1');
+                $sheet->setCellValue('A1', $this->title);
+                $sheet->getStyle('A1')->applyFromArray([
+                    'font' => [
+                        'bold' => true,
+                        'size' => 14,
+                    ],
+                    'alignment' => [
+                        'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    ],
+                ]);
+
+                // Asegurarse de añadir las cabeceras en la fila 2
+                $sheet->fromArray($this->headings(), null, 'A2');
+
                 // Ajustar automáticamente el tamaño de todas las columnas excepto la columna 'C' (Trabajo realizado)
                 foreach (['A', 'B', 'D', 'E', 'F', 'G'] as $column) {
                     $sheet->getColumnDimension($column)->setAutoSize(true);
@@ -107,7 +124,7 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
                 $sheet->getColumnDimension('C')->setWidth(40);
 
                 // Aplicar estilo negrita a las cabeceras y cambiar el fondo a gris claro
-                $sheet->getStyle('A1:G1')->applyFromArray([
+                $sheet->getStyle('A2:G2')->applyFromArray([
                     'font' => [
                         'bold' => true,
                     ],
@@ -119,18 +136,25 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
                     ],
                 ]);
 
-                // Congelar la primera fila (cabeceras)
-                $sheet->freezePane('A2');
+                // Congelar las primeras dos filas (título y cabeceras)
+                $sheet->freezePane('A3');
 
-                // Obtener las filas para fusionar y dar formato de totales
-                $currentRow = 2; // Comienza desde la segunda fila después del encabezado
+                // Ajustar la variable de la fila actual para comenzar los datos desde la fila 3
+                $currentRow = 3;
 
+                // Iterar sobre los trabajos agrupados por cliente
                 foreach ($this->jobs->groupBy('client_id') as $clientJobs) {
-                    $totalRow = $currentRow + count($clientJobs); // Determina la fila de total
+                    // Insertar cada trabajo del cliente
+                    foreach ($clientJobs as $job) {
+                        $sheet->fromArray($this->map($job), null, "A{$currentRow}");
+                        $currentRow++;
+                    }
 
-                    // Fusionar columnas A y B para la descripción del total
+                    // Determinar la fila del total para el cliente actual
+                    $totalRow = $currentRow;
+
+                    // Crear la fila de totales del cliente con los valores apropiados
                     $sheet->mergeCells("A{$totalRow}:B{$totalRow}");
-                    // Fusionar columnas F y G para el total de tiempo
                     $sheet->mergeCells("F{$totalRow}:G{$totalRow}");
 
                     // Aplicar negrita a la fila de totales y cambiar el fondo a gris claro
@@ -150,12 +174,17 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
                     $sheet->getStyle("A{$totalRow}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
                     $sheet->getStyle("F{$totalRow}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
 
-                    // Asegurar que el contenido de la fila de totales esté bien definido y visible
+                    // Establecer el contenido de la fila de totales asegurando que los campos no necesarios estén vacíos
                     $sheet->setCellValue("A{$totalRow}", 'Minutos totales para "' . $clientJobs->first()->clientname . '"');
                     $sheet->setCellValue("F{$totalRow}", $clientJobs->sum('totalmin') . ' min (' . number_format($clientJobs->sum('totalmin') / 60, 2) . ' horas)');
 
-                    // Avanzar la posición actual a la siguiente sección
-                    $currentRow = $totalRow + 1;
+                    // Asegurarse de que otras columnas queden vacías
+                    $sheet->setCellValue("C{$totalRow}", '');
+                    $sheet->setCellValue("D{$totalRow}", '');
+                    $sheet->setCellValue("E{$totalRow}", '');
+
+                    // Incrementar `currentRow` para que la siguiente fila comience después del total
+                    $currentRow++;
                 }
 
                 // Calcular el total de todos los minutos de los trabajos
@@ -163,12 +192,12 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
                 $totalHours = number_format($totalMinutes / 60, 2);
 
                 // Fila de total de todos los trabajos
-                $totalAllRow = $currentRow + 1;
+                $totalAllRow = $currentRow;
 
-                // Fusionar todas las celdas de la fila para el total
+                // Fusionar todas las celdas de la fila para el total general
                 $sheet->mergeCells("A{$totalAllRow}:G{$totalAllRow}");
 
-                // Aplicar estilo negrita y alineación a la derecha
+                // Aplicar estilo negrita y alineación a la izquierda
                 $sheet->getStyle("A{$totalAllRow}:G{$totalAllRow}")->applyFromArray([
                     'font' => [
                         'bold' => true,
@@ -178,12 +207,11 @@ class JobsExport implements FromCollection, WithHeadings, WithMapping, WithEvent
                     ],
                 ]);
 
-                // Establecer el contenido de la celda
+                // Establecer el contenido de la celda de total general
                 $sheet->setCellValue("A{$totalAllRow}", "Tiempo total de todos los trabajos: {$totalMinutes} minutos ({$totalHours} horas)");
             },
         ];
     }
-
 }
 
 

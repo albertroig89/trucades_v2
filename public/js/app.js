@@ -1,64 +1,68 @@
 // Script para agregar teléfonos adicionales en los clientes
 $(document).ready(function() {
-    // Función para mostrar errores de validación si existen
-    function showValidationErrors() {
-        if (validationErrors && validationErrors.phones) {
-            validationErrors.phones.forEach((error, index) => {
-                // Seleccionar el input del teléfono correspondiente
-                const inputField = $(`input[name="phones[${index}]"]`);
+    // Verificar si estamos en el formulario de creación/edición de clientes
+    if ($('form#create-client, form#edit-client').length) {
+        // Función para mostrar errores de validación si existen
+        function showValidationErrors() {
+            if (typeof validationErrors !== 'undefined' && validationErrors.phones) {
+                validationErrors.phones.forEach((error, index) => {
+                    // Seleccionar el input del teléfono correspondiente
+                    const inputField = $(`input[name="phones[${index}]"]`);
 
-                // Verificar si el input existe
-                if (inputField.length) {
-                    // Mostrar mensaje de error debajo del input
-                    inputField.addClass('is-invalid'); // Añadir clase de error
-                    inputField.next('.error-message').show().find('small').text(error[0]);
+                    // Verificar si el input existe
+                    if (inputField.length) {
+                        // Mostrar mensaje de error debajo del input
+                        inputField.addClass('is-invalid'); // Añadir clase de error
+                        inputField.next('.error-message').show().find('small').text(error[0]);
+                    }
+                });
+            }
+        }
+
+        // Llamar a la función para mostrar errores de validación si existen
+        showValidationErrors();
+
+        // Agregar teléfono adicional al hacer clic en "Añadir Teléfono"
+        $("#add_phone").click(function() {
+            // Contar el número de inputs de teléfonos adicionales
+            var currentCount = $(".phone-input-additional").length;
+
+            // Número para mostrar en el label
+            var displayIndex = currentCount + 2;
+
+            // Crear nuevo HTML para el teléfono adicional
+            var newPhoneInput = `
+                <div class="form-group input-group mb-4 input-group-static mt-4 is-focus" style="position: relative;">
+                    <label class="form-label" for="phones_${currentCount}">Teléfono ${displayIndex}:</label>
+                    <input name="phones[${currentCount}]" type="text" class="form-control phone-input phone-input-additional" id="phones_${currentCount}">
+                    <div class="button">
+                        <button type="button" class="btn btn-default delete_phone btn-sm mt-2">Borrar teléfono</button>
+                    </div>
+                    <div class="invalid-feedback error-message" style="display: none;">
+                        <small></small>
+                    </div>
+                </div>`;
+
+            // Añadir el nuevo teléfono justo después del último input de teléfono
+            $(".phone-input").last().closest('.form-group').after(newPhoneInput);
+
+            // Reactivar la funcionalidad de Bootstrap para los labels flotantes
+            $(`#phones_${currentCount}`).on('focus', function() {
+                $(this).closest('.form-group').addClass('is-focused');
+            }).on('blur', function() {
+                if ($(this).val() === '') {
+                    $(this).closest('.form-group').removeClass('is-focused');
                 }
             });
-        }
-    }
-
-    // Llamar a la función para mostrar errores de validación si existen
-    showValidationErrors();
-
-    // Agregar teléfono adicional al hacer clic en "Añadir Teléfono"
-    $("#add_phone").click(function() {
-        // Contar el número de inputs de teléfonos adicionales
-        var currentCount = $(".phone-input-additional").length;
-
-        // Número para mostrar en el label
-        var displayIndex = currentCount + 2;
-
-        // Crear nuevo HTML para el teléfono adicional
-        var newPhoneInput = `
-            <div class="form-group input-group mb-4 input-group-static mt-4 is-focus" style="position: relative;">
-                <label class="form-label" for="phones_${currentCount}">Teléfono ${displayIndex}:</label>
-                <input name="phones[${currentCount}]" type="text" class="form-control phone-input phone-input-additional" id="phones_${currentCount}">
-                <div class="button">
-                    <button type="button" class="btn btn-default delete_phone btn-sm mt-2">Borrar teléfono</button>
-                </div>
-                <div class="invalid-feedback error-message" style="display: none;">
-                    <small></small>
-                </div>
-            </div>`;
-
-        // Añadir el nuevo teléfono justo después del último input de teléfono
-        $(".phone-input").last().closest('.form-group').after(newPhoneInput);
-
-        // Reactivar la funcionalidad de Bootstrap para los labels flotantes
-        $(`#phones_${currentCount}`).on('focus', function() {
-            $(this).closest('.form-group').addClass('is-focused');
-        }).on('blur', function() {
-            if ($(this).val() === '') {
-                $(this).closest('.form-group').removeClass('is-focused');
-            }
         });
-    });
 
-    // Eliminar teléfonos adicionales
-    $(document).on('click', '.delete_phone', function() {
-        $(this).closest('.form-group').remove();
-    });
+        // Eliminar teléfonos adicionales
+        $(document).on('click', '.delete_phone', function() {
+            $(this).closest('.form-group').remove();
+        });
+    }
 });
+
 
 
 

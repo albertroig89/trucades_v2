@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Exports\JobsExport;
+use App\Exports\ExcelJobsExport;
 
 
 class ExportJobRequest extends FormRequest
@@ -116,7 +116,7 @@ class ExportJobRequest extends FormRequest
             ];
         }
 
-        $filename = 'trabajos_exportados_' . now()->format('d-m-Y_H-i') . '.csv';
+        $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.csv';
 
         $handle = fopen(storage_path('app/public/' . $filename), 'w');
         fputcsv($handle, array_keys($csvData[0]));
@@ -134,12 +134,12 @@ class ExportJobRequest extends FormRequest
         return response()->download(storage_path('app/public/' . $filename))->deleteFileAfterSend(true);
     }
 
-    protected function exportToExcel($jobs, $deleteAfterExport)
+    protected function exportToExcel($jobs, $deleteAfterExport, $inittime, $endtime)
     {
-        $filename = 'trabajos_exportados_' . now()->format('d-m-Y_H-i') . '.xlsx';
+        $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.xlsx';
 
         // Utiliza Maatwebsite Excel para crear el archivo Excel
-        Excel::store(new JobsExport($jobs), $filename, 'public');
+        Excel::store(new ExcelJobsExport($jobs, $inittime, $endtime), $filename, 'public');
 
         if ($deleteAfterExport) {
             $this->deleteJobsWithHistory($jobs);
@@ -166,8 +166,8 @@ class ExportJobRequest extends FormRequest
         $totalMinutes = $jobs->sum('totalmin');
         $totalHours = number_format($totalMinutes / 60, 2); // Convertir minutos a horas con 2 decimales
 
-        $pdf = Pdf::loadView('jobs.export_pdf', compact('jobs', 'title', 'totalMinutes', 'totalHours'))->setPaper('a4', 'landscape');
-        $filename = 'trabajos_exportados_' . now()->format('d-m-Y_H-i') . '.pdf';
+        $pdf = Pdf::loadView('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours'))->setPaper('a4', 'landscape');
+        $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.pdf';
 
         if ($deleteAfterExport) {
             $this->deleteJobsWithHistory($jobs);
@@ -193,13 +193,13 @@ class ExportJobRequest extends FormRequest
         $totalMinutes = $jobs->sum('totalmin');
         $totalHours = number_format($totalMinutes / 60, 2); // Convertir minutos a horas con 2 decimales
 
+        if ($deleteAfterExport) {
+            $this->deleteJobsWithHistory($jobs);
+        }
+
         // Renderizar la vista y pasar los datos
-        return view('jobs.export_pdf', compact('jobs', 'title', 'totalMinutes', 'totalHours'))->with([
+        return view('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours'))->with([
             'print' => true // Bandera para activar la impresión automática si es necesario
         ]);
     }
-
-
-
-
 }

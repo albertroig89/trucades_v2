@@ -15,7 +15,7 @@
                 border-collapse: collapse;
             }
             th, td {
-                border: 1px solid #ddd;
+                border: 1px solid #9d9d9d;
                 padding: 5px;
             }
             th {
@@ -24,6 +24,21 @@
             }
             td:nth-child(5), td:nth-child(6) {
                 white-space: nowrap;
+            }
+            .total-row {
+                background-color: #E3E3E3;
+                font-weight: bold;
+            }
+            @media print {
+                th {
+                    -webkit-print-color-adjust: exact; /* Asegura que se impriman colores en algunos navegadores */
+                    color-adjust: exact; /* Asegura que se impriman colores */
+                }
+                .total-row {
+                    -webkit-print-color-adjust: exact;
+                    color-adjust: exact;
+                    background-color: #E3E3E3 !important; /* Forzar el color de fondo para impresión */
+                }
             }
         </style>
         {{--Favicon--}}
@@ -63,9 +78,9 @@
                 @if ($currentClientId !== $job->client_id)
                     @if ($currentClientId !== null)
                         <!-- Mostrar el total de minutos para el cliente anterior -->
-                        <tr style="background-color: #E3E3E3;">
-                            <td colspan="5" style="font-weight: bold;">Minutos totales para "{{ $currentClientName }}"</td>
-                            <td colspan="2" style="font-weight: bold;">
+                        <tr class="total-row">
+                            <td colspan="5">Minutos totales para "{{ $currentClientName }}"</td>
+                            <td colspan="2">
                                 {{ $totalMinutesClient }} min
                                 ({{ number_format($totalMinutesClient / 60, 2) }} horas)
                             </td>
@@ -98,9 +113,9 @@
 
             <!-- Mostrar el total para el último cliente -->
             @if ($currentClientId !== null)
-                <tr style="background-color: #E3E3E3;">
-                    <td colspan="5" style="font-weight: bold;">Minutos totales para "{{ $currentClientName }}"</td>
-                    <td colspan="2" style="font-weight: bold;">
+                <tr class="total-row">
+                    <td colspan="5">Minutos totales para "{{ $currentClientName }}"</td>
+                    <td colspan="2">
                         {{ $totalMinutesClient }} min
                         ({{ number_format($totalMinutesClient / 60, 2) }} horas)
                     </td>
