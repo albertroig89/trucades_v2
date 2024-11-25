@@ -29,7 +29,7 @@ class JobFactory extends Factory
         $client = Client::inRandomOrder()->first();
 
         return [
-            'user_id' => User::inRandomOrder()->first()->id, // Selecciona un usuario existente aleatoriamente
+            'user_id' => User::where('id', '!=', 1)->inRandomOrder()->first()->id, // Selecciona un usuario existente aleatoriamente
             'job' => $this->faker->sentence, // Información de la llamada
             'client_id' => $client->id,
             'clientname' => $client->name,

@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Client;
 use App\Models\HistJob;
 use App\Models\Job;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Maatwebsite\Excel\Facades\Excel;
@@ -38,8 +40,8 @@ class ExportJobRequest extends FormRequest
     {
         $inittime = Carbon::parse($this->input('initdate'));
         $endtime = Carbon::parse($this->input('enddate'))->endOfDay();
-        $clientId = $this->input('client_id');
-        $userId = $this->input('user_id');
+        $client_id = $this->input('client_id');
+        $user_id = $this->input('user_id');
         $exportFormat = $this->input('export_format');
         $deleteAfterExport = $this->has('delete_after_export');
 
@@ -50,12 +52,12 @@ class ExportJobRequest extends FormRequest
             ->orderBy('inittime');
 
 
-        if ($clientId) {
-            $jobsQuery->where('client_id', $clientId);
+        if ($client_id) {
+            $jobsQuery->where('client_id', $client_id);
         }
 
-        if ($userId) {
-            $jobsQuery->where('user_id', $userId);
+        if ($user_id) {
+            $jobsQuery->where('user_id', $user_id);
         }
 
         $jobs = $jobsQuery->get();
@@ -65,11 +67,11 @@ class ExportJobRequest extends FormRequest
             case 'csv':
                 return $this->exportToCSV($jobs, $deleteAfterExport, $inittime, $endtime);
             case 'excel':
-                return $this->exportToExcel($jobs, $deleteAfterExport, $inittime, $endtime);
+                return $this->exportToExcel($jobs, $deleteAfterExport, $inittime, $endtime, $client_id, $user_id);
             case 'pdf':
-                return $this->exportToPDF($jobs, $deleteAfterExport, $inittime, $endtime);
+                return $this->exportToPDF($jobs, $deleteAfterExport, $inittime, $endtime, $client_id, $user_id);
             case 'print':
-                return $this->exportToPrinter($jobs, $deleteAfterExport, $inittime, $endtime);
+                return $this->exportToPrinter($jobs, $deleteAfterExport, $inittime, $endtime, $client_id, $user_id);
             case 'delete':
                 $this->deleteJobsWithHistory($jobs);
                 return redirect()->route('jobs.index')->with('success', 'Los trabajos han sido eliminados con éxito.');
@@ -99,24 +101,24 @@ class ExportJobRequest extends FormRequest
         }
     }
 
-    protected function exportToCSV($jobs, $deleteAfterExport)
+    protected function exportToCSV($jobs, $deleteAfterExport, $inittime, $endtime)
     {
         $csvData = [];
 
         foreach ($jobs as $job) {
             $csvData[] = [
-                'Empleado' => $job->user->name,
-                'Fecha' => $job->created_at->format('d-m-Y H:i'),
-                'Cliente' => $job->clientname,
-                'Trabajo realizado' => $job->job,
-                'Intentos' => $job->attempts,
-                'Inicio del trabajo' => $job->inittime->format('d-m-Y H:i'),
-                'Final del trabajo' => $job->endtime->format('d-m-Y H:i'),
-                'Tiempo empleado' => $job->totalmin . ' min',
+                'Empleado' => $job->user->name ?? 'N/A',
+                'Fecha' => $job->created_at ? \Carbon\Carbon::parse($job->created_at)->format('d-m-Y H:i') : 'N/A',
+                'Cliente' => $job->clientname ?? 'N/A',
+                'Trabajo realizado' => $job->job ?? 'N/A',
+                'Intentos' => $job->attempts ?? 0,
+                'Inicio del trabajo' => $job->inittime ? \Carbon\Carbon::parse($job->inittime)->format('d-m-Y H:i') : 'N/A',
+                'Final del trabajo' => $job->endtime ? \Carbon\Carbon::parse($job->endtime)->format('d-m-Y H:i') : 'N/A',
+                'Tiempo empleado' => $job->totalmin ? $job->totalmin . ' min' : 'N/A',
             ];
         }
 
-        $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.csv';
+        $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '_entre_el_' . $inittime->format('d-m-y') . '_y_el_' . $endtime->format('d-m-y') .'.csv';
 
         $handle = fopen(storage_path('app/public/' . $filename), 'w');
         fputcsv($handle, array_keys($csvData[0]));
@@ -134,12 +136,12 @@ class ExportJobRequest extends FormRequest
         return response()->download(storage_path('app/public/' . $filename))->deleteFileAfterSend(true);
     }
 
-    protected function exportToExcel($jobs, $deleteAfterExport, $inittime, $endtime)
+    protected function exportToExcel($jobs, $deleteAfterExport, $inittime, $endtime, $client_id, $user_id)
     {
         $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.xlsx';
 
         // Utiliza Maatwebsite Excel para crear el archivo Excel
-        Excel::store(new ExcelJobsExport($jobs, $inittime, $endtime), $filename, 'public');
+        Excel::store(new ExcelJobsExport($jobs, $inittime, $endtime, $client_id, $user_id), $filename, 'public');
 
         if ($deleteAfterExport) {
             $this->deleteJobsWithHistory($jobs);
@@ -148,13 +150,27 @@ class ExportJobRequest extends FormRequest
         return response()->download(storage_path('app/public/' . $filename))->deleteFileAfterSend(true);
     }
 
-    protected function exportToPDF($jobs, $deleteAfterExport, $inittime, $endtime)
+    protected function exportToPDF($jobs, $deleteAfterExport, $inittime, $endtime, $client_id, $user_id)
     {
         // Formatear las fechas solo con día, mes y año
         $formattedInitDate = Carbon::parse($inittime)->format('d-m-y');
         $formattedEndDate = Carbon::parse($endtime)->format('d-m-y');
 
-        $title = 'Exportacion de trabajos a PDF entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+        // Inicializar el título con las fechas de exportación
+        $title = 'Exportación de trabajos a PDF entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+
+        // Obtener los nombres del cliente y usuario si están presentes
+        if ($client_id) {
+            $client = Client::find($client_id);
+            $clientName = $client ? $client->name : '';
+            $title .= ' para el cliente ' . $clientName;
+        }
+
+        if ($user_id) {
+            $user = User::find($user_id);
+            $userName = $user ? $user->name : '';
+            $title .= ' por el usuario ' . $userName;
+        }
 
         // Verificar si $jobs tiene registros
         if ($jobs->isEmpty()) {
@@ -166,7 +182,10 @@ class ExportJobRequest extends FormRequest
         $totalMinutes = $jobs->sum('totalmin');
         $totalHours = number_format($totalMinutes / 60, 2); // Convertir minutos a horas con 2 decimales
 
-        $pdf = Pdf::loadView('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours'))->setPaper('a4', 'landscape');
+        // Cargar la vista del PDF con los datos necesarios
+        $pdf = Pdf::loadView('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours', 'client_id', 'user_id'))
+            ->setPaper('a4', 'landscape');
+
         $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.pdf';
 
         if ($deleteAfterExport) {
@@ -176,13 +195,28 @@ class ExportJobRequest extends FormRequest
         return $pdf->download($filename);
     }
 
-    protected function exportToPrinter($jobs, $deleteAfterExport, $inittime, $endtime)
+
+    protected function exportToPrinter($jobs, $deleteAfterExport, $inittime, $endtime, $client_id, $user_id)
     {
         // Formatear las fechas solo con día, mes y año
         $formattedInitDate = Carbon::parse($inittime)->format('d-m-y');
         $formattedEndDate = Carbon::parse($endtime)->format('d-m-y');
 
-        $title = 'Impresión de trabajos entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+        // Inicializar el título con las fechas de exportación
+        $title = 'Exportación de trabajos para impresión entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+
+        // Obtener los nombres del cliente y usuario si están presentes
+        if ($client_id) {
+            $client = Client::find($client_id);
+            $clientName = $client ? $client->name : '';
+            $title .= ' para el cliente ' . $clientName;
+        }
+
+        if ($user_id) {
+            $user = User::find($user_id);
+            $userName = $user ? $user->name : '';
+            $title .= ' por el usuario ' . $userName;
+        }
 
         // Verificar si $jobs tiene registros
         if ($jobs->isEmpty()) {
@@ -197,9 +231,10 @@ class ExportJobRequest extends FormRequest
             $this->deleteJobsWithHistory($jobs);
         }
 
-        // Renderizar la vista y pasar los datos
-        return view('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours'))->with([
+        // Renderizar la vista y pasar los datos, con la bandera 'print' activada para la impresión automática
+        return view('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours', 'client_id', 'user_id'))->with([
             'print' => true // Bandera para activar la impresión automática si es necesario
         ]);
     }
+
 }

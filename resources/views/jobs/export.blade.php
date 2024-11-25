@@ -20,8 +20,7 @@
                                     </h6>
                                 </div>
                                 <form action="{{ route('jobs.exportperform') }}" target="_blank" data-action-url="{{ route('jobs.exportperform') }}" class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
-
-                                @csrf
+                                    @csrf
                                     <input type="hidden" name="initdate" value="{{ request('initdate') }}">
                                     <input type="hidden" name="enddate" value="{{ request('enddate') }}">
                                     <input type="hidden" name="client_id" value="{{ request('client_id') }}">
@@ -38,7 +37,7 @@
                                     </div>
                                     <div class="form-check me-3 mb-0 d-flex align-items-center mb-0 gap-2">
                                         <input class="form-check-input mb-1" type="checkbox" name="delete_after_export" id="delete_after_export">
-                                        <label class="form-check-label text-white mb-0" for="delete_after_export">
+                                        <label class="form-check-label text-white mb-0 font-weight-bold" for="delete_after_export">
                                             Eliminar después de exportar
                                         </label>
                                     </div>
@@ -142,6 +141,16 @@
                                                 </td>
                                             </tr>
                                         @endif
+
+                                        <!-- Mostrar el total global solo si se está en la última página -->
+                                        @if($jobs->hasMorePages() == false)
+                                            <tr class="export-totals">
+                                                <td colspan="7"><strong>Tiempo total de todos los trabajos:</strong></td>
+                                                <td>
+                                                    <strong>{{ $totalMinutes }} minutos ({{ $totalHours }} horas)</strong>
+                                                </td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 @else
@@ -160,4 +169,5 @@
         </div>
     </main>
 </x-app-layout>
+
 

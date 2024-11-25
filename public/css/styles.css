@@ -1181,3 +1181,11 @@ body{
     margin-top: -1rem;
     margin-bottom: -1rem;
 }
+
+
+/*Styles for the calendar dark icon*/
+.dark .fa-calendar{
+    color: #7b809a;
+}
+
+

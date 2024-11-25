@@ -221,6 +221,10 @@ class JobController extends Controller
         // Obtener la consulta preparada a partir del request
         $query = $request->buildQuery();
 
+        // Calcular el total de minutos de todos los trabajos antes de la paginación
+        $totalMinutes = $query->sum('totalmin');
+        $totalHours = number_format($totalMinutes / 60, 2);
+
         // Obtener los trabajos paginados
         $jobs = $query->paginate(40)->appends($request->all());
 
@@ -233,7 +237,7 @@ class JobController extends Controller
         $user = $request->input('user_id') ? User::find($request->input('user_id')) : null;
 
         // Retornar una vista con los resultados para permitir la selección de opciones de exportación
-        return view('jobs.export', compact('title', 'jobs', 'initdate', 'enddate', 'client', 'user'));
+        return view('jobs.export', compact('title', 'jobs', 'initdate', 'enddate', 'client', 'user', 'totalMinutes', 'totalHours'));
     }
 
     /**

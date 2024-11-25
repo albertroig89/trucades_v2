@@ -11,7 +11,8 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
         <!-- Font Awesome Icons -->
-{{--        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>--}}
+        <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+        <script src="{{ asset('js/all.min.js') }}"></script>
 
         <!-- Scripts en public/app.jss -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,7 +90,6 @@
             @include('layouts.footer')
         </div>
 
-{{--        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>--}}
         <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>

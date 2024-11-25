@@ -2,6 +2,8 @@
 
 namespace App\Exports;
 
+use App\Models\Client;
+use App\Models\User;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -16,10 +18,21 @@ class ExcelJobsExport implements FromCollection, WithHeadings, WithMapping, With
     protected $jobs;
     protected $title;
 
-    public function __construct($jobs, $inittime, $endtime)
+    public function __construct($jobs, $inittime, $endtime, $client_id = null, $user_id = null)
     {
         $this->jobs = $jobs;
+        $clientName = $client_id ? Client::find($client_id)->name : '';
+        $userName = $user_id ? User::find($user_id)->name : '';
+
         $this->title = 'Exportación de trabajos a excel entre ' . \Carbon\Carbon::parse($inittime)->format('d-m-y') . ' y el ' . \Carbon\Carbon::parse($endtime)->format('d-m-y');
+
+        if ($clientName) {
+            $this->title .= ' para el cliente ' . $clientName;
+        }
+
+        if ($userName) {
+            $this->title .= ' por el usuario ' . $userName;
+        }
     }
 
     /**
@@ -141,6 +154,9 @@ class ExcelJobsExport implements FromCollection, WithHeadings, WithMapping, With
 
                 // Ajustar la variable de la fila actual para comenzar los datos desde la fila 3
                 $currentRow = 3;
+
+                // Alinear el contenido de la columna "Intentos" a la izquierda
+                $sheet->getStyle('D3:D' . $sheet->getHighestRow())->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
                 // Iterar sobre los trabajos agrupados por cliente
                 foreach ($this->jobs->groupBy('client_id') as $clientJobs) {
