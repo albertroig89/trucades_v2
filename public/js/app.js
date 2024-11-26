@@ -64,12 +64,6 @@ $(document).ready(function() {
 });
 
 
-
-
-
-
-
-
 // Script para alternar el tipo de input entre "password" y "text"
 document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
@@ -323,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-//Script para la exportación de trabajos para impresión
+// Script para la exportación de trabajos para impresión en pestaña nueva
 document.addEventListener('DOMContentLoaded', function() {
     const exportForm = document.querySelector('form[data-action-url]');
     const exportFormatSelect = document.getElementById('export_format');
@@ -337,6 +331,57 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Asegurarse de que las demás acciones no se realicen en una nueva pestaña
                 exportForm.removeAttribute('target');
+            }
+        });
+    }
+});
+
+// Script para mostrar alert de confirmación en caso de querer eliminar los trabajos después de la exportación
+function confirmDeleteAfterExport() {
+    // Obtener el checkbox
+    const deleteAfterExportCheckbox = document.getElementById("delete_after_export");
+
+    // Verificar si la casilla está marcada
+    if (deleteAfterExportCheckbox && deleteAfterExportCheckbox.checked) {
+        // Mostrar el alert de confirmación
+        return confirm("¿Estás seguro de que deseas eliminar los registros después de la exportación?");
+    }
+
+    return true; // Si no está marcado, permitir el envío
+}
+
+// Script para recargar la página después de la exportación si se seleccionó "eliminar después de exportar"
+document.addEventListener('DOMContentLoaded', function() {
+    const exportForm = document.getElementById('export-form');
+    const deleteAfterExportCheckbox = document.getElementById('delete_after_export');
+
+    if (exportForm && deleteAfterExportCheckbox) {
+        exportForm.addEventListener('submit', function(event) {
+            // Verificar si se seleccionó eliminar después de exportar
+            if (deleteAfterExportCheckbox.checked) {
+                // Retrasar la recarga de la página para dar tiempo a la exportación
+                setTimeout(function() {
+                    window.location.reload();
+                }, 10000); // Recargar después de 10 segundos
+            }
+        });
+    }
+});
+
+//Script para mostrar un alert de confirmacion cuando se seleccione eliminar en el select de exportacion
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener los elementos necesarios
+    const exportForm = document.querySelector('form[data-action-url]');
+    const exportFormatSelect = document.getElementById('export_format');
+
+    if (exportForm && exportFormatSelect) {
+        // Agregar un evento para confirmar cuando se seleccione 'Eliminar'
+        exportForm.addEventListener('submit', function (event) {
+            if (exportFormatSelect.value === 'delete') {
+                const confirmDelete = confirm("¿Estás seguro de que deseas eliminar permanentemente todos los registros seleccionados?");
+                if (!confirmDelete) {
+                    event.preventDefault(); // Cancelar el envío del formulario si el usuario cancela
+                }
             }
         });
     }

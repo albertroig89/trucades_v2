@@ -19,7 +19,7 @@
                                         @endif
                                     </h6>
                                 </div>
-                                <form action="{{ route('jobs.exportperform') }}" target="_blank" data-action-url="{{ route('jobs.exportperform') }}" class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
+                                <form action="{{ route('jobs.exportperform') }}" target="_blank" id="export-form" data-action-url="{{ route('jobs.exportperform') }}" class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto" onsubmit="return confirmDeleteAfterExport();">
                                     @csrf
                                     <input type="hidden" name="initdate" value="{{ request('initdate') }}">
                                     <input type="hidden" name="enddate" value="{{ request('enddate') }}">
@@ -153,8 +153,11 @@
                                         @endif
                                         </tbody>
                                     </table>
+                                @elseif (session('success'))
+                                    <h6 class="text-center alert alert-success m-4">{{ session('success') }}</h6>
                                 @else
-                                    <h6 class="text-center text-secondary">No se encontraron trabajos para los filtros especificados.</h6>
+                                    <!-- Mostrar el mensaje de éxito si existe -->
+                                    <h6 class="text-center text-secondary m-4">No se encontraron trabajos para los filtros especificados.</h6>
                                 @endif
                             </div>
                         </div>
