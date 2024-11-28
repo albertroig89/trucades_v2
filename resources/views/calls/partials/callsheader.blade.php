@@ -8,16 +8,16 @@
                 <form method="GET" action="{{ route('calls.index') }}">
                     <select class="user-select" onchange="this.form.submit()" name="user_id" id="user_id">
                         @if ($allcalls == true)
-                            <option value="100">Todas las llamadas</option>
+                            <option value="100" {{ request('user_id') == 100 ? 'selected' : '' }}>Todas las llamadas</option>
                         @else
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            <option value="100">Todas las llamadas</option>
+                            <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                            <option value="100" {{ request('user_id') == 100 ? 'selected' : '' }}>Todas las llamadas</option>
                         @endif
                         @foreach ($users as $user)
                             @if (auth()->id() != $user->id)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                             @elseif ($allcalls == true)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                             @endif
                         @endforeach
                     </select>

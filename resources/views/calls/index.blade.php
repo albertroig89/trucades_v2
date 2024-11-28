@@ -122,7 +122,7 @@
                         </div>
                         <div class="row text-center py-2">
                             <div class="col-4 mx-auto">
-                                {{ $calls->links('components.bootstrap-5-pagination') }}
+                                {{ $calls->appends(request()->except('page'))->links('components.bootstrap-5-pagination') }}
                             </div>
                         </div>
                     </div>

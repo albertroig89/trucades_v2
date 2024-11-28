@@ -8,16 +8,16 @@
                 <form method="GET" action="{{ route('jobs.index') }}">
                     <select class="user-select" aria-label=".form-select-lg example" onchange="this.form.submit()" name="user_id" id="user_id">
                         @if ($alljobs == true)
-                            <option value="100">Todos los trabajos</option>
+                            <option value="100" {{ request('user_id') == 100 ? 'selected' : '' }}>Todos los trabajos</option>
                         @else
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            <option value="100">Todos los trabajos</option>
+                            <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                            <option value="100" {{ request('user_id') == 100 ? 'selected' : '' }}>Todos los trabajos</option>
                         @endif
                         @foreach ($users as $user)
                             @if (auth()->id() != $user->id)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                             @elseif ($alljobs == true)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                             @endif
                         @endforeach
                     </select>

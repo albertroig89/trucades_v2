@@ -198,7 +198,7 @@ class JobController extends Controller
         return view("jobs.$viewType", compact('title', 'histjobs'));
     }
     /**
-     * Muestra la pagina para exportar y facturar trabajos.
+     * Muestra la página para exportar y facturar trabajos.
      *
      * @return \Illuminate\View\View
      */
