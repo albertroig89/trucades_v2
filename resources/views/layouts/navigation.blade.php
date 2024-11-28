@@ -78,14 +78,14 @@
                                             <i class="material-symbols-outlined me-2 text-md">work_history</i>
                                             Ver histórico de trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-symbols-outlined me-2 text-md">visibility_off</i>
-                                            Ver histórico oculto
-                                        </x-dropdown-link>
-                                        <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-symbols-outlined me-2 text-md">timer</i>
-                                            Contador de trabajos
-                                        </x-dropdown-link>
+{{--                                        <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">--}}
+{{--                                            <i class="material-symbols-outlined me-2 text-md">visibility_off</i>--}}
+{{--                                            Ver histórico oculto--}}
+{{--                                        </x-dropdown-link>--}}
+{{--                                        <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">--}}
+{{--                                            <i class="material-symbols-outlined me-2 text-md">timer</i>--}}
+{{--                                            Contador de trabajos--}}
+{{--                                        </x-dropdown-link>--}}
                                     </div>
 
                                     <div class="d-lg-none">
@@ -105,14 +105,14 @@
                                             <i class="material-symbols-outlined me-2 text-md">work_history</i>
                                             Ver histórico de trabajos
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-symbols-outlined me-2 text-md">visibility_off</i>
-                                            Ver histórico oculto
-                                        </x-dropdown-link>
-                                        <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">
-                                            <i class="material-symbols-outlined me-2 text-md">timer</i>
-                                            Contador de trabajos
-                                        </x-dropdown-link>
+{{--                                        <x-dropdown-link :href="route('jobs.histjobs2')" class="custom-dropdown-item dropdown-item border-radius-md">--}}
+{{--                                            <i class="material-symbols-outlined me-2 text-md">visibility_off</i>--}}
+{{--                                            Ver histórico oculto--}}
+{{--                                        </x-dropdown-link>--}}
+{{--                                        <x-dropdown-link :href="route('jobs.count')" class="custom-dropdown-item dropdown-item border-radius-md">--}}
+{{--                                            <i class="material-symbols-outlined me-2 text-md">timer</i>--}}
+{{--                                            Contador de trabajos--}}
+{{--                                        </x-dropdown-link>--}}
                                     </div>
                                 </div>
                             </li>

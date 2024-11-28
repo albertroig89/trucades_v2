@@ -29,8 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jobs/exportform', [JobController::class, 'exportform'])->name('jobs.exportform');
     Route::get('/jobs/export', [JobController::class, 'export'])->name('jobs.export');
     Route::get('/jobs/exportperform', [JobController::class, 'exportperform'])->name('jobs.exportperform');
-    Route::get('/jobs/histjobs2', [JobController::class, 'histjob2'])->name('jobs.histjobs2');
-    Route::get('/jobs/counter', [JobController::class, 'count'])->name('jobs.count');
+//    Route::get('/jobs/histjobs2', [JobController::class, 'histjob2'])->name('jobs.histjobs2');
+//    Route::get('/jobs/counter', [JobController::class, 'count'])->name('jobs.count');
     Route::delete('/jobs/histjobs/{histjob}', [JobController::class, 'histdestroy'])->name('jobs.histdestroy');
     // Rutas basicas de Jobs
     Route::resource('jobs', JobController::class);
@@ -60,6 +60,7 @@ Route::middleware(['auth', ViewPreferenceMiddleware::class])->group(function () 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/histjobs', [JobController::class, 'histjob'])->name('jobs.histjobs');
 });
 
 require __DIR__.'/auth.php';

@@ -80,9 +80,6 @@ class CallController extends Controller
                 ->paginate(40);
         }
 
-//        // Verificar la preferencia del usuario (escritorio o móvil)
-//        $view = auth()->user()->desktop ? 'calls.index' : 'calls.mobile-index';
-
         // Retorna la vista correspondiente
         return view("calls.$viewType", compact('title', 'calls', 'users', 'phones', 'techId', 'globId', 'nStat', 'uStat', 'pStat', 'user', 'allcalls'));
     }

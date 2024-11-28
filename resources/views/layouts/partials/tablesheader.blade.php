@@ -28,23 +28,5 @@
                 </div>
             </div>
         </div>
-{{--        <div class="row text-center viewselector">--}}
-{{--            <div class="col-4 mx-auto">--}}
-{{--                <div class="nav-wrapper position-relative end-0">--}}
-{{--                    <ul class="nav nav-custom nav-pills nav-fill" role="tablist">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#profile-tabs-simple" role="tab" aria-controls="profile" aria-selected="true">--}}
-{{--                                Escritorio--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#dashboard-tabs-simple" role="tab" aria-controls="dashboard" aria-selected="false">--}}
-{{--                                Móvil--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 </x-slot>

@@ -187,12 +187,15 @@ class JobController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function histjob()
+    public function histjob(Request $request)
     {
+        // Obtener la preferencia de vista desde la solicitud
+        $viewType = $request->get('viewType', 'histjobs'); // 'index' por defecto
+
         $histjobs = HistJob::orderBy('created_at', 'DESC')->paginate(40);
         $title = "Historico de trabajos";
 
-        return view('jobs.histjobs', compact('title', 'histjobs'));
+        return view("jobs.$viewType", compact('title', 'histjobs'));
     }
     /**
      * Muestra la pagina para exportar y facturar trabajos.

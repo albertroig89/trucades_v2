@@ -31,48 +31,48 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($histjobs as $job)
-                                            <tr onclick="window.location='{{ route('jobs.show', ['job' => $job]) }}';" class="custom-table-row">
+                                        @foreach ($histjobs as $histjob)
+                                            <tr onclick="window.location='{{ route('jobs.show', ['job' => $histjob]) }}';" class="custom-table-row">
                                                 <th>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
-                                                            @if($job->avatar)
-                                                                <img src="{{ asset($job->avatar) }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
+                                                            @if($histjob->avatar)
+                                                                <img src="{{ asset($histjob->avatar) }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                                             @else
                                                                 <img src="{{ asset('images/AR_fblanc.png') }}" alt="down-arrow" class="avatar avatar-sm me-3 border-radius-lg">
                                                             @endif
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $job->username }}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{ $job->email }}</p>
+                                                            <h6 class="mb-0 text-sm">{{ $histjob->username }}</h6>
+                                                            <p class="text-xs text-secondary mb-0">{{ $histjob->email }}</p>
                                                         </div>
                                                     </div>
                                                 </th>
                                                 <td scope="row">
-                                                    <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->created_at)->format('d-m-y H:i') }}</span>
+                                                    <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($histjob->created_at)->format('d-m-y H:i') }}</span>
                                                 </td>
                                                 <td>
                                                     <div class=" d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $job->clientname }}</h6>
+                                                            <h6 class="mb-0 text-sm">{{ $histjob->clientname }}</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td style="width: 450px">
-                                                    <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($job->job, 70, '...') }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($histjob->job, 70, '...') }}</p>
                                                 </td>
-                                                <td><h6 class="mb-0 text-sm">{{  $job->attempts }}</h6></td>
-                                                <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->inittime)->format('d-m-y H:i') }}</span></td>
-                                                <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($job->endtime)->format('d-m-y H:i') }}</span></td>
-                                                <td><span class="text-secondary text-xs font-weight-bold">{{ $job->totalmin }} min</span></td>
+                                                <td><h6 class="mb-0 text-sm">{{  $histjob->attempts }}</h6></td>
+                                                <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($histjob->inittime)->format('d-m-y H:i') }}</span></td>
+                                                <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($histjob->endtime)->format('d-m-y H:i') }}</span></td>
+                                                <td><span class="text-secondary text-xs font-weight-bold">{{ $histjob->totalmin }} min</span></td>
                                                 <td>
-                                                    <a href="{{ route('jobs.edit', ['job' => $job]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>
+                                                    <a href="{{ route('jobs.edit', ['job' => $histjob]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('jobs.destroy', $job) }}" method="POST">
+                                                    <form action="{{ route('jobs.destroy', $histjob) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar el trabajo?')" type="submit">Eliminar</button>
+                                                        <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar el trabajo del historico?')" type="submit">Eliminar</button>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -21,7 +21,7 @@
                                             <div class="card-header callheadercard d-flex align-items-center justify-content-between">
                                                 <div class="d-flex align-items-center">
                                                     @if($user->avatar)
-                                                        <img src="{{ $user->avatar }}" alt="user-avatar" class="avatar avatar-sm me-3 border-radius-lg">
+                                                        <img src="{{ asset($user->avatar) }}" alt="user-avatar" class="avatar avatar-sm me-3 border-radius-lg">
                                                     @else
                                                         <img src="{{ asset('images/AR_fblanc.png') }}" alt="default-avatar" class="avatar avatar-sm me-3 border-radius-lg">
                                                     @endif

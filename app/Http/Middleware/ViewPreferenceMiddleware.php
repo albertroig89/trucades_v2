@@ -11,9 +11,20 @@ class ViewPreferenceMiddleware
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $viewType = $user->desktop ? 'index' : 'mobile-index';
+            $routeName = $request->route()->getName();
+            $viewBase = explode('.', $routeName);
+            $viewName = end($viewBase); // Esto debe devolver "index", "histjobs", etc.
 
-            // Agregar la preferencia de vista a la solicitud
+            // Ajustar el nombre de la vista para la preferencia de escritorio o móvil
+            if ($viewName === 'histjobs') {
+                // Si la vista es "histjobs", determinar si es escritorio o móvil
+                $viewType = $user->desktop ? 'histjobs' : 'mobile-histjobs';
+            } else {
+                // Para todas las demás vistas
+                $viewType = $user->desktop ? $viewName : "mobile-$viewName";
+            }
+
+            // Establecer la preferencia de vista
             $request->attributes->set('viewType', $viewType);
         }
 
