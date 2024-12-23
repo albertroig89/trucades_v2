@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jobs/exportperform', [JobController::class, 'exportperform'])->name('jobs.exportperform');
 //    Route::get('/jobs/histjobs2', [JobController::class, 'histjob2'])->name('jobs.histjobs2');
 //    Route::get('/jobs/counter', [JobController::class, 'count'])->name('jobs.count');
-    Route::delete('/jobs/histjobs/{histjob}', [JobController::class, 'histdestroy'])->name('jobs.histdestroy');
+    Route::delete('/jobs/histjobs/{histjob}', [JobController::class, 'histdestroy'])->name('histjobs.destroy');
     // Rutas basicas de Jobs
     Route::resource('jobs', JobController::class);
 });

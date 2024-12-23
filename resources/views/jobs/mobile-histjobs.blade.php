@@ -40,8 +40,7 @@
                                                 </p>
                                             </div>
                                             <div class="card-footer d-flex justify-content-between">
-                                                <a href="{{ route('jobs.edit', ['job' => $histjob]) }}" class="btn btn-default btn-sm w-auto">Editar</a>
-                                                <form action="{{ route('jobs.destroy', $histjob) }}" method="POST">
+                                                <form action="{{ route('histjobs.destroy', $histjob) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar el trabajo?')" type="submit">Eliminar</button>

@@ -1,6 +1,5 @@
 <x-app-layout>
     <main>
-
         @include('layouts.partials.header')
 
         <div class="container-fluid py-4 d-flex justify-content-center align-items-center">
@@ -19,6 +18,7 @@
                                         <form role="form" action="{{ route('jobs.export') }}" id="export-job" autocomplete="off">
                                             @csrf
                                             <div class="form-group card-body">
+                                                <!-- Selección de Cliente -->
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="client_id">Cliente:</label>
                                                     <select class='form-control select2 @error('client_id') is-invalid @enderror' name='client_id' id='client_id'>
@@ -35,6 +35,8 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+
+                                                <!-- Cliente personalizado -->
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label class="form-label" for="clientname">Cliente personalizado</label>
                                                     <input name="clientname" type="text" class="form-control @error('clientname') is-invalid @enderror" id="clientname" value="{{ old('clientname') }}">
@@ -44,6 +46,8 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+
+                                                <!-- Empleado -->
                                                 <div class="form-group input-group mb-4 input-group-static">
                                                     <label for="user_id">Empleado</label>
                                                     <select class="form-control @error('user_id') is-invalid @enderror" name="user_id" id="user_id">
@@ -61,6 +65,8 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+
+                                                <!-- Fechas -->
                                                 <div class="form-group input-group mb-4 input-group-static @error('initdate') has-error @enderror">
                                                     <label for="initdate">Fecha de inicio para la exportación *</label>
                                                     <div class="input-group">
@@ -85,6 +91,13 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
+                                                <!-- Checkbox para seleccionar el tipo de exportación -->
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="export_from_history" name="export_from_history">
+                                                    <label class="form-check-label" for="flexCheckDefault">Exportar trabajos del histórico</label>
+                                                </div>
+                                                <!-- Botones -->
                                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3+" >
                                                     <div>
                                                         <button type="submit" class="btn btn-default btn-sm w-auto">Preparar exportación</button>
@@ -105,3 +118,4 @@
         </div>
     </main>
 </x-app-layout>
+

@@ -181,7 +181,6 @@ class JobController extends Controller
         return redirect()->route('jobs.index');
     }
 
-
     /**
      * Muestra el historial de trabajos.
      *
@@ -193,7 +192,7 @@ class JobController extends Controller
         $viewType = $request->get('viewType', 'histjobs'); // 'index' por defecto
 
         $histjobs = HistJob::orderBy('created_at', 'DESC')->paginate(40);
-        $title = "Historico de trabajos";
+        $title = "Histórico de trabajos";
 
         return view("jobs.$viewType", compact('title', 'histjobs'));
     }
@@ -219,10 +218,16 @@ class JobController extends Controller
      */
     public function export(ExportJobFormRequest $request)
     {
-        $title = "Exportación de trabajos";
+        // Verificar si se seleccionó la opción de exportar desde el histórico
+        $isFromHistory = $request->has('export_from_history');
 
-        // Obtener la consulta preparada a partir del request
-        $query = $request->buildQuery();
+        // Cambiar dinámicamente el título basado en el origen de los datos
+        $title = $isFromHistory ? "Exportación de trabajos del histórico" : "Exportación de trabajos";
+
+        // Obtener la consulta adecuada (histórico o trabajos realizados)
+        $query = $isFromHistory ? HistJob::query() : Job::query();
+
+        $query = $request->buildQuery($query);
 
         // Calcular el total de minutos de todos los trabajos antes de la paginación
         $totalMinutes = $query->sum('totalmin');
@@ -254,34 +259,34 @@ class JobController extends Controller
         return $request->exportJobs();
     }
 
-    /**
-     * Muestra el historial de trabajos ocultos.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function histjob2()
-    {
-        $histjobs = HistJob2::orderBy('created_at', 'DESC')->paginate(50);
-        $title = "Historico de trabajos oculto";
+//    /**
+//     * Muestra el historial de trabajos ocultos.
+//     *
+//     * @return \Illuminate\View\View
+//     */
+//    public function histjob2()
+//    {
+//        $histjobs = HistJob2::orderBy('created_at', 'DESC')->paginate(50);
+//        $title = "Historico de trabajos oculto";
+//
+//        return view('jobs.histjobs2', compact('title', 'histjobs'));
+//    }
 
-        return view('jobs.histjobs2', compact('title', 'histjobs'));
-    }
-
-    /**
-     * Muestra el contador de trabajos.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function count()
-    {
-        $jobs = Job::all();
-        $users = User::all();
-        $histjobs = HistJob::all();
-        $histjobs2 = HistJob2::all();
-        $title = 'Contador';
-
-        return view('jobs.count', compact('title', 'jobs', 'users', 'histjobs', 'histjobs2'));
-    }
+//    /**
+//     * Muestra el contador de trabajos.
+//     *
+//     * @return \Illuminate\View\View
+//     */
+//    public function count()
+//    {
+//        $jobs = Job::all();
+//        $users = User::all();
+//        $histjobs = HistJob::all();
+//        $histjobs2 = HistJob2::all();
+//        $title = 'Contador';
+//
+//        return view('jobs.count', compact('title', 'jobs', 'users', 'histjobs', 'histjobs2'));
+//    }
 
     /**
      * Mueve un trabajo al historial de trabajos.
@@ -291,14 +296,14 @@ class JobController extends Controller
      */
     public function histdestroy(HistJob $histjob)
     {
-        HistJob2::create([
-            'username' => $histjob->username,
-            'job' => $histjob->job,
-            'inittime' => $histjob->inittime,
-            'endtime' => $histjob->endtime,
-            'totalmin' => $histjob->totalmin,
-            'clientname' => $histjob->clientname,
-        ]);
+//        HistJob2::create([
+//            'username' => $histjob->username,
+//            'job' => $histjob->job,
+//            'inittime' => $histjob->inittime,
+//            'endtime' => $histjob->endtime,
+//            'totalmin' => $histjob->totalmin,
+//            'clientname' => $histjob->clientname,
+//        ]);
 
         $histjob->delete();
         return redirect()->route('jobs.histjobs');

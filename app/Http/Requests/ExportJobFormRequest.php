@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\HistJob;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Job;
 use Carbon\Carbon;
@@ -55,21 +56,31 @@ class ExportJobFormRequest extends FormRequest
         $inittime = Carbon::parse($this->input('initdate'));
         $endtime = Carbon::parse($this->input('enddate'))->endOfDay();
 
-        // Crear una consulta inicial para los trabajos
-        $query = Job::whereBetween('inittime', [$inittime, $endtime]);
+        // Determinar si la consulta es para trabajos realizados o del histórico
+        $isHistory = $this->has('export_from_history');
+        $model = $isHistory ? HistJob::class : Job::class;
+
+        // Crear una consulta inicial basada en el modelo
+        $query = $model::whereBetween('inittime', [$inittime, $endtime]);
 
         // Aplicar filtros si se especifica un cliente
-        if ($this->filled('client_id')) {
+        if ($this->filled('client_id') && !$isHistory) {
             $query->where('client_id', $this->input('client_id'));
         }
 
-        // Aplicar filtros si se especifica un empleado
+        // Aplicar filtros si se especifica un empleado (válido en ambos modelos)
         if ($this->filled('user_id')) {
             $query->where('user_id', $this->input('user_id'));
         }
 
-        // Ordenar los trabajos por cliente y luego por usuario
-        $query->orderBy('client_id')->orderBy('user_id')->orderBy('inittime');
+        // Ordenar según las columnas disponibles en el modelo
+        if (!$isHistory) {
+            // Ordenar trabajos normales por cliente, usuario y fecha
+            $query->orderBy('client_id')->orderBy('user_id')->orderBy('inittime');
+        } else {
+            // Ordenar trabajos históricos por usuario y fecha
+            $query->orderBy('clientname')->orderBy('username')->orderBy('inittime');
+        }
 
         return $query;
     }

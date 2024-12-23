@@ -9,7 +9,7 @@
                     <div class="customcard card my-4">
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Trabajos realizados</h6>
+                                <h6 class="text-white text-capitalize ps-3">Histórico de trabajos realizados</h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -25,8 +25,6 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Intentos</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Inicio del trabajo</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Final del trabajo</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tiempo empleado</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                                         </tr>
                                         </thead>
@@ -65,11 +63,11 @@
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($histjob->inittime)->format('d-m-y H:i') }}</span></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($histjob->endtime)->format('d-m-y H:i') }}</span></td>
                                                 <td><span class="text-secondary text-xs font-weight-bold">{{ $histjob->totalmin }} min</span></td>
+{{--                                                <td>--}}
+{{--                                                    <a href="{{ route('histjobs.edit', ['job' => $histjob]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>--}}
+{{--                                                </td>--}}
                                                 <td>
-                                                    <a href="{{ route('jobs.edit', ['job' => $histjob]) }}" type="button" class="btn btn-default btn-sm w-auto">Editar</a>
-                                                </td>
-                                                <td>
-                                                    <form action="{{ route('jobs.destroy', $histjob) }}" method="POST">
+                                                    <form action="{{ route('histjobs.destroy', $histjob) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-default btn-sm w-auto" onclick="return confirm('¿Seguro que quieres eliminar el trabajo del historico?')" type="submit">Eliminar</button>

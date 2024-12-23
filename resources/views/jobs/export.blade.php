@@ -9,7 +9,8 @@
                         <div class="customcard card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="custom-header-card border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <h6 class="text-white ps-3">Exportar trabajos realizados entre {{ $initdate }} y el {{ $enddate }}
+                                    <h6 class="text-white ps-3">
+                                        Exportar trabajos realizados entre {{ $initdate }} y el {{ $enddate }}
                                         @if ($client)
                                             para el cliente "{{ $client->name }}"
                                         @endif
@@ -72,7 +73,7 @@
                                         @endphp
 
                                         @foreach ($jobs as $job)
-                                            @if ($currentClient !== $job->client_id)
+                                            @if ($currentClient !== $job->clientname)
                                                 @if ($currentClient !== null)
                                                     <!-- Mostrar el total de minutos para el cliente anterior -->
                                                     <tr class="export-totals">
@@ -84,7 +85,7 @@
                                                     </tr>
                                                 @endif
                                                 @php
-                                                    $currentClient = $job->client_id;
+                                                    $currentClient = $job->clientname;
                                                     $currentClientName = $job->clientname;
                                                     $totalMinutesClient = 0;
                                                 @endphp
@@ -95,15 +96,17 @@
                                                 <th>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
-                                                            @if($job->user->avatar)
+                                                            @if($job->user && $job->user->avatar)
                                                                 <img src="{{ asset($job->user->avatar) }}" alt="avatar" class="avatar avatar-sm me-3 border-radius-lg">
+                                                            @elseif($job->avatar)
+                                                                <img src="{{ asset($job->avatar) }}" alt="avatar" class="avatar avatar-sm me-3 border-radius-lg">
                                                             @else
                                                                 <img src="{{ asset('images/AR_fblanc.png') }}" alt="avatar" class="avatar avatar-sm me-3 border-radius-lg">
                                                             @endif
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $job->user->name }}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{ $job->user->email }}</p>
+                                                            <h6 class="mb-0 text-sm">{{ $job->user->name ?? $job->username }}</h6>
+                                                            <p class="text-xs text-secondary mb-0">{{ $job->user->email ?? $job->email }}</p>
                                                         </div>
                                                     </div>
                                                 </th>
