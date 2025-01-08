@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Obtener IDs de los departamentos
+        // Obtener ID's de los departamentos
         $techId = Department::where('title', 'Tecnico')->value('id');
         $progId = Department::where('title', 'Programador')->value('id');
         $admId = Department::where('title', 'Administración')->value('id');
@@ -25,65 +25,65 @@ class UserSeeder extends Seeder
         // Crear usuarios
         User::create([
             'name' => 'Global',
-            'email' => 'global@gmail.com',
-            'password' => bcrypt('123456'),
+            'email' => 'global@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $globId,
             'avatar' => 'images/global.png',
         ]);
 
         User::create([
             'name' => 'Albert Roig',
-            'email' => 'albert@gmail.com',
-            'password' => bcrypt('123456'),
+            'email' => 'albert@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $techId,
             'avatar' => 'images/albert.jpg',
             'is_admin' => true,
         ]);
 
         User::create([
-            'name' => 'Jordi Espinoso',
-            'email' => 'sat@gmail.com',
-            'password' => bcrypt('123456'),
+            'name' => 'Victor Fuentes',
+            'email' => 'sat@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $techId,
             'avatar' => 'assets/img/team-2.jpg',
         ]);
 
         User::create([
-            'name' => 'Joel Galindo',
-            'email' => 'joel@gmail.com',
-            'password' => bcrypt('123456'),
+            'name' => 'Antonio Ferrer',
+            'email' => 'antonio@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $techId,
             'avatar' => 'assets/img/bruce-mars.jpg',
         ]);
 
         User::create([
-            'name' => 'Josep Costelles',
-            'email' => 'josep@gmail.com',
-            'password' => bcrypt('123456'),
+            'name' => 'Julio Ceballos',
+            'email' => 'julio@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $techId,
             'avatar' => 'assets/img/ivana-square.jpg',
         ]);
 
         User::create([
-            'name' => 'Cristina Dretera',
-            'email' => 'administracion@gmail.com',
-            'password' => bcrypt('123456'),
+            'name' => 'Teresa Alcántara',
+            'email' => 'administracion@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $admId,
             'avatar' => 'assets/img/team-5.jpg',
         ]);
 
         User::create([
-            'name' => 'Manel Pel',
-            'email' => 'comercial@gmail.com',
-            'password' => bcrypt('123456'),
+            'name' => 'David Cantero',
+            'email' => 'comercial@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $comId,
             'avatar' => 'assets/img/team-4.jpg',
         ]);
 
         User::create([
-            'name' => 'Juan Galindo',
-            'email' => 'soft@gmail.com',
-            'password' => bcrypt('123456'),
+            'name' => 'Alejandro Garcia',
+            'email' => 'soft@email.com',
+            'password' => bcrypt('12345678'),
             'department_id' => $progId,
             'avatar' => 'assets/img/team-1.jpg',
         ]);

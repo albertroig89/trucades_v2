@@ -245,7 +245,7 @@ class JobController extends Controller
         $user = $request->input('user_id') ? User::find($request->input('user_id')) : null;
 
         // Retornar una vista con los resultados para permitir la selección de opciones de exportación
-        return view('jobs.export', compact('title', 'jobs', 'initdate', 'enddate', 'client', 'user', 'totalMinutes', 'totalHours'));
+        return view('jobs.export', compact('title', 'jobs', 'initdate', 'enddate', 'client', 'user', 'totalMinutes', 'totalHours', 'isFromHistory'));
     }
 
     /**

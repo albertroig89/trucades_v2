@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\ExcelJobsExport;
 
+
 class ExportJobRequest extends FormRequest
 {
     /**
@@ -34,6 +35,7 @@ class ExportJobRequest extends FormRequest
 
     public function exportJobs()
     {
+        $isFromHistory = $this->input('export_from_history', false) === 'true'; // Detectar si se exporta del histórico
         $inittime = Carbon::parse($this->input('initdate'));
         $endtime = Carbon::parse($this->input('enddate'))->endOfDay();
         $client_id = $this->input('client_id');
@@ -41,18 +43,21 @@ class ExportJobRequest extends FormRequest
         $exportFormat = $this->input('export_format');
         $deleteAfterExport = $this->has('delete_after_export');
 
+        // Seleccionar la base de datos: trabajos o histórico
+        $baseQuery = $isFromHistory ? HistJob::query() : Job::query();
+
         // Construir la consulta para obtener los trabajos
-        $jobsQuery = Job::whereBetween('inittime', [$inittime, $endtime])
-            ->orderBy('client_id')
-            ->orderBy('user_id')
+        $jobsQuery = $baseQuery->whereBetween('inittime', [$inittime, $endtime])
+            ->orderBy($isFromHistory ? 'clientname' : 'client_id') // Condicional para histórico
+            ->orderBy($isFromHistory ? 'username' : 'user_id')     // Condicional para histórico
             ->orderBy('inittime');
 
         if ($client_id) {
-            $jobsQuery->where('client_id', $client_id);
+            $jobsQuery->where($isFromHistory ? 'clientname' : 'client_id', $client_id);
         }
 
         if ($user_id) {
-            $jobsQuery->where('user_id', $user_id);
+            $jobsQuery->where($isFromHistory ? 'username' : 'user_id', $user_id);
         }
 
         $jobs = $jobsQuery->get();
@@ -66,21 +71,20 @@ class ExportJobRequest extends FormRequest
         $response = null;
         switch ($exportFormat) {
             case 'csv':
-                $response = $this->exportToCSV($jobs, $inittime, $endtime);
+                $response = $this->exportToCSV($jobs, $inittime, $endtime, $isFromHistory);
                 break;
             case 'excel':
-                $response = $this->exportToExcel($jobs, $inittime, $endtime, $client_id, $user_id);
+                $response = $this->exportToExcel($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory);
                 break;
             case 'pdf':
-                $response = $this->exportToPDF($jobs, $inittime, $endtime, $client_id, $user_id);
+                $response = $this->exportToPDF($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory);
                 break;
             case 'print':
-                // Sí se seleccionó eliminar después de exportar para impresión
                 if ($deleteAfterExport) {
                     $this->deleteJobsWithHistory($jobs);
                     session()->flash('success', 'Los trabajos han sido exportados y eliminados con éxito.');
                 }
-                return $this->exportToPrinter($jobs, $inittime, $endtime, $client_id, $user_id);
+                return $this->exportToPrinter($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory);
             case 'delete':
                 $this->deleteJobsWithHistory($jobs);
                 return redirect()->back()->with('success', 'Los trabajos han sido eliminados con éxito.');
@@ -88,7 +92,6 @@ class ExportJobRequest extends FormRequest
                 return redirect()->back()->with('error', 'Formato de exportación no soportado.');
         }
 
-        // Sí se seleccionó eliminar después de exportar para otros formatos
         if ($deleteAfterExport) {
             $this->deleteJobsWithHistory($jobs);
             session()->flash('success', 'Los trabajos han sido exportados y eliminados con éxito.');
@@ -101,28 +104,28 @@ class ExportJobRequest extends FormRequest
     {
         foreach ($jobs as $job) {
             HistJob::create([
-                'username' => $job->user->name,
-                'email' => $job->user->email,
-                'avatar' => $job->user->avatar,
+                'username' => $job->user->name ?? $job->username,
+                'email' => $job->user->email ?? null,
+                'avatar' => $job->user->avatar ?? null,
                 'attempts' => $job->attempts,
                 'job' => $job->job,
                 'inittime' => $job->inittime,
                 'endtime' => $job->endtime,
                 'totalmin' => $job->totalmin,
-                'clientname' => $job->clientname,
+                'clientname' => $job->clientname ?? null,
             ]);
 
             $job->delete();
         }
     }
 
-    protected function exportToCSV($jobs, $inittime, $endtime)
+    protected function exportToCSV($jobs, $inittime, $endtime, $isFromHistory)
     {
         $csvData = [];
 
         foreach ($jobs as $job) {
             $csvData[] = [
-                'Empleado' => $job->user->name ?? 'N/A',
+                'Empleado' => $isFromHistory ? ($job->username ?? 'N/A') : ($job->user->name ?? 'N/A'),
                 'Fecha' => $job->created_at ? \Carbon\Carbon::parse($job->created_at)->format('d-m-Y H:i') : 'N/A',
                 'Cliente' => $job->clientname ?? 'N/A',
                 'Trabajo realizado' => $job->job ?? 'N/A',
@@ -147,36 +150,44 @@ class ExportJobRequest extends FormRequest
         return response()->download(storage_path('app/public/' . $filename))->deleteFileAfterSend(true);
     }
 
-    protected function exportToExcel($jobs, $inittime, $endtime, $client_id, $user_id)
+    protected function exportToExcel($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory)
     {
         $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.xlsx';
-        Excel::store(new ExcelJobsExport($jobs, $inittime, $endtime, $client_id, $user_id), $filename, 'public');
+        Excel::store(new ExcelJobsExport($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory), $filename, 'public');
 
         return response()->download(storage_path('app/public/' . $filename))->deleteFileAfterSend(true);
     }
 
-    protected function exportToPDF($jobs, $inittime, $endtime, $client_id, $user_id)
+    protected function exportToPDF($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory)
     {
         $formattedInitDate = Carbon::parse($inittime)->format('d-m-y');
         $formattedEndDate = Carbon::parse($endtime)->format('d-m-y');
-        $title = 'Exportación de trabajos a PDF entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+
+        if ($isFromHistory) {
+            $title = 'Exportación de trabajos del histórico a PDF entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+        }else{
+            $title = 'Exportación de trabajos a PDF entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+        }
+
 
         if ($client_id) {
-            $client = Client::find($client_id);
-            $clientName = $client ? $client->name : '';
+            $clientName = $isFromHistory
+                ? ($jobs->first()->clientname ?? 'N/A')
+                : (Client::find($client_id)?->name ?? 'N/A');
             $title .= ' para el cliente ' . $clientName;
         }
 
         if ($user_id) {
-            $user = User::find($user_id);
-            $userName = $user ? $user->name : '';
+            $userName = $isFromHistory
+                ? ($jobs->first()->username ?? 'N/A')
+                : (User::find($user_id)?->name ?? 'N/A');
             $title .= ' por el usuario ' . $userName;
         }
 
         $totalMinutes = $jobs->sum('totalmin');
         $totalHours = number_format($totalMinutes / 60, 2);
 
-        $pdf = Pdf::loadView('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours', 'client_id', 'user_id'))
+        $pdf = Pdf::loadView('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours', 'client_id', 'user_id', 'isFromHistory'))
             ->setPaper('a4', 'landscape');
 
         $filename = 'trabajos_exportados_' . now()->format('d-m-y_H-i') . '.pdf';
@@ -184,28 +195,36 @@ class ExportJobRequest extends FormRequest
         return $pdf->download($filename);
     }
 
-    protected function exportToPrinter($jobs, $inittime, $endtime, $client_id, $user_id)
+    protected function exportToPrinter($jobs, $inittime, $endtime, $client_id, $user_id, $isFromHistory)
     {
         $formattedInitDate = Carbon::parse($inittime)->format('d-m-y');
         $formattedEndDate = Carbon::parse($endtime)->format('d-m-y');
-        $title = 'Exportación de trabajos para impresión entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+
+        if($isFromHistory){
+            $title = 'Exportación de trabajos del histórico para impresión entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+        }else{
+            $title = 'Exportación de trabajos para impresión entre ' . $formattedInitDate . ' y el ' . $formattedEndDate;
+        }
+
 
         if ($client_id) {
-            $client = Client::find($client_id);
-            $clientName = $client ? $client->name : '';
+            $clientName = $isFromHistory
+                ? ($jobs->first()->clientname ?? 'N/A')
+                : (Client::find($client_id)?->name ?? 'N/A');
             $title .= ' para el cliente ' . $clientName;
         }
 
         if ($user_id) {
-            $user = User::find($user_id);
-            $userName = $user ? $user->name : '';
+            $userName = $isFromHistory
+                ? ($jobs->first()->username ?? 'N/A')
+                : (User::find($user_id)?->name ?? 'N/A');
             $title .= ' por el usuario ' . $userName;
         }
 
         $totalMinutes = $jobs->sum('totalmin');
         $totalHours = number_format($totalMinutes / 60, 2);
 
-        return view('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours', 'client_id', 'user_id'))->with([
+        return view('jobs.exportpdf', compact('jobs', 'title', 'totalMinutes', 'totalHours', 'client_id', 'user_id', 'isFromHistory'))->with([
             'print' => true
         ]);
     }

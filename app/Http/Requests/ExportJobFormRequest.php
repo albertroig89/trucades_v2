@@ -57,14 +57,14 @@ class ExportJobFormRequest extends FormRequest
         $endtime = Carbon::parse($this->input('enddate'))->endOfDay();
 
         // Determinar si la consulta es para trabajos realizados o del histórico
-        $isHistory = $this->has('export_from_history');
-        $model = $isHistory ? HistJob::class : Job::class;
+        $isFromHistory = $this->has('export_from_history');
+        $model = $isFromHistory ? HistJob::class : Job::class;
 
         // Crear una consulta inicial basada en el modelo
         $query = $model::whereBetween('inittime', [$inittime, $endtime]);
 
         // Aplicar filtros si se especifica un cliente
-        if ($this->filled('client_id') && !$isHistory) {
+        if ($this->filled('client_id') && !$isFromHistory) {
             $query->where('client_id', $this->input('client_id'));
         }
 
@@ -74,7 +74,7 @@ class ExportJobFormRequest extends FormRequest
         }
 
         // Ordenar según las columnas disponibles en el modelo
-        if (!$isHistory) {
+        if (!$isFromHistory) {
             // Ordenar trabajos normales por cliente, usuario y fecha
             $query->orderBy('client_id')->orderBy('user_id')->orderBy('inittime');
         } else {

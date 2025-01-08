@@ -26,6 +26,9 @@
                                     <input type="hidden" name="enddate" value="{{ request('enddate') }}">
                                     <input type="hidden" name="client_id" value="{{ request('client_id') }}">
                                     <input type="hidden" name="user_id" value="{{ request('user_id') }}">
+
+                                    <input type="hidden" name="export_from_history" value="{{ $isFromHistory ? 'true' : 'false' }}">
+
                                     <div class="format-select-container form-group mb-0 me-3 d-inline-flex align-items-center">
                                         <select class="format-select form-control form-control-sm" name="export_format" id="export_format" required>
                                             <option value="">Elige un formato</option>
